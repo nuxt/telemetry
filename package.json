@@ -1,0 +1,45 @@
+{
+  "name": "@nuxt/telemetry",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "git@github.com:nuxt/telemetry.git",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Sergey Bedritsky <sergey.bedritsky@gmail.com>"
+    }
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/module.js",
+  "scripts": {
+    "dev": "nuxt example",
+    "lint": "eslint --ext .js,.vue .",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "test": "yarn lint && jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "@nuxtjs/eslint-config": "latest",
+    "@nuxtjs/module-test-utils": "latest",
+    "babel-eslint": "latest",
+    "babel-jest": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-nuxt": "^0.5.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "latest",
+    "jest": "latest",
+    "nuxt-edge": "latest",
+    "prettier": "^2.0.4",
+    "standard-version": "latest"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

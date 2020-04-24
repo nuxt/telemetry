@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "nuxt": "^2.10.1",
+    "nuxt-edge": "latest"
+  }
+}

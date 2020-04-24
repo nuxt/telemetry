@@ -1,6 +1,5 @@
-import { resolve } from 'path'
+import _module from '..'
 
-export const rootDir = resolve(__dirname, '..')
-export const buildDir = resolve(__dirname, '.nuxt')
-export const srcDir = __dirname
-export const modules = [{ handler: require('../') }]
+export default {
+  modules: [_module]
+}

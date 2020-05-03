@@ -15,12 +15,14 @@
   "main": "lib/module.js",
   "scripts": {
     "dev": "nuxt example",
+    "build": "nuxt build example",
+    "start": "nuxt start example",
+    "generate": "nuxt generate example",
     "lint": "eslint --ext .js,.vue .",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && jest"
   },
   "dependencies": {
-    "async-retry": "^1.3.1",
     "ci-info": "^2.0.0",
     "fs-extra": "^9.0.0",
     "git-url-parse": "^11.1.2",

@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "ci-info": "^2.0.0",
+    "consola": "^2.11.3",
+    "defu": "^2.0.2",
     "fs-extra": "^9.0.0",
     "git-url-parse": "^11.1.2",
     "is-docker": "^2.0.0",

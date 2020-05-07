@@ -1,10 +1,14 @@
-const { setup, loadConfig, get } = require('@nuxtjs/module-test-utils')
+import { join } from 'path'
+import { setup, get } from '@nuxtjs/module-test-utils'
+
+import config from '../example/nuxt.config'
 
 describe('module', () => {
   let nuxt
 
   beforeAll(async () => {
-    ;({ nuxt } = await setup(loadConfig(__dirname, '../../example')))
+    config.rootDir = join(__dirname, '..', 'example')
+    ;({ nuxt } = await setup(config))
   }, 60000)
 
   afterAll(async () => {

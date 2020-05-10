@@ -2,7 +2,7 @@
   "name": "@nuxt/telemetry",
   "version": "0.0.0",
   "description": "",
-  "repository": "git@github.com:nuxt/telemetry.git",
+  "repository": "nuxt/telemetry",
   "license": "MIT",
   "contributors": [
     {
@@ -15,17 +15,17 @@
       "name": "Pooya Parse (@pi0)"
     }
   ],
+  "main": "lib/module.js",
   "files": [
     "lib"
   ],
-  "main": "lib/module.js",
   "scripts": {
-    "dev": "nuxt example",
     "build": "nuxt build example",
-    "start": "nuxt start example",
+    "dev": "nuxt example",
     "generate": "nuxt generate example",
     "lint": "eslint --ext .js,.vue .",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "start": "nuxt start example",
     "test": "yarn lint && jest"
   },
   "dependencies": {

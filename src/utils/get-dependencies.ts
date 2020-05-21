@@ -1,11 +1,18 @@
 import { join } from 'path'
 import { existsSync } from 'fs'
 
-export function getDependencies(rootDir) {
-  const deps = {
-    dependencies: {},
-    devDependencies: {}
-  }
+interface DependencyData {
+  [key: string]: string
+}
+
+interface Dependencies {
+  [key: string]: DependencyData
+  // dependencies?: DependencyData
+  // devDependencies?: DependencyData
+}
+
+export function getDependencies(rootDir: string) {
+  const deps: Dependencies = {}
 
   const pkgPath = join(rootDir, 'package.json')
 

@@ -1,4 +1,4 @@
-export function isTrue(value) {
+export function isTrue(value: string | undefined): boolean {
   // return if Boolean
   if (typeof value === 'boolean') return value
 

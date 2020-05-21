@@ -2,10 +2,17 @@ import fetch from 'node-fetch'
 import consola from 'consola'
 import { hash } from './utils/hash'
 import { isTrue } from './utils/is-true'
+import { NuxtOptions, Event, Context } from './types'
 
 const logger = consola.withScope('@nuxt/telemetry')
 
-function getUserAgent({ options }) {
+interface Body {
+  createdAt: Date
+  context: Context
+  events: Array<Event>
+}
+
+function getUserAgent({ options }: { options: NuxtOptions }) {
   try {
     const { name, version } = require(`${
       options ? options.rootDir : process.cwd()
@@ -16,12 +23,16 @@ function getUserAgent({ options }) {
   }
 }
 
-export async function postEvent({ body }, { options }) {
+export async function postEvent(
+  { body }: { body: Body },
+  { options }: { options: NuxtOptions }
+): Promise<null | void> {
   const url =
     (options.telemetry && options.telemetry.url) ||
     'https://telemetry.nuxtjs.com'
+  const { NUXT_TELEMETRY_DEBUG } = process.env
 
-  if (isTrue(process.env.NUXT_TELEMETRY_DEBUG)) {
+  if (isTrue(NUXT_TELEMETRY_DEBUG)) {
     // Debug only
     logger.info(JSON.stringify(body, null, 1))
   } else {

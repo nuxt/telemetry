@@ -3,10 +3,13 @@ import defu from 'defu'
 import { Telemetry } from './telemetry'
 import { isTrue } from './utils/is-true'
 import { getStats } from './utils/build-stats'
+import { Module } from '@nuxt/types'
+import { Stats, Nuxt } from './types'
+// https://typescript.nuxtjs.org/cookbook/modules.html
 
 const logger = consola.withScope('@nuxt/telemetry')
 
-export default function telemetryModule(moduleOptions) {
+export default <Module>function (moduleOptions) {
   const defaultConfig = {
     isDisabled: false
     // TODO: set default url
@@ -55,17 +58,18 @@ export default function telemetryModule(moduleOptions) {
   profile(this.nuxt, t)
 }
 
-function profile(nuxt, t) {
-  const startT = {}
-  const duration = {}
-  const stats = {}
+function profile(nuxt: Nuxt, t: Telemetry) {
+  const startT: any = {}
+  const duration: any = {}
+  const stats: Partial<Stats> = {}
   let routesCount = 0
 
-  const timeStart = (name) => {
+  const timeStart = (name: string) => {
     startT[name] = new Date()
   }
-  const timeEnd = (name) => {
-    duration[name] = new Date() - startT[name]
+  const timeEnd = (name: string) => {
+    // https://stackoverflow.com/a/60688789
+    duration[name] = new Date().valueOf() - startT[name]
   }
 
   // Total build timing
@@ -76,9 +80,12 @@ function profile(nuxt, t) {
     timeEnd('build')
   })
 
-  nuxt.hook('build:compiled', ({ name, stats: _stats }) => {
-    stats[name] = getStats(_stats)
-  })
+  nuxt.hook(
+    'build:compiled',
+    ({ name, stats: _stats }: { name: string; stats: Stats }) => {
+      stats[name] = getStats(_stats)
+    }
+  )
 
   // Generate timing
   // TODO: workaround as generate:before is before build

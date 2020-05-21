@@ -15,18 +15,22 @@
       "name": "Pooya Parse (@pi0)"
     }
   ],
-  "main": "lib/module.js",
+  "main": "dist/module.js",
+  "typings": "dist/module.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "build": "nuxt build example",
-    "dev": "nuxt example",
-    "generate": "nuxt generate example",
-    "lint": "eslint --ext .js,.vue .",
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist",
+    "dev": "tsc",
+    "lint": "eslint --ext .ts,.js,.vue .",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
-    "start": "nuxt start example",
-    "test": "yarn lint && jest"
+    "test": "yarn lint && jest",
+    "example:dev": "nuxt example",
+    "example:build": "nuxt build example",
+    "example:start": "nuxt start example",
+    "example:generate": "nuxt generate example"
   },
   "dependencies": {
     "ci-info": "^2.0.0",
@@ -44,8 +48,21 @@
     "@babel/preset-env": "latest",
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@nuxt/typescript-build": "latest",
+    "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/eslint-config": "latest",
+    "@nuxtjs/eslint-config-typescript": "latest",
     "@nuxtjs/module-test-utils": "latest",
+    "@types/ci-info": "^2.0.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/git-url-parse": "^9.0.0",
+    "@types/glob": "latest",
+    "@types/jest": "latest",
+    "@types/loader-utils": "latest",
+    "@types/lodash": "latest",
+    "@types/node-fetch": "^2.5.7",
+    "@types/parse-git-config": "^3.0.0",
+    "@types/semver": "latest",
     "babel-eslint": "latest",
     "babel-jest": "latest",
     "eslint": "latest",
@@ -56,7 +73,10 @@
     "jest": "latest",
     "nuxt-edge": "latest",
     "prettier": "^2.0.5",
-    "standard-version": "latest"
+    "rimraf": "latest",
+    "standard-version": "latest",
+    "ts-jest": "latest",
+    "typescript": "~3.8"
   },
   "publishConfig": {
     "access": "public"

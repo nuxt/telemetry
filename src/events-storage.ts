@@ -1,13 +1,15 @@
 export class EventsStorage {
+  private queue: Set<Promise<any>>
+
   constructor() {
     this.queue = new Set()
   }
 
-  get eventsQueue() {
+  private get eventsQueue() {
     return this.queue
   }
 
-  addEventToQueue(event) {
+  addEventToQueue(event: Promise<any>) {
     this.queue.add(event)
   }
 

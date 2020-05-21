@@ -4,17 +4,18 @@ import parseGitConfig from 'parse-git-config'
 import { machineId } from 'node-machine-id'
 import isDocker from 'is-docker'
 import ci from 'ci-info'
-import { detectPackageManager } from '../utils/detect-package-manager'
+import { detectPackageManager } from './detect-package-manager'
 import { hash } from './hash'
+import { Nuxt, Context, GitData } from '../types'
 
-export async function createContext(nuxt) {
+export async function createContext(nuxt: Nuxt): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
 
   const sessionId = await getSessionId()
   const projectId = await getProjectId(rootDir, git)
-  const projectSession = await getProjectSession()
+  const projectSession = getProjectSession(projectId, sessionId)
 
   return {
     nuxt,
@@ -43,15 +44,15 @@ const eventContextkeys = [
   'environment'
 ]
 
-export function getEventContext(context) {
-  const eventContext = {}
+export function getEventContext(context: Context): Context {
+  const eventContext: Context = {}
   for (const key of eventContextkeys) {
     eventContext[key] = context[key]
   }
   return eventContext
 }
 
-function getEnv() {
+function getEnv(): string | null {
   if (process.env.CODESANDBOX_SSE) {
     return 'CSB'
   }
@@ -70,11 +71,11 @@ export async function getSessionId() {
   return hash(id)
 }
 
-export function getProjectSession(projectId, sessionId) {
+export function getProjectSession(projectId: string, sessionId: string) {
   return hash(`${projectId}#${sessionId}`)
 }
 
-export async function getProjectId(rootDir, git) {
+export async function getProjectId(rootDir: string, git: GitData) {
   let id
 
   if (git.url) {
@@ -87,17 +88,20 @@ export async function getProjectId(rootDir, git) {
   return hash(id)
 }
 
-async function getGitRemote(rootDir) {
+async function getGitRemote(rootDir: string): Promise<string | null> {
   try {
     const parsed = await parseGitConfig({ cwd: rootDir })
-    const gitRemote = parsed['remote "origin"'].url
-    return gitRemote
+    if (parsed) {
+      const gitRemote = parsed['remote "origin"'].url
+      return gitRemote
+    }
+    return null
   } catch (err) {
     return null
   }
 }
 
-export async function getGit(rootDir) {
+export async function getGit(rootDir: string): Promise<GitData | {}> {
   const gitRemote = await getGitRemote(rootDir)
 
   if (!gitRemote) {
@@ -110,6 +114,8 @@ export async function getGit(rootDir) {
   return {
     url,
     gitRemote,
-    ...meta
+    source: meta.source,
+    owner: meta.owner,
+    name: meta.name
   }
 }

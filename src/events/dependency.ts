@@ -1,7 +1,29 @@
 import { getDependencies } from '../utils/get-dependencies'
 import { normalizeModules } from '../utils/normalize-modules'
+import { NuxtOptions } from '../types'
 
-export function dependencyEvent({ eventName, options, rootDir }) {
+interface Event {
+  eventName: string
+  options: NuxtOptions
+  rootDir: string
+}
+
+interface DependencyEvent {
+  name: string
+  payload: {
+    name: string
+    isDevDependency: boolean
+    isModule: boolean
+    isBuildModule: boolean
+    version: string
+  }
+}
+
+export function dependencyEvent({
+  eventName,
+  options,
+  rootDir
+}: Event): Array<DependencyEvent> {
   const dependencyEvents = []
   const nuxtBuildModules = normalizeModules(options.buildModules)
   const nuxtModules = normalizeModules(options.modules)

@@ -1,10 +1,34 @@
+import { NuxtOptions, GitData } from '../types'
+
+interface Event {
+  eventName: string
+  options: NuxtOptions
+  git: GitData
+  packageManager: string
+  projectSession: string
+}
+
+interface ProjectEvent {
+  name: string
+  payload: {
+    type: string
+    isSsr: boolean
+    target: string
+    isTypescriptBuild: boolean
+    isTypescriptRuntime: boolean
+    isProgrammatic: boolean
+    packageManager: string
+    projectSession: string
+  }
+}
+
 export function projectEvent({
   eventName,
   options,
   git,
   packageManager,
   projectSession
-}) {
+}: Event): ProjectEvent {
   return {
     name: eventName,
     payload: {

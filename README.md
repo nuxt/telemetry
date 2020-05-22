@@ -73,27 +73,6 @@ export default {
 }
 ```
 
-### Globally
-
-> This will disable Nuxt Telemetry for any project running Nuxt, opting you out of the Telemetry program
-
-To disable Nuxt Telemetry globally, simply run in one of your project where Nuxt is installed:
-
-```bash
-npx nuxt telemetry disable
-```
-
-To enable it back:
-
-```bash
-npx nuxt telemetry enable
-```
-
-To check the current status:
-```
-npx nuxt telemetry
-```
-
 ## Thank you
 
 We want to thank you for participating in this telemetry program to help us better understand how you use Nuxt.js to keep improving it 💚

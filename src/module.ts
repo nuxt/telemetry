@@ -1,3 +1,4 @@
+import destr from 'destr'
 import { Module } from '@nuxt/types'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
@@ -5,8 +6,8 @@ import { Stats, Nuxt, TelemetryOptions } from './types'
 
 export default <Module> function () {
   const options: TelemetryOptions = {
-    endpoint: 'https://telemetry.nuxtjs.com',
-    debug: false,
+    endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
+    debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     ...this.options.telemetry
   }
 

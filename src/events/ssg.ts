@@ -22,8 +22,8 @@ interface SSGEvent {
   }
 }
 
-export function ssgEvent(
-  { eventName, options, nuxt }: Event,
+export function ssgEvent (
+  { eventName, options }: Event,
   data: Data
 ): SSGEvent {
   // console.log(data)

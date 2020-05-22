@@ -24,7 +24,7 @@ interface BuildEvent {
   }
 }
 
-export function buildEvent(
+export function buildEvent (
   { eventName, options }: Event,
   data: Data
 ): BuildEvent {

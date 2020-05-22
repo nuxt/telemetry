@@ -22,7 +22,7 @@ interface ProjectEvent {
   }
 }
 
-export function projectEvent({
+export function projectEvent ({
   eventName,
   options,
   git,

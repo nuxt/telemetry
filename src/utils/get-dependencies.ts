@@ -14,7 +14,7 @@ interface Dependencies {
   // devDependencies?: DependencyData
 }
 
-export function getDependencies(rootDir: string) {
+export function getDependencies (rootDir: string) {
   const deps: Dependencies = {}
 
   const pkgPath = join(rootDir, 'package.json')

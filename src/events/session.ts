@@ -12,7 +12,7 @@ interface SessionEvent {
   }
 }
 
-export function sessionEvent({
+export function sessionEvent ({
   eventName,
   projectSession,
   sessionId

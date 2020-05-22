@@ -1,15 +1,14 @@
 import consola from 'consola'
 import defu from 'defu'
+import { Module } from '@nuxt/types'
 import { Telemetry } from './telemetry'
 import { isTrue } from './utils/is-true'
 import { getStats } from './utils/build-stats'
-import { Module } from '@nuxt/types'
 import { Stats, Nuxt } from './types'
-// https://typescript.nuxtjs.org/cookbook/modules.html
 
 const logger = consola.withScope('@nuxt/telemetry')
 
-export default <Module>function (moduleOptions) {
+export default <Module> function (moduleOptions) {
   const defaultConfig = {
     isDisabled: false
     // TODO: set default url
@@ -58,7 +57,7 @@ export default <Module>function (moduleOptions) {
   profile(this.nuxt, t)
 }
 
-function profile(nuxt: Nuxt, t: Telemetry) {
+function profile (nuxt: Nuxt, t: Telemetry) {
   const startT: any = {}
   const duration: any = {}
   const stats: Partial<Stats> = {}
@@ -83,6 +82,7 @@ function profile(nuxt: Nuxt, t: Telemetry) {
   nuxt.hook(
     'build:compiled',
     ({ name, stats: _stats }: { name: string; stats: Stats }) => {
+      // @ts-ignore
       stats[name] = getStats(_stats)
     }
   )

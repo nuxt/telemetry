@@ -4,11 +4,11 @@ import parseGitConfig from 'parse-git-config'
 import { machineId } from 'node-machine-id'
 import isDocker from 'is-docker'
 import ci from 'ci-info'
+import { Nuxt, Context, GitData } from '../types'
 import { detectPackageManager } from './detect-package-manager'
 import { hash } from './hash'
-import { Nuxt, Context, GitData } from '../types'
 
-export async function createContext(nuxt: Nuxt): Promise<Context> {
+export async function createContext (nuxt: Nuxt): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
@@ -16,6 +16,9 @@ export async function createContext(nuxt: Nuxt): Promise<Context> {
   const sessionId = await getSessionId()
   const projectId = await getProjectId(rootDir, git)
   const projectSession = getProjectSession(projectId, sessionId)
+
+  // @ts-ignore
+  const nuxtVersion = (nuxt.constructor.version || '').replace('v', '')
 
   return {
     nuxt,
@@ -25,7 +28,7 @@ export async function createContext(nuxt: Nuxt): Promise<Context> {
     sessionId, // machine ID
     projectId, // git creds or path + machine ID
     projectSession, // projectId + sessionId
-    nuxtVersion: nuxt.constructor.version.replace('v', ''),
+    nuxtVersion,
     isEdge: false, // TODO
     isStart: false, // TODO
     nodeVersion: process.version.replace('v', ''),
@@ -44,7 +47,7 @@ const eventContextkeys = [
   'environment'
 ]
 
-export function getEventContext(context: Context): Context {
+export function getEventContext (context: Context): Context {
   const eventContext: Context = {}
   for (const key of eventContextkeys) {
     eventContext[key] = context[key]
@@ -52,33 +55,35 @@ export function getEventContext(context: Context): Context {
   return eventContext
 }
 
-function getEnv(): string | null {
+function getEnv (): Context['environment'] {
   if (process.env.CODESANDBOX_SSE) {
     return 'CSB'
   }
-  if (isDocker()) {
-    return 'Docker'
-  }
+
   if (ci.isCI) {
     return ci.name
   }
 
-  return 'terminal'
+  if (isDocker()) {
+    return 'Docker'
+  }
+
+  return 'unknown'
 }
 
-export async function getSessionId() {
+async function getSessionId () {
   const id = await machineId()
   return hash(id)
 }
 
-export function getProjectSession(projectId: string, sessionId: string) {
+function getProjectSession (projectId: string, sessionId: string) {
   return hash(`${projectId}#${sessionId}`)
 }
 
-export async function getProjectId(rootDir: string, git: GitData) {
+async function getProjectId (rootDir: string, git?: GitData) {
   let id
 
-  if (git.url) {
+  if (git && git.url) {
     id = `${git.source}#${git.owner}#${git.name}`
   } else {
     const entropy = await machineId()
@@ -88,7 +93,7 @@ export async function getProjectId(rootDir: string, git: GitData) {
   return hash(id)
 }
 
-async function getGitRemote(rootDir: string): Promise<string | null> {
+async function getGitRemote (rootDir: string): Promise<string | null> {
   try {
     const parsed = await parseGitConfig({ cwd: rootDir })
     if (parsed) {
@@ -101,11 +106,11 @@ async function getGitRemote(rootDir: string): Promise<string | null> {
   }
 }
 
-export async function getGit(rootDir: string): Promise<GitData | {}> {
+async function getGit (rootDir: string): Promise<GitData | undefined> {
   const gitRemote = await getGitRemote(rootDir)
 
   if (!gitRemote) {
-    return {}
+    return
   }
 
   const meta = gitUrlParse(gitRemote)

@@ -19,7 +19,7 @@ interface DependencyEvent {
   }
 }
 
-export function dependencyEvent({
+export function dependencyEvent ({
   eventName,
   options,
   rootDir

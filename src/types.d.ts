@@ -11,7 +11,7 @@ export interface NuxtOptions {
   _serve: boolean
   _start: boolean
   mode: string
-  extensions: array
+  extensions: String[]
   _cli: boolean
   ssr: boolean
   dev: boolean
@@ -41,7 +41,8 @@ export interface Context {
   nodeVersion?: string
   os?: string
   environment?: string | null
-  packageManager?: string
+  packageManager?: string,
+  [key: string]: any
 }
 
 // interface EventContext {
@@ -65,12 +66,12 @@ export interface Stats {
   endTime: number
   startTime: number
   compilation: {
-    errors: array
+    errors: Error[]
     fullHash: string
   }
 }
 
-// should be merged or renamed
+// Should be merged or renamed
 interface Stats {
   client: ClientStats
   server: ServerStats

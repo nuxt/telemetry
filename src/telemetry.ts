@@ -1,24 +1,8 @@
 import { postEvent } from './post-event'
 import { EventsStorage } from './events-storage'
-import {
-  projectEvent,
-  sessionEvent,
-  cliCommandEvent,
-  dependencyEvent,
-  buildEvent,
-  ssgEvent
-} from './events'
+import * as events from './events/index'
 import { createContext, getEventContext } from './utils/context'
 import { Nuxt, NuxtOptions, Context } from './types'
-
-const eventsMap = {
-  NUXT_PROJECT: projectEvent,
-  NUXT_SESSION: sessionEvent,
-  NUXT_CLI_COMMAND: cliCommandEvent,
-  NUXT_DEPENDENCY: dependencyEvent,
-  NUXT_BUILD: buildEvent,
-  NUXT_SSG: ssgEvent
-}
 
 type FulfilledEvent = {
   status: string
@@ -32,34 +16,34 @@ export class Telemetry {
   nuxt: Nuxt
   options: NuxtOptions
   storage: any // TODO
-  _contextPromise: Promise<Context>
+  _contextPromise?: Promise<Context>
 
-  constructor(nuxt: Nuxt) {
+  constructor (nuxt: Nuxt) {
     this.nuxt = nuxt
     this.options = nuxt.options
     this.storage = new EventsStorage()
   }
 
-  getContext(): Promise<Context> {
+  getContext (): Promise<Context> {
     if (!this._contextPromise) {
       this._contextPromise = createContext(this.nuxt)
     }
     return this._contextPromise
   }
 
-  processEvent(eventName: string, data?: object): void | Promise<any> {
-    const event: Function = eventsMap[eventName]
+  processEvent (eventName: string, data?: object): void | Promise<any> {
+    // @ts-ignore
+    const event: Function = events[eventName]
     if (typeof event !== 'function') {
-      // console.warn('Event not found:' + eventName)
       return
     }
     this.storage.addEventToQueue(this._invokeEvent(eventName, event, data))
   }
 
-  async _invokeEvent(
+  async _invokeEvent (
     eventName: string,
     event: Function,
-    data: object
+    data?: object
   ): Promise<any> {
     try {
       const context = await this.getContext()
@@ -69,7 +53,7 @@ export class Telemetry {
     }
   }
 
-  async recordEvents() {
+  async recordEvents () {
     const fulfilledEvents = await this.storage
       .completedEvents()
       .then((events: []) =>

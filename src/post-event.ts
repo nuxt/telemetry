@@ -12,18 +12,18 @@ interface Body {
   events: Array<Event>
 }
 
-function getUserAgent({ options }: { options: NuxtOptions }) {
+function getUserAgent ({ options }: { options: NuxtOptions }) {
   try {
     const { name, version } = require(`${
       options ? options.rootDir : process.cwd()
-    }/package.json`)
+      }/package.json`)
     return `${hash(name)}:${hash(version)}`
   } catch (err) {
     return 'Nuxt Telemetry'
   }
 }
 
-export async function postEvent(
+export async function postEvent (
   { body }: { body: Body },
   { options }: { options: NuxtOptions }
 ): Promise<null | void> {

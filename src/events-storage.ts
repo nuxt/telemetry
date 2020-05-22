@@ -1,19 +1,19 @@
 export class EventsStorage {
   private queue: Set<Promise<any>>
 
-  constructor() {
+  constructor () {
     this.queue = new Set()
   }
 
-  private get eventsQueue() {
+  private get eventsQueue () {
     return this.queue
   }
 
-  addEventToQueue(event: Promise<any>) {
+  addEventToQueue (event: Promise<any>) {
     this.queue.add(event)
   }
 
-  async completedEvents() {
+  async completedEvents () {
     return await Promise.all(
       // polyfill Promise.allSettled
       Array.from(this.eventsQueue).map((eventPromise) => {

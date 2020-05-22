@@ -13,9 +13,10 @@ const FILE2PM: {
   'shrinkwrap.json': 'npm'
 }
 
-export async function detectPackageManager(rootDir: string): Promise<string> {
+export async function detectPackageManager (rootDir: string): Promise<string> {
   for (const file in FILE2PM) {
     if (await fs.pathExists(path.resolve(rootDir, file))) {
+      // @ts-ignore
       return FILE2PM[file]
     }
   }

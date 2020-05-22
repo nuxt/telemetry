@@ -16,7 +16,7 @@ interface CliCommandEvent {
   }
 }
 
-export function cliCommandEvent({
+export function cliCommandEvent ({
   eventName,
   options,
   projectSession,

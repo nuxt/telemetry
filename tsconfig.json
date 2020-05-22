@@ -1,20 +1,13 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "esnext"],
-    "outDir": "dist",
-    "declaration": true,
-    "sourceMap": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "allowJs": true,
-    "skipLibCheck": true,
+    "target": "ESNext",
     "esModuleInterop": true,
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "stripInternal": true,
-    "noUnusedLocals": true
+    "moduleResolution": "Node",
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

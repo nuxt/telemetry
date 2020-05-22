@@ -17,7 +17,7 @@
     "example:generate": "nuxt-ts generate example",
     "example:start": "nuxt-ts start example",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "release": "yarn build && yarn test && standard-version && git push --follow-tags && npm publish",
+    "release": "yarn test && standard-version && yarn build && git push --follow-tags && npm publish",
     "test": "yarn lint"
   },
   "dependencies": {

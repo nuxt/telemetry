@@ -2,25 +2,23 @@ import { postEvent } from './post-event'
 import { EventsStorage } from './events-storage'
 import * as events from './events/index'
 import { createContext, getEventContext } from './utils/context'
-import { Nuxt, NuxtOptions, Context } from './types'
+import { Nuxt, Context, TelemetryOptions } from './types'
+import logger from './utils/logger'
 
 type FulfilledEvent = {
   status: string
   value: object | []
 }
 
-// type TelemetryEvent = { eventName: string; payload: object }
-
 export class Telemetry {
-  // private _contextPromise: object
   nuxt: Nuxt
-  options: NuxtOptions
+  options: TelemetryOptions
   storage: any // TODO
   _contextPromise?: Promise<Context>
 
-  constructor (nuxt: Nuxt) {
+  constructor (nuxt: Nuxt, options: TelemetryOptions) {
     this.nuxt = nuxt
-    this.options = nuxt.options
+    this.options = options
     this.storage = new EventsStorage()
   }
 
@@ -65,17 +63,25 @@ export class Telemetry {
 
     if (fulfilledEvents.length) {
       const context = await this.getContext()
-
-      await postEvent(
-        {
-          body: {
-            createdAt: new Date(),
-            context: getEventContext(context),
-            events: fulfilledEvents
+      const body = {
+        createdAt: new Date(),
+        context: getEventContext(context),
+        events: fulfilledEvents
+      }
+      if (this.options.endpoint) {
+        const start = Date.now()
+        try {
+          if (this.options.debug) {
+            logger.info('Sending events:', JSON.stringify(body, null, 2))
           }
-        },
-        { options: this.options }
-      )
+          await postEvent(this.options.endpoint, body)
+          logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+        } catch (err) {
+          if (this.options.debug) {
+            logger.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
+          }
+        }
+      }
     }
   }
 }

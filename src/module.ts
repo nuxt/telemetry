@@ -1,41 +1,16 @@
-import consola from 'consola'
-import defu from 'defu'
 import { Module } from '@nuxt/types'
 import { Telemetry } from './telemetry'
-import { isTrue } from './utils/is-true'
 import { getStats } from './utils/build-stats'
-import { Stats, Nuxt } from './types'
+import { Stats, Nuxt, TelemetryOptions } from './types'
 
-const logger = consola.withScope('@nuxt/telemetry')
-
-export default <Module> function (moduleOptions) {
-  const defaultConfig = {
-    isDisabled: false
-    // TODO: set default url
-  }
-  const config = defu(
-    {
-      ...this.options.telemetry,
-      ...moduleOptions
-    },
-    defaultConfig
-  )
-
-  if (
-    this.options.telemetry === false ||
-    isTrue(process.env.NUXT_TELEMETRY_DISABLED) ||
-    isTrue(config.isDisabled)
-  ) {
-    return
+export default <Module> function () {
+  const options: TelemetryOptions = {
+    endpoint: 'https://telemetry.nuxtjs.com',
+    debug: false,
+    ...this.options.telemetry
   }
 
-  // TODO: remove when out of beta
-  logger.info(
-    '[beta] Nuxt Telemetry is running, learn more on https://github.com/nuxt/telemetry'
-  )
-  logger.debug('Telemetry is running')
-
-  const t = new Telemetry(this.nuxt)
+  const t = new Telemetry(this.nuxt, options)
 
   if (!this.options.dev) {
     // nuxt start
@@ -64,11 +39,10 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   let routesCount = 0
 
   const timeStart = (name: string) => {
-    startT[name] = new Date()
+    startT[name] = Date.now()
   }
   const timeEnd = (name: string) => {
-    // https://stackoverflow.com/a/60688789
-    duration[name] = new Date().valueOf() - startT[name]
+    duration[name] = Date.now() - startT[name]
   }
 
   // Total build timing

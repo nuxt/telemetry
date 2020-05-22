@@ -3,6 +3,12 @@ export interface Event {
   payload: object
 }
 
+export interface TelemetryOptions {
+  debug: boolean,
+  endpoint: string,
+
+}
+
 export interface NuxtOptions {
   rootDir: string
   _generate: boolean

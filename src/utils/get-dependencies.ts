@@ -1,6 +1,9 @@
 import { join } from 'path'
 import { existsSync } from 'fs'
 
+// TODO: Use nuxt resolver module
+const _require = require.main?.require || require
+
 interface DependencyData {
   [key: string]: string
 }
@@ -20,14 +23,13 @@ export function getDependencies(rootDir: string) {
     return deps
   }
 
-  // TODO: Use nuxt resolver module
-  const pkg = require.main.require(pkgPath)
+  const pkg = _require(pkgPath)
 
   // Read each dependency package.json to get exact installed version
   for (const type of ['dependencies', 'devDependencies']) {
     for (const _name in pkg[type] || {}) {
       try {
-        const { name, version } = require.main.require(
+        const { name, version } = _require(
           join(_name, 'package.json')
         )
         deps[type][name] = version

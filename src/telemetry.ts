@@ -75,7 +75,9 @@ export class Telemetry {
             logger.info('Sending events:', JSON.stringify(body, null, 2))
           }
           await postEvent(this.options.endpoint, body)
-          logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+          if (this.options.debug) {
+            logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+          }
         } catch (err) {
           if (this.options.debug) {
             logger.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)

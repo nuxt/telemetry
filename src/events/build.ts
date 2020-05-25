@@ -33,10 +33,10 @@ export function buildEvent (
   let isSuccess = true
 
   for (const [name, stat] of Object.entries(data.stats)) {
+    duration[name] = stat.duration
+    size[name] = stat.size
     if (!stat.success) {
       isSuccess = false
-      duration[name] = stat.duration
-      size[name] = stat.size
     }
   }
 

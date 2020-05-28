@@ -14,18 +14,20 @@ const args = arg({
   '-g': '--global'
 })
 
+const consent = 1
+
 const rootDir = path.resolve(process.cwd(), args._[0] || '.')
 const global = args['--global']
 
 if (args['--enable']) {
-  setRC('telemetry.disabled', false, global)
-  consola.success('Nuxt telemetry enqabled for', global ? 'user' : rootDir)
+  setRC('telemetry.consent', consent, global)
+  consola.success('Nuxt telemetry enabled for', global ? 'user' : rootDir)
   consola.info('You can disable it `nuxt telemetry --disable`')
   return
 }
 
 if (args['--disable']) {
-  setRC('telemetry.disabled', true, global)
+  setRC('telemetry.consent', false, global)
   consola.success('Nuxt telemetry disabled for', global ? 'user' : rootDir)
   consola.info('You can enable it back with `nuxt telemetry --enable`')
   return

@@ -6,12 +6,17 @@
   "license": "MIT",
   "main": "dist/module.js",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
+  "bin": {
+    "nuxt-telemetry": "./bin/nuxt-telemetry.js"
+  },
   "scripts": {
     "build": "yarn clean && bili src/module.ts",
     "clean": "rimraf dist",
     "dev": "yarn example:dev",
+    "dev:link": "ln -fs ../../bin/nuxt-telemetry.js node_modules/.bin/nuxt-telemetry",
     "example:build": "nuxt-ts build example",
     "example:dev": "nuxt-ts example",
     "example:generate": "nuxt-ts generate example",
@@ -21,6 +26,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
+    "arg": "^4.1.3",
     "ci-info": "^2.0.0",
     "consola": "^2.11.3",
     "defu": "^2.0.4",
@@ -30,7 +36,8 @@
     "is-docker": "^2.0.0",
     "node-fetch": "^2.6.0",
     "node-machine-id": "^1.1.12",
-    "parse-git-config": "^3.0.0"
+    "parse-git-config": "^3.0.0",
+    "rc9": "^0.0.6"
   },
   "devDependencies": {
     "@babel/preset-env": "latest",

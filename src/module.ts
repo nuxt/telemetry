@@ -11,6 +11,10 @@ export default <Module> function () {
     ...this.options.telemetry
   }
 
+  if (this.options.telemetry === false || options.disabled) {
+    return
+  }
+
   const t = new Telemetry(this.nuxt, options)
 
   if (!this.options.dev) {

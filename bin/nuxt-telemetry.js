@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-// Usage: nuxt telemetry disable <rootDir>
-
 const path = require('path')
 const arg = require('arg')
 const rc = require('rc9')

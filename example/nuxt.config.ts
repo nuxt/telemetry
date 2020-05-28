@@ -2,7 +2,7 @@ import _module from '../src/module'
 
 export default {
   modules: [_module],
-  telemetry: {
+  telemetry2: {
     debug: true
     // url: 'http://localhost:8888'
   }

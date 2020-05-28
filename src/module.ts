@@ -3,15 +3,20 @@ import { Module } from '@nuxt/types'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
+import { ensureUserConsent } from './consent'
 
-export default <Module> function () {
+export default <Module> async function () {
+  if (this.options.telemetry === false) {
+    return
+  }
+
   const options: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     ...this.options.telemetry
   }
 
-  if (this.options.telemetry === false || options.disabled) {
+  if (!await ensureUserConsent(options)) {
     return
   }
 

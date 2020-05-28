@@ -6,7 +6,7 @@ export interface Event {
 export interface TelemetryOptions {
   debug: boolean,
   endpoint: string,
-  disabled: boolean
+  consent?: number | boolean
 }
 
 export interface NuxtOptions {

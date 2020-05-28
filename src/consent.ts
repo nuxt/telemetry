@@ -21,6 +21,11 @@ ${c.green('NuxtJS')} collects completely ${c.bold('anonymous')} and ${c.bold('un
   Read more: ${c.cyan.underline('https://git.io/nuxt-telemetry')}
 `.trim())
 
+  if (!process.stdout.isTTY) {
+    consola.warn('Telemtry disabled because running in non interactive CLI. Please use `nuxt telemetry -g --enable|--disable to hide this message.')
+    return false
+  }
+
   const { accept } = await inquirer.prompt({
     type: 'confirm',
     name: 'accept',

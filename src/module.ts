@@ -1,5 +1,6 @@
 import destr from 'destr'
 import { nanoid } from 'nanoid'
+import { name, version } from '../package.json'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
@@ -108,8 +109,6 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   }
 }
 
-telemetryModule.meta = {
-  name: '@nuxt/telemetry'
-}
+telemetryModule.meta = { name, version }
 
 export default telemetryModule

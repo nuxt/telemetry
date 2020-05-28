@@ -1,7 +1,6 @@
 import os from 'os'
 import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
-import { machineId } from 'node-machine-id'
 import isDocker from 'is-docker'
 import ci from 'ci-info'
 import { Nuxt, Context, GitData } from '../types'
@@ -13,8 +12,8 @@ export async function createContext (nuxt: Nuxt): Promise<Context> {
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
 
-  const sessionId = await getSessionId()
-  const projectId = await getProjectId(rootDir, git)
+  const sessionId = await nuxt.options.telemetry.seed
+  const projectId = await getProjectId(rootDir, git, sessionId)
   const projectSession = getProjectSession(projectId, sessionId)
 
   // @ts-ignore
@@ -25,9 +24,9 @@ export async function createContext (nuxt: Nuxt): Promise<Context> {
     options: nuxt.options,
     rootDir,
     git,
-    sessionId, // machine ID
-    projectId, // git creds or path + machine ID
-    projectSession, // projectId + sessionId
+    sessionId, // hash(seed)
+    projectId, // hash(git upstream || path, seed)
+    projectSession, // hash(projectId, sessionId)
     nuxtVersion,
     isEdge: false, // TODO
     isStart: false, // TODO
@@ -71,23 +70,17 @@ function getEnv (): Context['environment'] {
   return 'unknown'
 }
 
-async function getSessionId () {
-  const id = await machineId()
-  return hash(id)
-}
-
 function getProjectSession (projectId: string, sessionId: string) {
   return hash(`${projectId}#${sessionId}`)
 }
 
-async function getProjectId (rootDir: string, git?: GitData) {
+function getProjectId (rootDir: string, git?: GitData, seed?: string) {
   let id
 
   if (git && git.url) {
     id = `${git.source}#${git.owner}#${git.name}`
   } else {
-    const entropy = await machineId()
-    id = `${rootDir}#${entropy}`
+    id = `${rootDir}#${seed}`
   }
 
   return hash(id)

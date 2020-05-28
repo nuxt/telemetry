@@ -6,6 +6,7 @@ export interface Event {
 export interface TelemetryOptions {
   debug: boolean,
   endpoint: string,
+  seed: string,
   consent?: number | boolean
 }
 
@@ -21,9 +22,7 @@ export interface NuxtOptions {
   _cli: boolean
   ssr: boolean
   dev: boolean
-  telemetry: {
-    url: string
-  }
+  telemetry: Partial<TelemetryOptions>,
   buildModules: []
   modules: []
 }

@@ -6,7 +6,7 @@ import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
 import { ensureUserConsent } from './consent'
-import log from './utils/logger'
+import log from './utils/log'
 
 async function telemetryModule () {
   const options: TelemetryOptions = {
@@ -24,9 +24,7 @@ async function telemetryModule () {
     return
   }
 
-  if (options.debug) {
-    log.info('Telemetry enabled!')
-  }
+  log.info('Telemetry enabled!')
 
   if (!options.seed) {
     options.seed = nanoid()

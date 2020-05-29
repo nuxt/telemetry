@@ -3,7 +3,7 @@ import { EventsStorage } from './events-storage'
 import * as events from './events/index'
 import { createContext, getEventContext } from './utils/context'
 import { Nuxt, Context, TelemetryOptions } from './types'
-import logger from './utils/logger'
+import log from './utils/log'
 
 type FulfilledEvent = {
   status: string
@@ -71,17 +71,11 @@ export class Telemetry {
       if (this.options.endpoint) {
         const start = Date.now()
         try {
-          if (this.options.debug) {
-            logger.info('Sending events:', JSON.stringify(body, null, 2))
-          }
+          log.info('Sending events:', JSON.stringify(body, null, 2))
           await postEvent(this.options.endpoint, body)
-          if (this.options.debug) {
-            logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
-          }
+          log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
         } catch (err) {
-          if (this.options.debug) {
-            logger.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
-          }
+          log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
         }
       }
     }

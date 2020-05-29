@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import arg from 'arg'
 import * as rc from 'rc9'
 import consola from 'consola'
-import { usage, consent } from './meta'
+import { usage, consentVersion } from './meta'
 
 function _run () {
   const args = arg({
@@ -23,7 +23,7 @@ function _run () {
 
   switch (command) {
     case 'enable':
-      setRC('telemetry.consent', consent)
+      setRC('telemetry.consent', consentVersion)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
       consola.info('You can disable telemetry with `nuxt telemetry disable ' + (global ? '-g' : _dir))
       return

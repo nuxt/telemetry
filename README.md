@@ -4,7 +4,7 @@
 
 Nuxt.js collects anonymous telemetry data about general usage. This helps us to accurately gauge Nuxt feature usage and customization across all our users.
 
-This anonymous program is optional, and you may [opt-out](#opting-out) if you'd not like to share any information.
+This program is optional. ِYou will be asked on first time to get permission and you can always [opt-out](#opting-out) if you'd not like to share any information.
 
 ## Why collecting Telemetry?
 
@@ -17,13 +17,14 @@ Nuxt Telemetry collects anonymous telemetry data about general usage. This helps
 ## Events
 
 We collect multiple events:
+
 - Command invoked (`nuxt dev`, `nuxt build`, etc)
 - Versions of Nuxt.js and Node.js
-- General machine informations (MacOS/Linux/Windows and if command is run within CI)
-- Duration of the Webpack build and average size of the application, as well as the generation (when using `nuxt generate`)
+- General machine informations (MacOS/Linux/Windows and if command is run within CI, ci name)
+- Duration of the Webpack build and average size of the application, as well as the generation stats (when using `nuxt generate` or `nuxt export`)
 - What are the *public dependency* of your project (Nuxt modules)
 
-You can see the list of events in [lib/events](./lib/events).
+You can see the list of events in [lib/events](./src/events).
 
 Example of an event:
 
@@ -42,30 +43,35 @@ Example of an event:
 }
 ```
 
-To display the events that will be sent, you can use `NUXT_TELEMETRY_DEBUG=1`, when set, no data will be sent but only printed out.
+To display the exact data that will be sent, you can use `NUXT_TELEMETRY_DEBUG=1`.
 
 ## Sensitive data
 
 We take your privacy and our security very seriously.
 
 We do not collect any metrics which may contain sensitive data.
+
 This includes, but is not limited to: environment variables, file paths, contents of files, logs, or serialized JavaScript errors.
 
-The data we collect is completely anonymous, not traceable to the source, and only meaningful in aggregate form. No data we collect is personally identifiable.
+The data we collect is completely anonymous, not traceable to the source (using hash+seed), and only meaningful in aggregate form. No data we collect is personally identifiable or trackable.
 
 ## Opting-out
 
-### Locally
+You can disable Nuxt Telemetry for your project with several ways:
 
-You can disable Nuxt Telemetry for your project with two ways:
+1. Using `nuxt telemetry disable`
 
-1. Using an environement variable
+```bash
+nuxt telemetry [enable|disable] [-g,--global] [dir]
+```
+
+2. Using an environement variable
 
 ```bash
 NUXT_TELEMETRY_DISABLED=1
 ```
 
-2. Setting `telemetry: false` in your `nuxt.config.js`:
+3. Setting `telemetry: false` in your `nuxt.config.js`:
 
 ```js
 export default {

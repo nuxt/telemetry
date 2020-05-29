@@ -25,7 +25,7 @@ function _run () {
     case 'enable':
       setRC('telemetry.consent', consentVersion)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
-      consola.info('You can disable telemetry with `nuxt telemetry disable' + (global ? '-g' : _dir))
+      consola.info('You can disable telemetry with `nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
       setRC('telemetry.consent', false)

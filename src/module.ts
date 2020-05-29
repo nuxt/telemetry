@@ -9,10 +9,6 @@ import { ensureUserConsent } from './consent'
 import log from './utils/log'
 
 async function telemetryModule () {
-  if (this.options.telemetry === false) {
-    return
-  }
-
   const options: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),

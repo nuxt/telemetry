@@ -22,7 +22,7 @@ ${c.green('NuxtJS')} collects completely ${c.bold('anonymous')} and ${c.bold('un
 `.trim())
 
   if (!process.stdout.isTTY) {
-    consola.warn('Telemtry disabled because running in non interactive CLI. Please use `nuxt telemetry -g --enable|--disable to hide this message.')
+    consola.warn('Telemtry disabled because running in non interactive CLI. Please use `nuxt telemetry [enable|disable] [-g] [dir]` to hide this message.')
     return false
   }
 
@@ -33,12 +33,12 @@ ${c.green('NuxtJS')} collects completely ${c.bold('anonymous')} and ${c.bold('un
   })
 
   if (accept) {
-    consola.success('Thanks for opting-in! You can opt-out anytime using `nuxt telemetry -g --disable`')
+    consola.success('Thanks for opting-in! You can opt-out anytime using `nuxt telemetry disable`')
     updateUserNuxtRc('telemetry.consent', consentVersion)
     return true
   }
 
-  consola.success('Telemtry disabled. If you changed you mind, can always opt-in using `nuxt telemetry -g --enable`')
+  consola.success('Telemtry disabled. If you changed you mind, can always opt-in using `nuxt telemetry enable`')
   updateUserNuxtRc('telemetry.consent', false)
   return false
 }

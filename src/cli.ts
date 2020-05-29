@@ -37,7 +37,7 @@ function _run () {
   }
 
   function usage () {
-    consola.info('Usage: nuxt telemetry enable|disable [-g,--global] [rootDir]\n')
+    consola.info('Usage: nuxt telemetry enable|disable [-g,--global] [dir]\n')
     process.exit(1)
   }
 

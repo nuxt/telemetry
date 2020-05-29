@@ -28,8 +28,7 @@ export async function createContext (nuxt: Nuxt): Promise<Context> {
     projectId, // hash(git upstream || path, seed)
     projectSession, // hash(projectId, sessionId)
     nuxtVersion,
-    isEdge: false, // TODO
-    isStart: false, // TODO
+    cli: getCLI(),
     nodeVersion: process.version.replace('v', ''),
     os: os.type(),
     environment: getEnv(),
@@ -39,9 +38,8 @@ export async function createContext (nuxt: Nuxt): Promise<Context> {
 
 const eventContextkeys = [
   'nuxtVersion',
-  'isEdge',
-  'isStart',
   'nodeVersion',
+  'cli',
   'os',
   'environment'
 ]
@@ -68,6 +66,24 @@ function getEnv (): Context['environment'] {
   }
 
   return 'unknown'
+}
+
+function getCLI () {
+  const entry = require.main.filename
+
+  const knownCLIs = {
+    'nuxt-ts.js': 'nuxt-ts',
+    'nuxt-start.js': 'nuxt-start',
+    'nuxt.js': 'nuxt'
+  }
+
+  for (const key in knownCLIs) {
+    if (entry.includes(key)) {
+      const edge = entry.includes('-edge') ? '-edge' : ''
+      return knownCLIs[key] + edge
+    }
+  }
+  return 'programmatic'
 }
 
 function getProjectSession (projectId: string, sessionId: string) {

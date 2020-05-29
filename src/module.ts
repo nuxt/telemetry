@@ -1,14 +1,35 @@
 import destr from 'destr'
-import { Module } from '@nuxt/types'
+import { nanoid } from 'nanoid'
+import { name, version } from '../package.json'
+import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
+import { ensureUserConsent } from './consent'
+import log from './utils/log'
 
-export default <Module> function () {
+async function telemetryModule () {
   const options: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     ...this.options.telemetry
+  }
+
+  if (!options.debug) {
+    log.level = 0
+  }
+
+  if (this.options.telemetry !== true && !await ensureUserConsent(options)) {
+    log.info('Telemetry disabled due to not user agreement!')
+    return
+  }
+
+  log.info('Telemetry enabled!')
+
+  if (!options.seed) {
+    options.seed = nanoid()
+    updateUserNuxtRc('telemetry.seed', options.seed)
+    log.info('Seed generated:', options.seed)
   }
 
   const t = new Telemetry(this.nuxt, options)
@@ -85,3 +106,7 @@ function profile (nuxt: Nuxt, t: Telemetry) {
     })
   }
 }
+
+telemetryModule.meta = { name, version }
+
+export default telemetryModule

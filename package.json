@@ -12,10 +12,10 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && bili src/module.ts",
+    "build": "yarn clean && bili src/module.ts,src/cli.ts",
+    "nuxt-telemetry": "ts-node src/cli.ts",
     "clean": "rimraf dist",
     "dev": "NUXT_TELEMETRY_DEBUG=true yarn example:dev",
-    "dev:link": "ln -fs ../../bin/nuxt-telemetry.js node_modules/.bin/nuxt-telemetry",
     "example:build": "nuxt-ts build example",
     "example:dev": "nuxt-ts example",
     "example:generate": "nuxt-ts generate example",

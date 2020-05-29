@@ -60,6 +60,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "consentVersion": 1
+  }
 }

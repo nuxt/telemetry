@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import arg from 'arg'
 import * as rc from 'rc9'
 import consola from 'consola'
-import { consentVersion } from '../package.json'
+import { usage, consent } from './meta'
 
 function _run () {
   const args = arg({
@@ -18,12 +18,12 @@ function _run () {
   if (!global && !existsSync(resolve(dir, 'nuxt.config.js')) &&
     !existsSync(resolve(dir, 'nuxt.config.ts'))) {
     consola.error(`It seems you are not in a nuxt project (no nuxt.config found at ${dir})`)
-    usage()
+    showUsage()
   }
 
   switch (command) {
     case 'enable':
-      setRC('telemetry.consent', consentVersion)
+      setRC('telemetry.consent', consent)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
       consola.info('You can disable telemetry with `nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
@@ -33,11 +33,11 @@ function _run () {
       consola.info('You can enable telemetry with `nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     default:
-      usage()
+      showUsage()
   }
 
-  function usage () {
-    consola.info('Usage: nuxt telemetry enable|disable [-g,--global] [dir]\n')
+  function showUsage () {
+    consola.info(`Usage: ${usage}\n`)
     process.exit(1)
   }
 

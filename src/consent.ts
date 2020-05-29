@@ -22,14 +22,14 @@ ${c.green('NuxtJS')} collects completely anonymous data about usage.
 `.trim())
 
   if (!process.stdout.isTTY) {
-    consola.warn('Telemtry disabled because running in non interactive CLI. Please use `nuxt telemetry [enable|disable] [-g] [dir]` to hide this message.')
+    consola.warn('Telemetry is disabled because running in non interactive CLI. Please use `nuxt telemetry [enable|disable] [-g] [dir]` to hide this message.')
     return false
   }
 
   const { accept } = await inquirer.prompt({
     type: 'confirm',
     name: 'accept',
-    message: 'Are you intrested in participation?'
+    message: 'Are you interested in participation?'
   })
 
   if (accept) {
@@ -38,7 +38,7 @@ ${c.green('NuxtJS')} collects completely anonymous data about usage.
     return true
   }
 
-  consola.success('Telemtry disabled. If you changed you mind, can always opt-in using `nuxt telemetry enable -g`')
+  consola.success('Telemetry disabled. If you changed you mind, can always opt-in using `nuxt telemetry enable -g`')
   updateUserNuxtRc('telemetry.consent', false)
   return false
 }

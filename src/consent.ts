@@ -33,12 +33,12 @@ export async function ensureUserConsent (options: TelemetryOptions): Promise<boo
   process.stdout.write('\n')
 
   if (accept) {
-    consola.success(`Thanks for participating!\n  You can always change your mind using ${manualInstructions}`)
+    consola.success(`Thanks for participating!\n  You can always change your mind ${manualInstructions}`)
     updateUserNuxtRc('telemetry.consent', consentVersion)
     return true
   }
 
-  consola.success(`Telemetry disabled for you machine.\n  You can always change your mind using ${manualInstructions}`)
+  consola.success(`Telemetry disabled for you machine.\n  You can always change your mind ${manualInstructions}`)
   updateUserNuxtRc('telemetry.consent', false)
   return false
 }

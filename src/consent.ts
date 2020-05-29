@@ -16,7 +16,7 @@ export async function ensureUserConsent (options: TelemetryOptions): Promise<boo
   }
 
   consola.info(`
-${c.green('NuxtJS')} collects completely ${c.bold('anonymous')} and ${c.bold('untrackable')} data about general usage.
+${c.green('NuxtJS')} collects completely anonymous data about usage.
   This will help us improving developer experience over the time.
   Read more: ${c.cyan.underline('https://git.io/nuxt-telemetry')}
 `.trim())
@@ -33,12 +33,12 @@ ${c.green('NuxtJS')} collects completely ${c.bold('anonymous')} and ${c.bold('un
   })
 
   if (accept) {
-    consola.success('Thanks for opting-in! You can opt-out anytime using `nuxt telemetry disable`')
+    consola.success('Thanks for opting-in! You can opt-out anytime using `nuxt telemetry disable -g`')
     updateUserNuxtRc('telemetry.consent', consentVersion)
     return true
   }
 
-  consola.success('Telemtry disabled. If you changed you mind, can always opt-in using `nuxt telemetry enable`')
+  consola.success('Telemtry disabled. If you changed you mind, can always opt-in using `nuxt telemetry enable -g`')
   updateUserNuxtRc('telemetry.consent', false)
   return false
 }

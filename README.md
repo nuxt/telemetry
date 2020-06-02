@@ -33,7 +33,7 @@ Example of an event:
    "name": "NUXT_PROJECT",
    "payload": {
     "type": "GIT",
-    "isSsr": true,
+    "isSSR": true,
     "target": "server",
     "isTypescriptBuild": false,
     "isTypescriptRuntime": false,

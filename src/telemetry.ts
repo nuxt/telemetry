@@ -65,6 +65,7 @@ export class Telemetry {
 
   async sendEvents () {
     const events: EventFactoryResult<any>[] = [].concat(...(await Promise.all(this.events)).filter(Boolean))
+    this.events = []
     const context = await this.getPublicContext()
 
     const body = {

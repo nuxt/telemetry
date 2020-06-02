@@ -8,7 +8,7 @@ export interface ProjectEvent {
   packageManager: string
 }
 
-export const NUXT_PROJECT = <EventFactory<ProjectEvent>> function (context) {
+export const project = <EventFactory<ProjectEvent>> function (context) {
   const { options } = context.nuxt
   return {
     name: 'project',

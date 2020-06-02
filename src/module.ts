@@ -35,7 +35,7 @@ async function telemetryModule () {
 
   const t = new Telemetry(this.nuxt, options)
 
-  if (!this.options.dev) {
+  if (this.options._start) {
     // nuxt start
     this.nuxt.hook('listen', () => {
       t.createEvent('project')

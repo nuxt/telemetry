@@ -14,7 +14,7 @@
   "scripts": {
     "build": "yarn clean && bili src/module.ts,src/cli.ts",
     "clean": "rimraf dist",
-    "dev": "NUXT_TELEMETRY_DEBUG=true yarn fixture:dev",
+    "dev": "yarn fixture:dev",
     "fixture:build": "nuxt-ts build test/fixture",
     "fixture:dev": "nuxt-ts test/fixture",
     "fixture:generate": "nuxt-ts generate test/fixture",

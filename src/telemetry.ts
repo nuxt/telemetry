@@ -30,15 +30,8 @@ export class Telemetry {
       log.warn('Unknown event:', name)
       return
     }
-    this._invokeEvent(name, eventFactory, payload).then((event) => {
-      if (Array.isArray(event)) {
-        for (const _event of event) {
-          this.events.push(_event)
-        }
-      } else if (event) {
-        this.events.push(event)
-      }
-    })
+    const eventPromise = this._invokeEvent(name, eventFactory, payload)
+    this.events.push(eventPromise)
   }
 
   async _invokeEvent (name: string, eventFactory: EventFactory<any>, payload?: object): Promise<any> {
@@ -71,7 +64,7 @@ export class Telemetry {
   }
 
   async sendEvents () {
-    const events: EventFactoryResult<any>[] = (await Promise.all(this.events)).filter(Boolean)
+    const events: EventFactoryResult<any>[] = [].concat(...(await Promise.all(this.events)).filter(Boolean))
     const context = await this.getPublicContext()
 
     const body = {

@@ -1,10 +1,10 @@
 import fetch from 'node-fetch'
-import { version } from '../package.json'
-import { Event, Context } from './types'
+import { version } from '../meta'
+import { Event } from '../types'
 
 interface EventBody {
-  createdAt: Date
-  context: Context
+  timestamp: number
+  context: object
   events: Array<Event>
 }
 

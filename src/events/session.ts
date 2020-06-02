@@ -1,27 +1,13 @@
-interface Event {
-  eventName: string
-  sessionId: string
-  projectSession: string
+import { EventFactory } from '../types'
+
+export interface SessionEvent {
+  name: 'session'
+    id: string
 }
 
-interface SessionEvent {
-  name: string
-  payload: {
-    sessionId: string
-    projectSession: string
-  }
-}
-
-export function sessionEvent ({
-  eventName,
-  projectSession,
-  sessionId
-}: Event): SessionEvent {
+export const session = <EventFactory<SessionEvent>> function ({ seed }) {
   return {
-    name: eventName,
-    payload: {
-      sessionId,
-      projectSession
-    }
+    name: 'session',
+    id: seed
   }
 }

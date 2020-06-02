@@ -7,6 +7,7 @@ import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
 import { ensureUserConsent } from './consent'
 import log from './utils/log'
+import { hash } from './utils/hash'
 
 async function telemetryModule () {
   const options: TelemetryOptions = {
@@ -27,7 +28,7 @@ async function telemetryModule () {
   log.info('Telemetry enabled!')
 
   if (!options.seed) {
-    options.seed = nanoid()
+    options.seed = hash(nanoid())
     updateUserNuxtRc('telemetry.seed', options.seed)
     log.info('Seed generated:', options.seed)
   }
@@ -37,18 +38,18 @@ async function telemetryModule () {
   if (!this.options.dev) {
     // nuxt start
     this.nuxt.hook('listen', () => {
-      t.processEvent('NUXT_PROJECT')
-      t.processEvent('NUXT_SESSION')
-      t.processEvent('NUXT_CLI_COMMAND')
-      t.recordEvents()
+      t.createEvent('project')
+      t.createEvent('session')
+      t.createEvent('command')
+      t.sendEvents()
     })
   }
 
   this.nuxt.hook('build:before', () => {
-    t.processEvent('NUXT_PROJECT')
-    t.processEvent('NUXT_SESSION')
-    t.processEvent('NUXT_CLI_COMMAND')
-    t.processEvent('NUXT_DEPENDENCY')
+    t.createEvent('project')
+    t.createEvent('session')
+    t.createEvent('command')
+    t.createEvent('dependency')
   })
 
   profile(this.nuxt, t)
@@ -95,14 +96,14 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   if (nuxt.options._generate) {
     nuxt.hook('generate:done', () => {
       // nuxt generate or nuxt export
-      t.processEvent('NUXT_SSG', { duration, stats, routesCount })
-      t.recordEvents()
+      t.createEvent('generate', { duration, stats, routesCount })
+      t.sendEvents()
     })
   } else {
     nuxt.hook('build:done', () => {
       // nuxt build or nuxt dev
-      t.processEvent('NUXT_BUILD', { duration, stats })
-      t.recordEvents()
+      t.createEvent('build', { duration, stats })
+      t.sendEvents()
     })
   }
 }

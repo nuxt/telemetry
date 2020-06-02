@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "latest",
+    "@nuxt/types": "npm:@nuxt/types-edge",
     "@nuxt/typescript-build": "latest",
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",

@@ -1,82 +1,92 @@
-import { postEvent } from './post-event'
-import { EventsStorage } from './events-storage'
+import { postEvent } from './utils/post-event'
 import * as events from './events/index'
-import { createContext, getEventContext } from './utils/context'
-import { Nuxt, Context, TelemetryOptions } from './types'
+import { createContext } from './context'
+import { EventFactory, TelemetryOptions, Context, Nuxt, EventFactoryResult } from './types'
 import log from './utils/log'
-
-type FulfilledEvent = {
-  status: string
-  value: object | []
-}
 
 export class Telemetry {
   nuxt: Nuxt
   options: TelemetryOptions
   storage: any // TODO
   _contextPromise?: Promise<Context>
+  events: Promise<EventFactoryResult<any>>[] = []
 
   constructor (nuxt: Nuxt, options: TelemetryOptions) {
     this.nuxt = nuxt
     this.options = options
-    this.storage = new EventsStorage()
   }
 
   getContext (): Promise<Context> {
     if (!this._contextPromise) {
-      this._contextPromise = createContext(this.nuxt)
+      this._contextPromise = createContext(this.nuxt, this.options)
     }
     return this._contextPromise
   }
 
-  processEvent (eventName: string, data?: object): void | Promise<any> {
+  createEvent (name: string, payload?: object): void | Promise<any> {
     // @ts-ignore
-    const event: Function = events[eventName]
-    if (typeof event !== 'function') {
+    const eventFactory: EventFactory<any> = events[name]
+    if (typeof eventFactory !== 'function') {
       return
     }
-    this.storage.addEventToQueue(this._invokeEvent(eventName, event, data))
+    this._invokeEvent(name, eventFactory, payload).then((event) => {
+      if (Array.isArray(event)) {
+        for (const _event of event) {
+          this.events.push(_event)
+        }
+      } else if (event) {
+        this.events.push(event)
+      }
+    })
   }
 
-  async _invokeEvent (
-    eventName: string,
-    event: Function,
-    data?: object
-  ): Promise<any> {
+  async _invokeEvent (name: string, eventFactory: EventFactory<any>, payload?: object): Promise<any> {
     try {
       const context = await this.getContext()
-      return await event({ ...context, eventName }, data)
+      const event = await eventFactory(context, payload)
+      event.name = name
+      return event
     } catch (err) {
-      // console.error('Error while running event:', event, err)
+      log.error('Error while running event:', err)
     }
   }
 
-  async recordEvents () {
-    const fulfilledEvents = await this.storage
-      .completedEvents()
-      .then((events: []) =>
-        events
-          .filter((e: FulfilledEvent) => e.status === 'fulfilled')
-          .map((e: FulfilledEvent) => e.value)
-          .flat()
-      )
+  async getPublicContext () {
+    const context = await this.getContext()
+    const eventContext = {}
+    for (const key of [
+      'nuxtVersion',
+      'isEdge',
+      'nodeVersion',
+      'cli',
+      'os',
+      'environment',
+      'projectHash',
+      'projectSession'
+    ]) {
+      eventContext[key] = context[key]
+    }
+    return eventContext
+  }
 
-    if (fulfilledEvents.length) {
-      const context = await this.getContext()
-      const body = {
-        createdAt: new Date(),
-        context: getEventContext(context),
-        events: fulfilledEvents
-      }
-      if (this.options.endpoint) {
-        const start = Date.now()
-        try {
-          log.info('Sending events:', JSON.stringify(body, null, 2))
-          await postEvent(this.options.endpoint, body)
-          log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
-        } catch (err) {
-          log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
-        }
+  async sendEvents () {
+    const events: EventFactoryResult<any>[] = (await Promise.all(this.events)).filter(Boolean)
+    const context = await this.getPublicContext()
+
+    const body = {
+      timestamp: Date.now(),
+      context,
+      events
+    }
+
+    if (this.options.endpoint) {
+      const start = Date.now()
+      try {
+        log.info('Sending events:', JSON.stringify(body, null, 2))
+        await postEvent(this.options.endpoint, body)
+        log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+      } catch (err) {
+        log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
       }
     }
   }

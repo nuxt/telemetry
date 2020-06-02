@@ -27,6 +27,7 @@ export class Telemetry {
     // @ts-ignore
     const eventFactory: EventFactory<any> = events[name]
     if (typeof eventFactory !== 'function') {
+      log.warn('Unknown event:', name)
       return
     }
     this._invokeEvent(name, eventFactory, payload).then((event) => {

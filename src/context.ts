@@ -3,55 +3,37 @@ import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
 import isDocker from 'is-docker'
 import ci from 'ci-info'
-import { Nuxt, Context, GitData } from '../types'
-import { detectPackageManager } from './detect-package-manager'
-import { hash } from './hash'
+import { Context, Nuxt, GitData, TelemetryOptions } from './types'
+import { detectPackageManager } from './utils/detect-package-manager'
+import { hash } from './utils/hash'
 
-export async function createContext (nuxt: Nuxt): Promise<Context> {
+export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
 
-  const sessionId = await nuxt.options.telemetry.seed
-  const projectId = await getProjectId(rootDir, git, sessionId)
-  const projectSession = getProjectSession(projectId, sessionId)
+  const { seed } = options
+  const projectHash = await getProjectHash(rootDir, git, seed)
+  const projectSession = getProjectSession(projectHash, seed)
 
-  // @ts-ignore
-  const nuxtVersion = (nuxt.constructor.version || '').replace('v', '')
+  const nuxtVersion = ((nuxt.constructor as any).version || '').replace('v', '')
+  const nodeVersion = process.version.replace('v', '')
+  const isEdge = nuxtVersion.includes('-')
 
   return {
     nuxt,
-    options: nuxt.options,
-    rootDir,
+    seed,
     git,
-    sessionId, // hash(seed)
-    projectId, // hash(git upstream || path, seed)
-    projectSession, // hash(projectId, sessionId)
+    projectHash,
+    projectSession,
     nuxtVersion,
-    isEdge: false, // TODO
-    isStart: false, // TODO
-    nodeVersion: process.version.replace('v', ''),
-    os: os.type(),
+    isEdge,
+    cli: getCLI(),
+    nodeVersion,
+    os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
     packageManager
   }
-}
-
-const eventContextkeys = [
-  'nuxtVersion',
-  'isEdge',
-  'isStart',
-  'nodeVersion',
-  'os',
-  'environment'
-]
-
-export function getEventContext (context: Context): Context {
-  const eventContext: Context = {}
-  for (const key of eventContextkeys) {
-    eventContext[key] = context[key]
-  }
-  return eventContext
 }
 
 function getEnv (): Context['environment'] {
@@ -70,11 +52,29 @@ function getEnv (): Context['environment'] {
   return 'unknown'
 }
 
-function getProjectSession (projectId: string, sessionId: string) {
-  return hash(`${projectId}#${sessionId}`)
+function getCLI () {
+  const entry = require.main.filename
+
+  const knownCLIs = {
+    'nuxt-ts.js': 'nuxt-ts',
+    'nuxt-start.js': 'nuxt-start',
+    'nuxt.js': 'nuxt'
+  }
+
+  for (const key in knownCLIs) {
+    if (entry.includes(key)) {
+      const edge = entry.includes('-edge') ? '-edge' : ''
+      return knownCLIs[key] + edge
+    }
+  }
+  return 'programmatic'
 }
 
-function getProjectId (rootDir: string, git?: GitData, seed?: string) {
+function getProjectSession (projectHash: string, sessionId: string) {
+  return hash(`${projectHash}#${sessionId}`)
+}
+
+function getProjectHash (rootDir: string, git?: GitData, seed?: string) {
   let id
 
   if (git && git.url) {

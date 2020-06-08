@@ -1,51 +1,47 @@
 import { getDependencies } from '../utils/get-dependencies'
-import { normalizeModules } from '../utils/normalize-modules'
-import { NuxtOptions } from '../types'
 
-interface Event {
-  eventName: string
-  options: NuxtOptions
-  rootDir: string
+import { EventFactory } from '../types'
+
+export interface DependencyEvent {
+  name: 'dependency'
+  packageName: string
+  version: string
+  isDevDependency: boolean
+  isModule: boolean
+  isBuildModule: boolean
 }
 
-interface DependencyEvent {
-  name: string
-  payload: {
-    name: string
-    isDevDependency: boolean
-    isModule: boolean
-    isBuildModule: boolean
-    version: string
-  }
-}
+const normalizeModules = modules => modules.map((m) => {
+  if (typeof m === 'string') { return m }
+  if (Array.isArray(m) && typeof m[0] === 'string') { return m[0] }
+}).filter(Boolean)
 
-export function dependencyEvent ({
-  eventName,
-  options,
-  rootDir
-}: Event): Array<DependencyEvent> {
-  const dependencyEvents = []
-  const nuxtBuildModules = normalizeModules(options.buildModules)
-  const nuxtModules = normalizeModules(options.modules)
+export const dependency = <EventFactory<DependencyEvent>> function ({ nuxt: { options } }) {
+  const events: DependencyEvent[] = []
+  const rawDeps = getDependencies(options.rootDir)
 
-  const deps = getDependencies(rootDir)
+  const modules = normalizeModules(options.modules)
+  const buildModules = normalizeModules(options.buildModules)
+
+  // Only report relevant dependencies
+  const candidates = [...modules, ...buildModules]
 
   for (const type of ['dependencies', 'devDependencies']) {
-    const _deps = deps[type]
+    const _deps = rawDeps[type] || {}
     const isDevDependency = type === 'devDependencies'
     for (const name of Object.keys(_deps)) {
-      dependencyEvents.push({
-        name: eventName,
-        payload: {
+      if (candidates.includes(name)) {
+        events.push({
+          name: 'dependency',
+          packageName: name,
+          version: _deps[name],
           isDevDependency,
-          isModule: nuxtModules.includes(name),
-          isBuildModule: nuxtBuildModules.includes(name),
-          name,
-          version: _deps[name]
-        }
-      })
+          isModule: modules.includes(name),
+          isBuildModule: buildModules.includes(name)
+        })
+      }
     }
   }
 
-  return dependencyEvents
+  return events
 }

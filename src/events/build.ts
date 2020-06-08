@@ -1,53 +1,31 @@
-import ci from 'ci-info' // TODO: Why need it
-import { NuxtOptions, Stats } from '../types'
+import { EventFactory } from '../types'
 
-interface Event {
-  eventName: string
-  options: NuxtOptions
+export interface BuildEvent {
+  name: 'build'
+  isSuccess: boolean
+  isDev: boolean
+  duration: object
+  // size: object
 }
 
-interface Data {
-  duration: {
-    build: number
-  }
-  stats: Stats
-}
-
-interface BuildEvent {
-  name: string
-  payload: {
-    isSuccess: boolean
-    isDev: boolean
-    isCI: boolean
-    duration: object
-    size: object
-  }
-}
-
-export function buildEvent (
-  { eventName, options }: Event,
-  data: Data
-): BuildEvent {
-  const duration = { build: data.duration.build }
-  const size: object = {}
+export const build = <EventFactory<BuildEvent>> function ({ nuxt }, payload) {
+  const duration = { build: payload.duration.build }
+  // const size = {}
   let isSuccess = true
 
-  for (const [name, stat] of Object.entries(data.stats)) {
+  for (const [name, stat] of Object.entries<any>(payload.stats)) {
     duration[name] = stat.duration
-    size[name] = stat.size
+    // size[name] = stat.size
     if (!stat.success) {
       isSuccess = false
     }
   }
 
   return {
-    name: eventName,
-    payload: {
-      isSuccess,
-      isDev: options.dev || false,
-      isCI: ci.isCI,
-      duration,
-      size // TODO, it's empty
-    }
+    name: 'build',
+    isSuccess,
+    isDev: nuxt.options.dev || false,
+    duration
+    // size
   }
 }

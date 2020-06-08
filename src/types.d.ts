@@ -1,7 +1,4 @@
-export interface Event {
-  name: string
-  payload: object
-}
+import { NuxtOptions } from '@nuxt/types'
 
 export interface TelemetryOptions {
   debug: boolean,
@@ -10,21 +7,12 @@ export interface TelemetryOptions {
   consent?: number | boolean
 }
 
-export interface NuxtOptions {
-  rootDir: string
-  _generate: boolean
-  _build: boolean
-  _export: boolean
-  _serve: boolean
-  _start: boolean
-  mode: string
-  extensions: String[]
-  _cli: boolean
-  ssr: boolean
-  dev: boolean
-  telemetry: Partial<TelemetryOptions>,
-  buildModules: []
-  modules: []
+export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]
+export type EventFactory<T extends Event> = (context: Context, payload: any) => EventFactoryResult<T>
+
+export interface Event {
+  name: string
+  [key: string]: any
 }
 
 export interface Nuxt {
@@ -33,38 +21,18 @@ export interface Nuxt {
 }
 
 export interface Context {
-  nuxt?: Nuxt
-  options?: NuxtOptions
-  rootDir?: string
-  git?: object
-  sessionId?: string
-  projectId?: string
-  projectSession?: string
-  nuxtVersion?: string
-  isEdge?: boolean
-  isStart?: boolean
-  nodeVersion?: string
-  os?: string
-  environment?: string | null
-  packageManager?: string,
-  [key: string]: any
-}
-
-// interface EventContext {
-//   nuxtVersion?: string
-//   isEdge?: boolean
-//   isStart?: boolean
-//   nodeVersion?: string
-//   os?: string
-//   environment?: string
-// }
-
-interface GitData {
-  url: string
-  gitRemote: string
-  source: string
-  owner: string
-  name: string
+  nuxt: Nuxt
+  cli: string
+  seed: string
+  projectHash: string
+  projectSession: string
+  nuxtVersion: string
+  isEdge: boolean
+  nodeVersion: string
+  os: string
+  git?: { url: string}
+  environment: string | null
+  packageManager: string
 }
 
 export interface Stats {
@@ -78,20 +46,18 @@ export interface Stats {
 
 // Should be merged or renamed
 interface Stats {
-  client: ClientStats
-  server: ServerStats
+  [name: string]: {
+    duration: number
+    success: boolean
+    size: number
+    fullHash: string
+  }
 }
 
-interface ClientStats {
-  duration: number
-  success: boolean
-  size: number
-  fullHash: string
-}
-
-interface ServerStats {
-  duration: number
-  success: boolean
-  size: number
-  fullHash: string
+export interface GitData {
+  url: string
+  gitRemote: string
+  source: string
+  owner: string
+  name: string
 }

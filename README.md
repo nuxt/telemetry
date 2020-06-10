@@ -4,7 +4,7 @@
 
 Nuxt.js collects anonymous telemetry data about general usage. This helps us to accurately gauge Nuxt feature usage and customization across all our users.
 
-This program is optional. ِYou will be asked on first time to get permission and you can always [opt-out](#opting-out) if you'd not like to share any information.
+This program is optional. You will be asked on first time to get permission and you can always [opt-out](#opting-out) if you'd not like to share any information.
 
 ## Why collecting Telemetry?
 

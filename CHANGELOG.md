@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/nuxt/telemetry/compare/v0.0.6...v0.0.7) (2020-06-11)
+
+
+### Bug Fixes
+
+* **utils:** avoid error on deps[type] ([#7](https://github.com/nuxt/telemetry/issues/7)) ([ff2c9be](https://github.com/nuxt/telemetry/commit/ff2c9beca3c4b87ae509c99ba6db268c48c0a133))
+
 ### [0.0.6](https://github.com/nuxt/telemetry/compare/v0.0.5...v0.0.6) (2020-06-08)
 
 

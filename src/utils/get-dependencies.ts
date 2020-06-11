@@ -27,6 +27,7 @@ export function getDependencies (rootDir: string) {
 
   // Read each dependency package.json to get exact installed version
   for (const type of ['dependencies', 'devDependencies']) {
+    deps[type] = deps[type] || {}
     for (const _name in pkg[type] || {}) {
       try {
         const { name, version } = _require(

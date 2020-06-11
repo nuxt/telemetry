@@ -59,10 +59,10 @@ The data we collect is completely anonymous, not traceable to the source (using 
 
 You can disable Nuxt Telemetry for your project with several ways:
 
-1. Using `nuxt telemetry disable`
+1. Using `npx nuxt telemetry disable`
 
 ```bash
-nuxt telemetry [enable|disable] [-g,--global] [dir]
+npx nuxt telemetry [enable|disable] [-g,--global] [dir]
 ```
 
 2. Using an environement variable

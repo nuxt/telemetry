@@ -6,7 +6,7 @@ import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserConsent (options: TelemetryOptions): Promise<boolean> {
-  if (options.consent >= consentVersion) {
+  if (options.consent >= consentVersion || process.env.CODESANDBOX_SSE) {
     return true
   }
 

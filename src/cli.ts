@@ -3,7 +3,9 @@ import { existsSync } from 'fs'
 import arg from 'arg'
 import * as rc from 'rc9'
 import consola from 'consola'
-import { usage, consentVersion } from './meta'
+import { consentVersion } from './meta'
+
+export const usage = 'nuxt telemetry enable|disable [-g,--global] [dir]'
 
 function _run () {
   const args = arg({

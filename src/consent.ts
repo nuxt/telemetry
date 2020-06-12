@@ -3,7 +3,7 @@ import inquirer from 'inquirer'
 import c from 'chalk'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { TelemetryOptions } from './types'
-import { usage, consentVersion } from './meta'
+import { consentVersion } from './meta'
 
 export async function ensureUserConsent (options: TelemetryOptions): Promise<boolean> {
   if (options.consent >= consentVersion) {

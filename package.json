@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": "nuxt/telemetry",
   "license": "MIT",
   "main": "dist/module.js",

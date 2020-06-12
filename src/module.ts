@@ -17,7 +17,7 @@ async function telemetryModule () {
   }
 
   if (!options.debug) {
-    log.level = 0
+    log.level = -Infinity
   }
 
   if (this.options.telemetry !== true && !await ensureUserConsent(options)) {

@@ -18,8 +18,6 @@ export async function ensureUserConsent (options: TelemetryOptions): Promise<boo
   This will help us improving developer experience over the time.
   Read more: ${c.cyan.underline('https://git.io/nuxt-telemetry')}`)
 
-  const manualInstructions = `by setting ${c.cyan('telemetry: true|false')} in ${c.cyan('nuxt.config')} or\n  Using ${c.cyan(usage)} or\n  Setting ${c.cyan('NUXT_TELEMETRY_DISABLED=1')} environment variable`
-
   const { accept } = await inquirer.prompt({
     type: 'confirm',
     name: 'accept',
@@ -28,12 +26,12 @@ export async function ensureUserConsent (options: TelemetryOptions): Promise<boo
   process.stdout.write('\n')
 
   if (accept) {
-    consola.success(`Thanks for participating!\n  You can always change your mind ${manualInstructions}`)
+    consola.success('Thanks for participating!')
     updateUserNuxtRc('telemetry.consent', consentVersion)
     return true
   }
 
-  consola.success(`Telemetry disabled for you machine.\n  You can always change your mind ${manualInstructions}`)
+  consola.success('Telemetry disabled for you machine.')
   updateUserNuxtRc('telemetry.consent', false)
   return false
 }

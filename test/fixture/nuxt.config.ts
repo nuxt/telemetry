@@ -1,7 +1,10 @@
 import _module from '../../src/module'
 
 export default {
-  modules: [_module],
+  modules: [
+    _module,
+    '@nuxtjs/proxy'
+  ],
   telemetry: {
     debug: true
   }

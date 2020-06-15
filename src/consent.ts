@@ -6,32 +6,23 @@ import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserConsent (options: TelemetryOptions): Promise<boolean> {
-  if (options.consent >= consentVersion || process.env.CODESANDBOX_SSE) {
+  if (options.consent >= consentVersion) {
     return true
   }
 
-  if (options.consent === false || !process.stdout.isTTY) {
+  console.log('options.consent', options.consent)
+  if (options.consent === false) {
     return false
   }
 
   consola.info(`${c.green('NuxtJS')} collects completely anonymous data about usage.
-  This will help us improving developer experience over the time.
-  Read more: ${c.cyan.underline('https://git.io/nuxt-telemetry')}`)
+  This will help us improving Nuxt developer experience over the time.
+  To disable telemetry, run ${c.yellow('npx nuxt telemetry disable')}
+  Read more on ${c.cyan.underline('https://git.io/nuxt-telemetry')}`)
+  await new Promise(resolve => setTimeout(resolve, 3000))
 
-  const { accept } = await inquirer.prompt({
-    type: 'confirm',
-    name: 'accept',
-    message: 'Are you interested in participation?'
-  })
-  process.stdout.write('\n')
+  updateUserNuxtRc('telemetry.consent', consentVersion)
 
-  if (accept) {
-    consola.success('Thanks for participating!')
-    updateUserNuxtRc('telemetry.consent', consentVersion)
-    return true
-  }
-
-  consola.success('Telemetry disabled for you machine.')
-  updateUserNuxtRc('telemetry.consent', false)
+  // Disable sending events on first run to let user opt-out
   return false
 }

@@ -33,7 +33,6 @@
     "destr": "^0.1.9",
     "fs-extra": "^9.0.1",
     "git-url-parse": "^11.1.2",
-    "inquirer": "^7.1.0",
     "is-docker": "^2.0.0",
     "nanoid": "^3.1.9",
     "node-fetch": "^2.6.0",

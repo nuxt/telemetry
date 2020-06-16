@@ -38,7 +38,7 @@
     "nanoid": "^3.1.9",
     "node-fetch": "^2.6.0",
     "parse-git-config": "^3.0.0",
-    "rc9": "^0.0.7"
+    "rc9": "^1.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "latest",

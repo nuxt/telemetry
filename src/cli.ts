@@ -6,7 +6,7 @@ import defu from 'defu'
 import c from 'chalk'
 import consola from 'consola'
 
-export const usage = 'nuxt telemetry status|enable|disable [rootDir]'
+export const usage = 'nuxt telemetry status|enable|disable [dir]'
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
@@ -42,11 +42,11 @@ function _run () {
 
   function showStatus () {
     const nuxtrc = defu(
-      rc.read({ name: RC_FILENAME, dir }),
+      global ? {} : rc.read({ name: RC_FILENAME, dir }),
       rc.readUser(RC_FILENAME)
     )
     const status = (nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) ? c.yellow('disabled') : c.green('enabled')
-    consola.info('Nuxt telemetry is ' + status + ' for', global ? 'user' : c.gray(dir))
+    consola.info('Nuxt telemetry is ' + status)
   }
 
   function showUsage () {

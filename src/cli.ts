@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { existsSync } from 'fs'
 import arg from 'arg'
+import destr from 'destr'
 import * as rc from 'rc9'
 import defu from 'defu'
 import c from 'chalk'
@@ -45,7 +46,8 @@ function _run () {
       global ? {} : rc.read({ name: RC_FILENAME, dir }),
       rc.readUser(RC_FILENAME)
     )
-    const status = (nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) ? c.yellow('disabled') : c.green('enabled')
+    const env = destr(process.env.NUXT_TELEMETRY_DISABLED)
+    const status = ((nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) || !env) ? c.yellow('disabled') : c.green('enabled')
     consola.info('Nuxt telemetry is ' + status)
   }
 

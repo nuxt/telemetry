@@ -30,7 +30,7 @@
     "consola": "^2.13.0",
     "create-require": "^1.0.2",
     "defu": "^2.0.4",
-    "destr": "^0.1.9",
+    "destr": "^1.0.0",
     "fs-extra": "^9.0.1",
     "git-url-parse": "^11.1.2",
     "inquirer": "^7.1.0",

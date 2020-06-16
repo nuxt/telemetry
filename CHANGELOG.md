@@ -35,7 +35,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* user notice prompt and random seed instead of machine-id ([#4](https://github.com/nuxt/telemetry/issues/4)) ([4910922](https://github.com/nuxt/telemetry/commit/4910922c8ddac38ad50eb4b1b033f0d7725c3645))
+* user consent prompt and random seed instead of machine-id ([#4](https://github.com/nuxt/telemetry/issues/4)) ([4910922](https://github.com/nuxt/telemetry/commit/4910922c8ddac38ad50eb4b1b033f0d7725c3645))
 
 ### [0.0.4](https://github.com/nuxt/telemetry/compare/v0.0.3...v0.0.4) (2020-05-22)
 

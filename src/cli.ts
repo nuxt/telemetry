@@ -26,12 +26,12 @@ function _run () {
     case 'enable':
       setRC('telemetry.enabled', true)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
-      consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
+      consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '' : _dir))
       return
     case 'disable':
       setRC('telemetry.enabled', false)
       consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
-      consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
+      consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '' : _dir) + '`')
       return
     case 'status':
       showStatus()

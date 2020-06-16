@@ -4,7 +4,7 @@ export interface TelemetryOptions {
   debug: boolean,
   endpoint: string,
   seed: string,
-  consent?: number | boolean
+  notice?: number | boolean
 }
 
 export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]

@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import arg from 'arg'
 import * as rc from 'rc9'
 import consola from 'consola'
-import { consentVersion } from './meta'
+import { noticeVersion } from './meta'
 
 export const usage = 'nuxt telemetry status|enable|disable [-g,--global] [dir]'
 const RC_FILENAME = '.nuxtrc'
@@ -26,17 +26,17 @@ function _run () {
 
   switch (command) {
     case 'enable':
-      setRC('telemetry.consent', consentVersion)
+      setRC('telemetry.notice', noticeVersion)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
       consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
-      setRC('telemetry.consent', false)
+      setRC('telemetry.notice', false)
       consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
-      setRC('telemetry.consent', false)
+      setRC('telemetry.notice', false)
       const config = global ? rc.readUser(RC_FILENAME) : rc.read({ name: RC_FILENAME, dir })
       const status = config.telemetry?.status ? 'enabled' : 'disabled'
       consola.info('Nuxt telemetry is ' + status + ' for', global ? 'user' : dir)

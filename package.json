@@ -36,6 +36,7 @@
     "is-docker": "^2.0.0",
     "nanoid": "^3.1.9",
     "node-fetch": "^2.6.0",
+    "ora": "^4.0.4",
     "parse-git-config": "^3.0.0",
     "rc9": "^0.0.7"
   },
@@ -45,6 +46,7 @@
     "@nuxt/typescript-build": "latest",
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
+    "@nuxtjs/proxy": "^2.0.0",
     "@types/ci-info": "latest",
     "@types/inquirer": "latest",
     "babel-eslint": "latest",

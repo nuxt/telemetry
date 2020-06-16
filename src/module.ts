@@ -5,7 +5,7 @@ import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
-import { ensureUserConsent } from './consent'
+import { ensureUserNotice } from './notice'
 import log from './utils/log'
 import { hash } from './utils/hash'
 
@@ -20,11 +20,10 @@ async function telemetryModule () {
     log.level = -Infinity
   }
 
-  if (this.options.telemetry !== true && !await ensureUserConsent(options)) {
-    log.info('Telemetry disabled due to not user agreement')
+  if (this.options.telemetry !== true && !await ensureUserNotice(options)) {
+    log.info('Telemetry disabled')
     return
   }
-
   log.info('Telemetry enabled')
 
   if (!options.seed) {

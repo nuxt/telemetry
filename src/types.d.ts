@@ -1,10 +1,11 @@
 import { NuxtOptions } from '@nuxt/types'
 
 export interface TelemetryOptions {
-  debug: boolean,
-  endpoint: string,
-  seed: string,
-  consent?: number | boolean
+  debug: boolean
+  endpoint: string
+  seed: string
+  notice?: number
+  enabled: boolean
 }
 
 export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]

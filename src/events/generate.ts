@@ -15,7 +15,7 @@ export const generate = <EventFactory<ExportEvent>> function generate ({ nuxt },
     isExport: !!nuxt.options._export,
     routesCount: payload.routesCount,
     duration: {
-      generate: payload.stats.server.duration // TODO: ??
+      generate: payload.duration.generate
     }
   }
 }

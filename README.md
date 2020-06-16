@@ -62,10 +62,10 @@ You can disable Nuxt Telemetry for your project with several ways:
 1. Using `npx nuxt telemetry disable`
 
 ```bash
-npx nuxt telemetry [enable|disable] [-g,--global] [dir]
+npx nuxt telemetry [status|enable|disable] [-g,--global] [dir]
 ```
 
-2. Using an environement variable
+2. Using an environment variable
 
 ```bash
 NUXT_TELEMETRY_DISABLED=1

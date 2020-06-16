@@ -5,35 +5,38 @@ import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
-import { ensureUserConsent } from './consent'
+import { ensureUserNotice } from './notice'
 import log from './utils/log'
 import { hash } from './utils/hash'
 
 async function telemetryModule () {
-  const options: TelemetryOptions = {
+  const toptions: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     ...this.options.telemetry
   }
 
-  if (!options.debug) {
+  if (!toptions.debug) {
     log.level = -Infinity
   }
 
-  if (this.options.telemetry !== true && !await ensureUserConsent(options)) {
-    log.info('Telemetry disabled due to not user agreement!')
+  if (
+    toptions.enabled === false ||
+    this.options.telemetry === false ||
+    !await ensureUserNotice(toptions)
+  ) {
+    log.info('Telemetry disabled')
     return
   }
+  log.info('Telemetry enabled')
 
-  log.info('Telemetry enabled!')
-
-  if (!options.seed) {
-    options.seed = hash(nanoid())
-    updateUserNuxtRc('telemetry.seed', options.seed)
-    log.info('Seed generated:', options.seed)
+  if (!toptions.seed) {
+    toptions.seed = hash(nanoid())
+    updateUserNuxtRc('telemetry.seed', toptions.seed)
+    log.info('Seed generated:', toptions.seed)
   }
 
-  const t = new Telemetry(this.nuxt, options)
+  const t = new Telemetry(this.nuxt, toptions)
 
   if (this.options._start) {
     // nuxt start
@@ -87,25 +90,21 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   // Generate timing
   // TODO: workaround as generate:before is before build
   nuxt.hook('generate:extendRoutes', () => timeStart('generate'))
-  nuxt.hook('generate:done', () => timeEnd('generate'))
   nuxt.hook('generate:routeCreated', () => {
     routesCount++
   })
-
-  // report all stats
-  if (nuxt.options._generate) {
-    nuxt.hook('generate:done', () => {
-      // nuxt generate or nuxt export
-      t.createEvent('generate', { duration, stats, routesCount })
-      t.sendEvents()
-    })
-  } else {
-    nuxt.hook('build:done', () => {
-      // nuxt build or nuxt dev
-      t.createEvent('build', { duration, stats })
-      t.sendEvents()
-    })
-  }
+  nuxt.hook('generate:done', () => {
+    timeEnd('generate')
+    // nuxt generate or nuxt export
+    t.createEvent('generate', { duration, stats, routesCount })
+    t.sendEvents()
+  })
+  // Report build time
+  nuxt.hook('build:done', () => {
+    // nuxt build or nuxt dev
+    t.createEvent('build', { duration, stats })
+    t.sendEvents()
+  })
 }
 
 telemetryModule.meta = { name, version }

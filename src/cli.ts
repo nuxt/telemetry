@@ -49,6 +49,7 @@ function _run () {
 
   function showUsage () {
     consola.info(`Usage: ${usage}`)
+    process.exit(1)
   }
 
   function setRC (key, val) {

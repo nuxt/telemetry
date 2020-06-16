@@ -5,12 +5,9 @@ import { TelemetryOptions } from './types'
 import { noticeVersion } from './meta'
 
 export async function ensureUserNotice (options: TelemetryOptions): Promise<boolean> {
+  // User already saw its
   if (options.notice >= noticeVersion) {
     return true
-  }
-
-  if (options.notice === false) {
-    return false
   }
 
   const message = `${c.green('NuxtJS')} collects completely anonymous data about usage.

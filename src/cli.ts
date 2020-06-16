@@ -3,7 +3,6 @@ import { existsSync } from 'fs'
 import arg from 'arg'
 import * as rc from 'rc9'
 import consola from 'consola'
-import { noticeVersion } from './meta'
 
 export const usage = 'nuxt telemetry status|enable|disable [-g,--global] [dir]'
 const RC_FILENAME = '.nuxtrc'
@@ -26,23 +25,26 @@ function _run () {
 
   switch (command) {
     case 'enable':
-      setRC('telemetry.notice', noticeVersion)
+      setRC('telemetry.enabled', true)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
       consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
-      setRC('telemetry.notice', false)
+      setRC('telemetry.enabled', false)
       consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
-      setRC('telemetry.notice', false)
-      const config = global ? rc.readUser(RC_FILENAME) : rc.read({ name: RC_FILENAME, dir }) // eslint-disable-line no-case-declarations
-      const status = config.telemetry?.status ? 'enabled' : 'disabled' // eslint-disable-line no-case-declarations
-      consola.info('Nuxt telemetry is ' + status + ' for', global ? 'user' : dir)
+      showStatus()
       return
     default:
       showUsage()
+  }
+
+  function showStatus () {
+    const { telemetry = {} } = global ? rc.readUser(RC_FILENAME) : rc.read({ name: RC_FILENAME, dir })
+    const status = telemetry.enabled ? 'enabled' : (telemetry.enabled === undefined ? 'pending' : 'disabled')
+    consola.info('Nuxt telemetry is ' + status + ' for', global ? 'user' : dir)
   }
 
   function showUsage () {

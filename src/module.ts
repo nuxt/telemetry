@@ -10,29 +10,33 @@ import log from './utils/log'
 import { hash } from './utils/hash'
 
 async function telemetryModule () {
-  const options: TelemetryOptions = {
+  const toptions: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     ...this.options.telemetry
   }
 
-  if (!options.debug) {
+  if (!toptions.debug) {
     log.level = -Infinity
   }
 
-  if (this.options.telemetry !== true && !await ensureUserNotice(options)) {
+  if (
+    toptions.enabled === false ||
+    this.options.telemetry === false ||
+    !await ensureUserNotice(toptions)
+  ) {
     log.info('Telemetry disabled')
     return
   }
   log.info('Telemetry enabled')
 
-  if (!options.seed) {
-    options.seed = hash(nanoid())
-    updateUserNuxtRc('telemetry.seed', options.seed)
-    log.info('Seed generated:', options.seed)
+  if (!toptions.seed) {
+    toptions.seed = hash(nanoid())
+    updateUserNuxtRc('telemetry.seed', toptions.seed)
+    log.info('Seed generated:', toptions.seed)
   }
 
-  const t = new Telemetry(this.nuxt, options)
+  const t = new Telemetry(this.nuxt, toptions)
 
   if (this.options._start) {
     // nuxt start

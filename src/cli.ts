@@ -37,8 +37,8 @@ function _run () {
       return
     case 'status':
       setRC('telemetry.notice', false)
-      const config = global ? rc.readUser(RC_FILENAME) : rc.read({ name: RC_FILENAME, dir })
-      const status = config.telemetry?.status ? 'enabled' : 'disabled'
+      const config = global ? rc.readUser(RC_FILENAME) : rc.read({ name: RC_FILENAME, dir }) // eslint-disable-line no-case-declarations
+      const status = config.telemetry?.status ? 'enabled' : 'disabled' // eslint-disable-line no-case-declarations
       consola.info('Nuxt telemetry is ' + status + ' for', global ? 'user' : dir)
       return
     default:

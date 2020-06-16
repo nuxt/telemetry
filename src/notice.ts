@@ -1,4 +1,3 @@
-import consola from 'consola'
 import c from 'chalk'
 import ora from 'ora'
 import { updateUserNuxtRc } from './utils/nuxtrc'
@@ -7,7 +6,7 @@ import { noticeVersion } from './meta'
 
 export async function ensureUserNotice (options: TelemetryOptions): Promise<boolean> {
   if (options.notice >= noticeVersion) {
-    // return true
+    return true
   }
 
   if (options.notice === false) {

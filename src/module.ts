@@ -90,25 +90,21 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   // Generate timing
   // TODO: workaround as generate:before is before build
   nuxt.hook('generate:extendRoutes', () => timeStart('generate'))
-  nuxt.hook('generate:done', () => timeEnd('generate'))
   nuxt.hook('generate:routeCreated', () => {
     routesCount++
   })
-
-  // report all stats
-  if (nuxt.options._generate) {
-    nuxt.hook('generate:done', () => {
-      // nuxt generate or nuxt export
-      t.createEvent('generate', { duration, stats, routesCount })
-      t.sendEvents()
-    })
-  } else {
-    nuxt.hook('build:done', () => {
-      // nuxt build or nuxt dev
-      t.createEvent('build', { duration, stats })
-      t.sendEvents()
-    })
-  }
+  nuxt.hook('generate:done', () => {
+    timeEnd('generate')
+    // nuxt generate or nuxt export
+    t.createEvent('generate', { duration, stats, routesCount })
+    t.sendEvents()
+  })
+  // Report build time
+  nuxt.hook('build:done', () => {
+    // nuxt build or nuxt dev
+    t.createEvent('build', { duration, stats })
+    t.sendEvents()
+  })
 }
 
 telemetryModule.meta = { name, version }

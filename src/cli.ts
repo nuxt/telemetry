@@ -15,8 +15,8 @@ function _run () {
     '--global': Boolean,
     '-g': '--global'
   })
-  const [command, _dir] = args._
-  const dir = resolve(process.cwd(), _dir || '.')
+  const [command, _dir = '.'] = args._
+  const dir = resolve(process.cwd(), _dir)
   const global = args['--global']
 
   if (!global && !existsSync(resolve(dir, 'nuxt.config.js')) &&

@@ -1,29 +1,38 @@
 import c from 'chalk'
-import ora from 'ora'
+import inquirer from 'inquirer'
+import consola from 'consola'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
   // User already saw its
-  if (options.consent >= consentVersion) {
+  if (options.consent >= consentVersion || process.env.CODESANDBOX_SSE) {
     return true
   }
 
-  const message = `${c.green('NuxtJS')} collects completely anonymous data about usage.
+  if (!process.stdout.isTTY) {
+    return false
+  }
+
+  process.stdout.write('\n')
+  consola.info(`${c.green('NuxtJS')} collects completely anonymous data about usage.
   This will help us improving Nuxt developer experience over the time.
-  To disable telemetry, run ${c.yellow('npx nuxt telemetry disable')}
-  Read more on ${c.cyan.underline('https://git.io/nuxt-telemetry')}`
+  Read more on ${c.cyan.underline('https://git.io/nuxt-telemetry')}\n`)
 
-  const spinner = ora(message).start()
+  const { accept } = await inquirer.prompt({
+    type: 'confirm',
+    name: 'accept',
+    message: 'Are you interested in participation?'
+  })
+  process.stdout.write('\n')
 
-  await new Promise(resolve => setTimeout(() => {
-    spinner.succeed()
-    resolve()
-  }, 3000))
+  if (accept) {
+    updateUserNuxtRc('telemetry.consent', consentVersion)
+    updateUserNuxtRc('telemetry.enabled', true)
+    return true
+  }
 
-  updateUserNuxtRc('telemetry.consent', consentVersion)
-
-  // Disable sending events on first run to let user opt-out
+  updateUserNuxtRc('telemetry.enabled', false)
   return false
 }

@@ -2,11 +2,11 @@ import c from 'chalk'
 import ora from 'ora'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { TelemetryOptions } from './types'
-import { noticeVersion } from './meta'
+import { consentVersion } from './meta'
 
-export async function ensureUserNotice (options: TelemetryOptions): Promise<boolean> {
+export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
   // User already saw its
-  if (options.notice >= noticeVersion) {
+  if (options.consent >= consentVersion) {
     return true
   }
 
@@ -22,7 +22,7 @@ export async function ensureUserNotice (options: TelemetryOptions): Promise<bool
     resolve()
   }, 3000))
 
-  updateUserNuxtRc('telemetry.notice', noticeVersion)
+  updateUserNuxtRc('telemetry.consent', consentVersion)
 
   // Disable sending events on first run to let user opt-out
   return false

@@ -4,7 +4,7 @@ export interface TelemetryOptions {
   debug: boolean
   endpoint: string
   seed: string
-  notice?: number
+  consent?: number
   enabled: boolean
 }
 

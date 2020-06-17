@@ -1,3 +1,3 @@
 export { name, version } from '../package.json'
 
-export const noticeVersion = 1
+export const consentVersion = 1

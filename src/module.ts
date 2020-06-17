@@ -5,7 +5,7 @@ import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
-import { ensureUserNotice } from './notice'
+import { ensureUserconsent } from './consent'
 import log from './utils/log'
 import { hash } from './utils/hash'
 
@@ -23,7 +23,7 @@ async function telemetryModule () {
   if (
     toptions.enabled === false ||
     this.options.telemetry === false ||
-    !await ensureUserNotice(toptions)
+    !await ensureUserconsent(toptions)
   ) {
     log.info('Telemetry disabled')
     return

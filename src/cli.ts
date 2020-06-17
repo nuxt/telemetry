@@ -7,19 +7,22 @@ import defu from 'defu'
 import c from 'chalk'
 import consola from 'consola'
 
-export const usage = 'nuxt telemetry status|enable|disable [dir]'
+export const usage = 'nuxt telemetry `status`|`enable`|`disable` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
-  const args = arg({})
-
+  const args = arg({
+    '--global': Boolean,
+    '-g': '--global'
+  })
   const [command, _dir] = args._
   const dir = resolve(process.cwd(), _dir || '.')
-  const global = !_dir
+  const global = args['--global']
 
   if (!global && !existsSync(resolve(dir, 'nuxt.config.js')) &&
     !existsSync(resolve(dir, 'nuxt.config.ts'))) {
-    consola.error(`It seems you are not in a nuxt project (no nuxt.config found at ${dir})`)
+    consola.error('It seems you are not in a nuxt project!')
+    consola.info('You can try with providing dir or using `-g`')
     showUsage()
   }
 
@@ -27,12 +30,12 @@ function _run () {
     case 'enable':
       setRC('telemetry.enabled', true)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
-      consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '' : _dir))
+      consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
       setRC('telemetry.enabled', false)
       consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
-      consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '' : _dir) + '`')
+      consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
       showStatus()

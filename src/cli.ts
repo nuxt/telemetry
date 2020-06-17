@@ -50,8 +50,8 @@ function _run () {
       rc.readUser(RC_FILENAME)
     )
     const env = destr(process.env.NUXT_TELEMETRY_DISABLED)
-    const status = ((nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) || !env) ? c.yellow('disabled') : c.green('enabled')
-    consola.info('Nuxt telemetry is ' + status)
+    const status = ((nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) || env) ? c.yellow('disabled') : c.green('enabled')
+    consola.info('Nuxt telemetry is ' + status, global ? 'on machine' : 'on current project')
   }
 
   function showUsage () {

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/nuxt/telemetry/compare/v1.0.1...v1.1.0) (2020-06-19)
+
+
+### Features
+
+* **cli:** support dotenv and nuxt.config ([7cebe56](https://github.com/nuxt/telemetry/commit/7cebe56b7cf749953e5427fe6e0a49d3990aadb0))
+
+
+### Bug Fixes
+
+* **cli:** set consent for enable/disable ([9b03c4f](https://github.com/nuxt/telemetry/commit/9b03c4ff885cca538e308cb4ac0fb9c9f6d9066c))
+* **consent:** use stdEnv for ci detection ([7a4d2f6](https://github.com/nuxt/telemetry/commit/7a4d2f6c7a403e048a7b7cd0eb9df69202afed56))
+
 ### [1.0.1](https://github.com/nuxt/telemetry/compare/v1.0.0...v1.0.1) (2020-06-18)
 
 ## [1.0.0](https://github.com/nuxt/telemetry/compare/v0.0.14...v1.0.0) (2020-06-18)

@@ -6,6 +6,7 @@ import * as rc from 'rc9'
 import defu from 'defu'
 import c from 'chalk'
 import consola from 'consola'
+import { consentVersion } from './meta'
 
 export const usage = 'nuxt telemetry `status`|`enable`|`disable` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
@@ -29,11 +30,13 @@ function _run () {
   switch (command) {
     case 'enable':
       setRC('telemetry.enabled', true)
+      setRC('telemetry.consent', consentVersion)
       consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
       consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
       setRC('telemetry.enabled', false)
+      setRC('telemetry.consent', 0)
       consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return

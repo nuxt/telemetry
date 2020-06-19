@@ -53,7 +53,7 @@ function _run () {
   function _checkDisabled (): string | false {
     // test
     if (env.test) {
-      return 'Because rnning in test environment'
+      return 'Because running in test environment'
     }
 
     // env
@@ -88,7 +88,7 @@ function _run () {
 
     // Global .nuxtrc
     if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
-      return 'by ' + resolve(dir, RC_FILENAME)
+      return 'by ' + resolve(os.homedir(), RC_FILENAME)
     }
   }
 

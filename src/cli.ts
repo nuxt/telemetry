@@ -1,11 +1,14 @@
 import { resolve } from 'path'
-import { existsSync } from 'fs'
+import { existsSync, readFileSync } from 'fs'
+import os from 'os'
 import arg from 'arg'
 import destr from 'destr'
 import * as rc from 'rc9'
-import defu from 'defu'
 import c from 'chalk'
 import consola from 'consola'
+import jiti from 'jiti'
+import env from 'std-env'
+import dotenv from 'dotenv'
 import { consentVersion } from './meta'
 
 export const usage = 'nuxt telemetry `status`|`enable`|`disable` [`-g`,`--global`] [`dir`]'
@@ -31,13 +34,13 @@ function _run () {
     case 'enable':
       setRC('telemetry.enabled', true)
       setRC('telemetry.consent', consentVersion)
-      consola.success('Nuxt telemetry enabled for', global ? 'user' : dir)
+      showStatus()
       consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
       setRC('telemetry.enabled', false)
       setRC('telemetry.consent', 0)
-      consola.success('Nuxt telemetry disabled for', global ? 'user' : dir)
+      showStatus()
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
@@ -47,14 +50,55 @@ function _run () {
       showUsage()
   }
 
+  function _checkDisabled (): string | false {
+    // test
+    if (env.test) {
+      return 'Because rnning in test environment'
+    }
+
+    // env
+    if (destr(process.env.NUXT_TELEMETRY_DISABLED)) {
+      return 'by `NUXT_TELEMETRY_DISABLED` environment variable'
+    }
+
+    // dotenv
+    const dotenvFile = resolve(dir, '.env')
+    if (existsSync(dotenvFile)) {
+      const _env = dotenv.parse(readFileSync(dotenvFile))
+      if (destr(_env.NUXT_TELEMETRY_DISABLED)) {
+        return 'by `NUXT_TELEMETRY_DISABLED` from ' + dotenvFile
+      }
+    }
+
+    const disabledByConf = conf => conf.telemetry === false ||
+      (conf.telemetry && conf.telemetry.enabled === false)
+
+    // nuxt.config
+    try {
+      const _require = jiti(dir)
+      if (disabledByConf(_require('./nuxt.config'))) {
+        return 'by ' + _require.resolve('./nuxt.config')
+      }
+    } catch (_) {}
+
+    // Projct .nuxtrc
+    if (disabledByConf(rc.read({ name: RC_FILENAME, dir }))) {
+      return 'by ' + resolve(dir, RC_FILENAME)
+    }
+
+    // Global .nuxtrc
+    if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
+      return 'by ' + resolve(dir, RC_FILENAME)
+    }
+  }
+
   function showStatus () {
-    const nuxtrc = defu(
-      global ? {} : rc.read({ name: RC_FILENAME, dir }),
-      rc.readUser(RC_FILENAME)
-    )
-    const env = destr(process.env.NUXT_TELEMETRY_DISABLED)
-    const status = ((nuxtrc.telemetry && nuxtrc.telemetry.enabled === false) || env) ? c.yellow('disabled') : c.green('enabled')
-    consola.info('Nuxt telemetry is ' + status, global ? 'on machine' : 'on current project')
+    const disabled = _checkDisabled()
+    if (disabled) {
+      consola.info(`Nuxt telemetry is ${c.yellow('disabled')} ${disabled}`)
+    } else {
+      consola.info(`Nuxt telemetry is ${c.green('enabled')}`, global ? 'on machine' : 'on current project')
+    }
   }
 
   function showUsage () {

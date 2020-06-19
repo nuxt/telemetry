@@ -31,14 +31,17 @@
     "create-require": "^1.0.2",
     "defu": "^2.0.4",
     "destr": "^1.0.0",
+    "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
     "git-url-parse": "^11.1.2",
     "inquirer": "^7.2.0",
     "is-docker": "^2.0.0",
+    "jiti": "^0.1.11",
     "nanoid": "^3.1.10",
     "node-fetch": "^2.6.0",
     "parse-git-config": "^3.0.0",
-    "rc9": "^1.0.0"
+    "rc9": "^1.0.0",
+    "std-env": "^2.2.1"
   },
   "devDependencies": {
     "@babel/preset-env": "latest",

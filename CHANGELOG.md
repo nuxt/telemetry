@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/nuxt/telemetry/compare/v1.1.0...v1.1.1) (2020-06-26)
+
+
+### Bug Fixes
+
+* **module:** handle entry errors ([f8051d0](https://github.com/nuxt/telemetry/commit/f8051d047c0bd5f2128cce19b3a967e10e82005a))
+
 ## [1.1.0](https://github.com/nuxt/telemetry/compare/v1.0.1...v1.1.0) (2020-06-19)
 
 

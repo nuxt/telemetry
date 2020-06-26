@@ -9,11 +9,11 @@ import { ensureUserconsent } from './consent'
 import log from './utils/log'
 import { hash } from './utils/hash'
 
-async function telemetryModule () {
+async function _telemetryModule (nuxt) {
   const toptions: TelemetryOptions = {
     endpoint: destr(process.env.NUXT_TELEMETRY_ENDPOINT) || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
-    ...this.options.telemetry
+    ...nuxt.options.telemetry
   }
 
   if (!toptions.debug) {
@@ -22,7 +22,7 @@ async function telemetryModule () {
 
   if (
     toptions.enabled === false ||
-    this.options.telemetry === false ||
+    nuxt.options.telemetry === false ||
     !await ensureUserconsent(toptions)
   ) {
     log.info('Telemetry disabled')
@@ -36,11 +36,11 @@ async function telemetryModule () {
     log.info('Seed generated:', toptions.seed)
   }
 
-  const t = new Telemetry(this.nuxt, toptions)
+  const t = new Telemetry(nuxt, toptions)
 
-  if (this.options._start) {
+  if (nuxt.options._start) {
     // nuxt start
-    this.nuxt.hook('listen', () => {
+    nuxt.hook('listen', () => {
       t.createEvent('project')
       t.createEvent('session')
       t.createEvent('command')
@@ -48,14 +48,22 @@ async function telemetryModule () {
     })
   }
 
-  this.nuxt.hook('build:before', () => {
+  nuxt.hook('build:before', () => {
     t.createEvent('project')
     t.createEvent('session')
     t.createEvent('command')
     t.createEvent('dependency')
   })
 
-  profile(this.nuxt, t)
+  profile(nuxt, t)
+}
+
+async function telemetryModule () {
+  try {
+    await _telemetryModule(this.nuxt)
+  } catch (err) {
+    log.error(err)
+  }
 }
 
 function profile (nuxt: Nuxt, t: Telemetry) {

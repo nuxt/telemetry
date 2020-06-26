@@ -20,14 +20,17 @@ async function _telemetryModule (nuxt) {
     log.level = -Infinity
   }
 
-  if (
-    toptions.enabled === false ||
-    nuxt.options.telemetry === false ||
-    !await ensureUserconsent(toptions)
-  ) {
-    log.info('Telemetry disabled')
-    return
+  if (nuxt.options.telemetry !== true) {
+    if (
+      toptions.enabled === false ||
+      nuxt.options.telemetry === false ||
+      !await ensureUserconsent(toptions)
+    ) {
+      log.info('Telemetry disabled')
+      return
+    }
   }
+
   log.info('Telemetry enabled')
 
   if (!toptions.seed) {

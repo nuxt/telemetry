@@ -45,16 +45,6 @@ export interface Stats {
   }
 }
 
-// Should be merged or renamed
-interface Stats {
-  [name: string]: {
-    duration: number
-    success: boolean
-    size: number
-    fullHash: string
-  }
-}
-
 export interface GitData {
   url: string
   gitRemote: string

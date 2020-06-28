@@ -4,11 +4,13 @@
   "repository": "nuxt/telemetry",
   "license": "MIT",
   "main": "dist/module.js",
+  "types": "./types/index.d.ts",
   "bin": {
     "nuxt-telemetry": "bin/nuxt-telemetry.js"
   },
   "files": [
     "dist",
+    "types",
     "bin"
   ],
   "scripts": {

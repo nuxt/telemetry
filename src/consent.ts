@@ -2,12 +2,13 @@ import c from 'chalk'
 import inquirer from 'inquirer'
 import consola from 'consola'
 import stdEnv from 'std-env'
+import isDocker from 'is-docker'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
-  if (options.consent >= consentVersion || stdEnv.minimal || process.env.CODESANDBOX_SSE) {
+  if (options.consent >= consentVersion || stdEnv.minimal || process.env.CODESANDBOX_SSE || isDocker()) {
     return true
   }
 

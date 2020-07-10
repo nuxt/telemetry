@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/nuxt/telemetry/compare/v1.2.1...v1.2.2) (2020-07-10)
+
+
+### Bug Fixes
+
+* disable consent for docker (fixes [#7695](https://github.com/nuxt/telemetry/issues/7695)) ([56fbc22](https://github.com/nuxt/telemetry/commit/56fbc220f820b1c04b799433d7949e1fc317e24b))
+
 ### [1.2.1](https://github.com/nuxt/telemetry/compare/v1.2.0...v1.2.1) (2020-06-28)
 
 ## [1.2.0](https://github.com/nuxt/telemetry/compare/v1.1.1...v1.2.0) (2020-06-26)

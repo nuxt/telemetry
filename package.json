@@ -34,7 +34,7 @@
     "defu": "^2.0.4",
     "destr": "^1.0.0",
     "dotenv": "^8.2.0",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^8.1.0",
     "git-url-parse": "^11.1.2",
     "inquirer": "^7.3.0",
     "is-docker": "^2.0.0",

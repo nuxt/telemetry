@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/nuxt/telemetry/compare/v1.2.2...v1.2.3) (2020-07-31)
+
+
+### Bug Fixes
+
+* **deps:** downgrade `fs-extra` to 8.x (fixes [#26](https://github.com/nuxt/telemetry/issues/26)) ([b28d1cb](https://github.com/nuxt/telemetry/commit/b28d1cb01ecf4d17c4c61d8f68309a451c0ed2cd)), closes [nuxt/nuxt.js#7745](https://github.com/nuxt/nuxt.js/issues/7745)
+
 ### [1.2.2](https://github.com/nuxt/telemetry/compare/v1.2.1...v1.2.2) (2020-07-10)
 
 

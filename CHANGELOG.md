@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/nuxt/telemetry/compare/v1.2.3...v1.2.4) (2020-11-22)
+
+
+### Bug Fixes
+
+* add missing chalk dependency ([80d4961](https://github.com/nuxt/telemetry/commit/80d49618344a9d80b0df90c18c291b873ef6238d))
+
 ### [1.2.3](https://github.com/nuxt/telemetry/compare/v1.2.2...v1.2.3) (2020-07-31)
 
 

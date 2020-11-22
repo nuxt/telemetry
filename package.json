@@ -3,8 +3,8 @@
   "version": "1.2.4",
   "repository": "nuxt/telemetry",
   "license": "MIT",
-  "main": "dist/telemetry.js",
-  "types": "./dist/telemetry.d.ts",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
     "nuxt-telemetry": "bin/nuxt-telemetry.js"
   },

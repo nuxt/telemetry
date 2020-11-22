@@ -3,8 +3,8 @@
   "version": "1.2.3",
   "repository": "nuxt/telemetry",
   "license": "MIT",
-  "main": "dist/module.js",
-  "types": "./types/index.d.ts",
+  "main": "dist/telemetry.js",
+  "types": "./dist/telemetry.d.ts",
   "bin": {
     "nuxt-telemetry": "bin/nuxt-telemetry.js"
   },
@@ -14,7 +14,7 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && bili src/module.ts,src/cli.ts",
+    "build": "yarn clean && siroc build",
     "clean": "rimraf dist",
     "dev": "yarn fixture:dev",
     "fixture:build": "nuxt-ts build test/fixture",
@@ -46,8 +46,7 @@
     "std-env": "^2.2.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "latest",
-    "@nuxt/types": "npm:@nuxt/types-edge",
+    "@nuxt/types": "latest",
     "@nuxt/typescript-build": "latest",
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
@@ -60,6 +59,7 @@
     "nuxt-edge": "latest",
     "rimraf": "latest",
     "rollup-plugin-typescript2": "latest",
+    "siroc": "^0.4.1",
     "standard-version": "latest",
     "typescript": "latest"
   },

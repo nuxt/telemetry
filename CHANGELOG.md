@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/nuxt/telemetry/compare/v1.2.4...v1.2.5) (2020-11-22)
+
+
+### Bug Fixes
+
+* **pkg:** point to src/index ([2046b1c](https://github.com/nuxt/telemetry/commit/2046b1cf3fa318c0ebecc65b555db35ecc3806c0))
+
 ### [1.2.4](https://github.com/nuxt/telemetry/compare/v1.2.3...v1.2.4) (2020-11-22)
 
 

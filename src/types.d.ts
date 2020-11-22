@@ -8,14 +8,6 @@ export interface TelemetryOptions {
   enabled: boolean
 }
 
-export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]
-export type EventFactory<T extends Event> = (context: Context, payload: any) => EventFactoryResult<T>
-
-export interface Event {
-  name: string
-  [key: string]: any
-}
-
 export interface Nuxt {
   options: NuxtOptions
   hook: (name: string, func: Function) => void
@@ -31,10 +23,18 @@ export interface Context {
   isEdge: boolean
   nodeVersion: string
   os: string
-  git?: { url: string}
+  git?: { url: string }
   environment: string | null
   packageManager: string
 }
+
+export interface Event {
+  name: string
+  [key: string]: any
+}
+
+export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]
+export type EventFactory<T extends Event> = (context: Context, payload: any) => EventFactoryResult<T>
 
 export interface Stats {
   endTime: number

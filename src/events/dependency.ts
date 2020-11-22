@@ -50,6 +50,7 @@ function normalizeModules (modules) {
   return modules.map((m) => {
     if (typeof m === 'string') { return m }
     if (Array.isArray(m) && typeof m[0] === 'string') { return m[0] }
+    return null
   }).filter(Boolean)
 }
 

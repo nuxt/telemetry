@@ -25,7 +25,8 @@ export interface Context {
   os: string
   git?: { url: string }
   environment: string | null
-  packageManager: string
+  packageManager: string,
+  concent: number
 }
 
 export interface Event {

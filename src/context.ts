@@ -32,7 +32,8 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
     nodeVersion,
     os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
-    packageManager
+    packageManager,
+    concent: options.consent
   }
 }
 

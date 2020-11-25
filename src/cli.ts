@@ -10,8 +10,9 @@ import jiti from 'jiti'
 import env from 'std-env'
 import dotenv from 'dotenv'
 import { consentVersion } from './meta'
+import { ensureUserconsent } from './consent'
 
-export const usage = 'nuxt telemetry `status`|`enable`|`disable` [`-g`,`--global`] [`dir`]'
+export const usage = 'nuxt telemetry `status`|`enable`|`disable`|`consent` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
@@ -44,10 +45,20 @@ function _run () {
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
-      showStatus()
-      return
+      return showStatus()
+    case 'consent':
+      return _prompt()
     default:
       showUsage()
+  }
+
+  async function _prompt () {
+    const accepted = await ensureUserconsent({} as any) // <-- always sets global
+    if (accepted && !global) {
+      setRC('telemetry.enabled', true)
+      setRC('telemetry.consent', consentVersion)
+    }
+    showStatus()
   }
 
   function _checkDisabled (): string | false {

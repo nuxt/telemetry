@@ -10,8 +10,9 @@ import jiti from 'jiti'
 import env from 'std-env'
 import dotenv from 'dotenv'
 import { consentVersion } from './meta'
+import { ensureUserconsent } from './consent'
 
-export const usage = 'nuxt telemetry `status`|`enable`|`disable` [`-g`,`--global`] [`dir`]'
+export const usage = 'nuxt telemetry `status`|`enable`|`disable`|`consent` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
@@ -46,8 +47,9 @@ function _run () {
     case 'status':
       showStatus()
       return
+    case 'consent':
     default:
-      showUsage()
+      ensureUserconsent({} as any)
   }
 
   function _checkDisabled (): string | false {

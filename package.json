@@ -32,7 +32,7 @@
     "ci-info": "^2.0.0",
     "consola": "^2.14.0",
     "create-require": "^1.0.2",
-    "defu": "^2.0.4",
+    "defu": "^3.2.2",
     "destr": "^1.0.0",
     "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",

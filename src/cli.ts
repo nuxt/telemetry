@@ -53,8 +53,8 @@ function _run () {
   }
 
   async function _prompt () {
-    const accepted = await ensureUserconsent({} as any)
-    if (accepted) {
+    const accepted = await ensureUserconsent({} as any) // <-- always sets global
+    if (accepted && !global) {
       setRC('telemetry.enabled', true)
       setRC('telemetry.consent', consentVersion)
     }

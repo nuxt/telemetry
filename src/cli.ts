@@ -58,6 +58,7 @@ function _run () {
       setRC('telemetry.enabled', true)
       setRC('telemetry.consent', consentVersion)
     }
+    showStatus()
   }
 
   function _checkDisabled (): string | false {

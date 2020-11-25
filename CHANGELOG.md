@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/nuxt/telemetry/compare/v1.2.5...v1.3.0) (2020-11-25)
+
+
+### Features
+
+* disable auto consent  and add `nuxt telemetry consent` ([#35](https://github.com/nuxt/telemetry/issues/35)) ([f1a5d95](https://github.com/nuxt/telemetry/commit/f1a5d95700c046299d1a142f875036fe8d54aa43))
+
 ### [1.2.5](https://github.com/nuxt/telemetry/compare/v1.2.4...v1.2.5) (2020-11-22)
 
 

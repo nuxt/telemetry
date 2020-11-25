@@ -8,12 +8,12 @@ import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
-  if (stdEnv.minimal || process.env.CODESANDBOX_SSE || isDocker()) {
-    return false
-  }
-
   if (options.consent >= consentVersion) {
     return true
+  }
+
+  if (stdEnv.minimal || process.env.CODESANDBOX_SSE || isDocker()) {
+    return false
   }
 
   process.stdout.write('\n')

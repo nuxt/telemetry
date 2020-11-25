@@ -45,11 +45,18 @@ function _run () {
       consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
-      showStatus()
-      return
+      return showStatus()
     case 'consent':
     default:
-      ensureUserconsent({} as any)
+      return _prompt()
+  }
+
+  async function _prompt () {
+    const accepted = await ensureUserconsent({} as any)
+    if (accepted) {
+      setRC('telemetry.enabled', true)
+      setRC('telemetry.consent', consentVersion)
+    }
   }
 
   function _checkDisabled (): string | false {

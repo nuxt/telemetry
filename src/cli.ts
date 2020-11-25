@@ -47,8 +47,9 @@ function _run () {
     case 'status':
       return showStatus()
     case 'consent':
-    default:
       return _prompt()
+    default:
+      showUsage()
   }
 
   async function _prompt () {

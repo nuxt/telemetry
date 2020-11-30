@@ -8,7 +8,7 @@ This program is optional. You will be asked on first time to get permission and 
 
 ## Why collecting Telemetry?
 
-Nuxt.js has grown a lot from it's [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we are keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
+Nuxt.js has grown a lot from its [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we are keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
 
 However, this manual process only collects feedback from a subset of users that takes the time to fill the issue template and it may have different needs or use-case than you.
 

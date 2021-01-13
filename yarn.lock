@@ -6156,10 +6156,10 @@ jiti@^0.1.11, jiti@^0.1.12:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-0.1.14.tgz#ed77008bebcdc8f21245021746ae56b5bd4452c9"
   integrity sha512-xr4fW9wNEIpo6uK6Xyq3pc26SNGlVH1HKNInWwQTIDaOVFXgsQZkUVWKLaZmbHuC59rABLQNwwNlZ4cfJaeh7g==
 
-jiti@^0.1.16:
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/jiti/-/jiti-0.1.16.tgz#f8c7d73b51153edfb43d3e5a4984537198771650"
-  integrity sha512-fyMkReB81k8jzf9V97W/aUs8FQP/c4+jcP1+y/7yG8K/I6yhNbKVK9yI/GqUAn9WGLIMqLK95UgtQPHX+j3M8Q==
+jiti@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.0.0.tgz#508dcacb5f6cdc6b2248f00492db2b749684bf21"
+  integrity sha512-TIU7sNC4Iuo6YgjOUjYFME1JR1He4j8da8jIyB0K1B+oNfzbLn9pnI7YTGcR8xTQ8w5wiukmSelo4qeUki01jQ==
 
 joycon@^2.2.5:
   version "2.2.5"

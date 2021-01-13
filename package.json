@@ -39,7 +39,7 @@
     "git-url-parse": "^11.4.0",
     "inquirer": "^7.3.3",
     "is-docker": "^2.1.1",
-    "jiti": "^0.1.16",
+    "jiti": "^1.0.0",
     "nanoid": "^3.1.18",
     "node-fetch": "^2.6.1",
     "parse-git-config": "^3.0.0",

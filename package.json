@@ -14,8 +14,7 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && siroc build",
-    "clean": "rimraf dist",
+    "build": "siroc build",
     "dev": "yarn fixture:dev",
     "fixture:build": "nuxt-ts build test/fixture",
     "fixture:dev": "nuxt-ts test/fixture",
@@ -58,7 +57,6 @@
     "bili": "latest",
     "eslint": "latest",
     "nuxt-edge": "latest",
-    "rimraf": "latest",
     "rollup-plugin-typescript2": "latest",
     "siroc": "latest",
     "standard-version": "latest",

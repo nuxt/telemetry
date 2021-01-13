@@ -51,7 +51,7 @@
     "@nuxt/typescript-build": "latest",
     "@nuxt/typescript-runtime": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
-    "@nuxtjs/proxy": "^2.1.0",
+    "@nuxtjs/proxy": "latest",
     "@types/ci-info": "latest",
     "@types/inquirer": "latest",
     "babel-eslint": "latest",
@@ -60,7 +60,7 @@
     "nuxt-edge": "latest",
     "rimraf": "latest",
     "rollup-plugin-typescript2": "latest",
-    "siroc": "^0.6.0",
+    "siroc": "latest",
     "standard-version": "latest",
     "typescript": "latest"
   },

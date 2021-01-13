@@ -1,3 +1,4 @@
+import { Module } from '@nuxt/types'
 import destr from 'destr'
 import { nanoid } from 'nanoid'
 import { name, version } from '../package.json'
@@ -61,7 +62,7 @@ async function _telemetryModule (nuxt) {
   profile(nuxt, t)
 }
 
-async function telemetryModule () {
+const telemetryModule: Module<TelemetryOptions> = async function () {
   try {
     await _telemetryModule(this.nuxt)
   } catch (err) {
@@ -118,6 +119,6 @@ function profile (nuxt: Nuxt, t: Telemetry) {
   })
 }
 
-telemetryModule.meta = { name, version }
+(telemetryModule as any).meta = { name, version }
 
 export default telemetryModule

@@ -18,13 +18,13 @@ export async function ensureUserconsent (options: TelemetryOptions): Promise<boo
 
   process.stdout.write('\n')
   consola.info(`${c.green('NuxtJS')} collects completely anonymous data about usage.
-  This will help us improving Nuxt developer experience over the time.
+  This will help us improve Nuxt developer experience over time.
   Read more on ${c.cyan.underline('https://git.io/nuxt-telemetry')}\n`)
 
   const { accept } = await inquirer.prompt({
     type: 'confirm',
     name: 'accept',
-    message: 'Are you interested in participation?'
+    message: 'Are you interested in participating?'
   })
   process.stdout.write('\n')
 

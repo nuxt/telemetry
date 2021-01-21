@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/nuxt/telemetry/compare/v1.3.2...v1.3.3) (2021-01-21)
+
+
+### Bug Fixes
+
+* **consent:** update grammar in msg and question ([#42](https://github.com/nuxt/telemetry/issues/42)) ([31f527e](https://github.com/nuxt/telemetry/commit/31f527e5b5831bc3c28d6a9c51cc31e9a3ba4b46))
+
 ### [1.3.2](https://github.com/nuxt/telemetry/compare/v1.3.1...v1.3.2) (2021-01-13)
 
 

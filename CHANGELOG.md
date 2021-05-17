@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/nuxt/telemetry/compare/v1.3.3...v1.3.4) (2021-05-17)
+
+
+### Bug Fixes
+
+* esm compatibility with `require.main` (resolves [#49](https://github.com/nuxt/telemetry/issues/49)) ([5d8024f](https://github.com/nuxt/telemetry/commit/5d8024f3c8b951e9a17f31deb818e281015cacbb))
+
 ### [1.3.3](https://github.com/nuxt/telemetry/compare/v1.3.2...v1.3.3) (2021-01-21)
 
 

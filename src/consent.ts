@@ -12,7 +12,7 @@ export async function ensureUserconsent (options: TelemetryOptions): Promise<boo
     return true
   }
 
-  if (stdEnv.minimal || process.env.CODESANDBOX_SSE || isDocker()) {
+  if (stdEnv.minimal || process.env.CODESANDBOX_SSE || process.env.NEXT_TELEMETRY_DISABLED /* stackblitz */ || isDocker()) {
     return false
   }
 

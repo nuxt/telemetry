@@ -43,7 +43,7 @@
     "node-fetch": "^2.6.1",
     "parse-git-config": "^3.0.0",
     "rc9": "^1.2.0",
-    "std-env": "^2.3.0"
+    "std-env": "^3.0.1"
   },
   "devDependencies": {
     "@nuxt/types": "latest",

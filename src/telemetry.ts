@@ -51,6 +51,7 @@ export class Telemetry {
     const eventContext = {}
     for (const key of [
       'nuxtVersion',
+      'nuxtMajorVersion',
       'isEdge',
       'nodeVersion',
       'cli',

@@ -1,7 +1,7 @@
 import os from 'os'
 import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
-import { getNuxtVersion } from '@nuxt/kit'
+import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
@@ -19,6 +19,7 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
   const projectSession = getProjectSession(projectHash, seed)
 
   const nuxtVersion = getNuxtVersion(nuxt)
+  const nuxtMajorVersion = isNuxt3(nuxt) ? 3 : 2
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
 
@@ -29,6 +30,7 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
     projectHash,
     projectSession,
     nuxtVersion,
+    nuxtMajorVersion,
     isEdge,
     cli: getCLI(),
     nodeVersion,

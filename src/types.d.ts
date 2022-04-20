@@ -15,6 +15,7 @@ export interface Context {
   projectHash: string
   projectSession: string
   nuxtVersion: string
+  nuxtMajorVersion: 2 | 3
   isEdge: boolean
   nodeVersion: string
   os: string

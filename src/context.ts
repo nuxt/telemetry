@@ -1,9 +1,11 @@
 import os from 'os'
 import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
+import { getNuxtVersion } from '@nuxt/kit'
 import isDocker from 'is-docker'
-import ci from 'ci-info'
-import { Context, Nuxt, GitData, TelemetryOptions } from './types'
+import { provider } from 'std-env'
+import type { Nuxt } from '@nuxt/schema'
+import { Context, GitData, TelemetryOptions } from './types'
 import { detectPackageManager } from './utils/detect-package-manager'
 import { hash } from './utils/hash'
 
@@ -16,9 +18,9 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
   const projectHash = await getProjectHash(rootDir, git, seed)
   const projectSession = getProjectSession(projectHash, seed)
 
-  const nuxtVersion = ((nuxt.constructor as any).version || '').replace('v', '')
+  const nuxtVersion = getNuxtVersion(nuxt)
   const nodeVersion = process.version.replace('v', '')
-  const isEdge = nuxtVersion.includes('-')
+  const isEdge = nuxtVersion.includes('edge')
 
   return {
     nuxt,
@@ -38,12 +40,8 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
 }
 
 function getEnv (): Context['environment'] {
-  if (process.env.CODESANDBOX_SSE) {
-    return 'CSB'
-  }
-
-  if (ci.isCI) {
-    return ci.name
+  if (provider) {
+    return provider
   }
 
   if (isDocker()) {
@@ -64,7 +62,8 @@ function getCLI () {
   const knownCLIs = {
     'nuxt-ts.js': 'nuxt-ts',
     'nuxt-start.js': 'nuxt-start',
-    'nuxt.js': 'nuxt'
+    'nuxt.js': 'nuxt',
+    nuxi: 'nuxi'
   }
 
   for (const key in knownCLIs) {

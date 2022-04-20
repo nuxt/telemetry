@@ -6,7 +6,7 @@ export interface CommandEvent {
 }
 
 export const command = <EventFactory<CommandEvent>> function ({ nuxt }) {
-  let command = 'unknown'
+  let command = process.argv[2] || 'unknown'
 
   const flagMap = {
     dev: 'dev',

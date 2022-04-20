@@ -1,25 +1,23 @@
 # Nuxt Telemetry Module
 
-> ℹ️ Only used for Nuxt 2.13+
-
-Nuxt.js collects anonymous telemetry data about general usage. This helps us to accurately gauge Nuxt feature usage and customization across all our users.
+Nuxt collects anonymous telemetry data about general usage. This helps us to accurately gauge Nuxt feature usage and customization across all our users.
 
 This program is optional. You will be asked on first time to get permission and you can always [opt-out](#opting-out) if you'd not like to share any information.
 
 ## Why collecting Telemetry?
 
-Nuxt.js has grown a lot from its [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we are keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
+Nuxt has grown a lot from its [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we are keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
 
 However, this manual process only collects feedback from a subset of users that takes the time to fill the issue template and it may have different needs or use-case than you.
 
-Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users. This data will let us better understand how Nuxt.js is used globally, measuring improvements made (DX and performances) and their relevance.
+Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users. This data will let us better understand how Nuxt is used globally, measuring improvements made (DX and performances) and their relevance.
 
 ## Events
 
 We collect multiple events:
 
 - Command invoked (`nuxt dev`, `nuxt build`, etc)
-- Versions of Nuxt.js and Node.js
+- Versions of Nuxt and Node.js
 - General machine informations (MacOS/Linux/Windows and if command is run within CI, ci name)
 - Duration of the Webpack build and average size of the application, as well as the generation stats (when using `nuxt generate` or `nuxt export`)
 - What are the *public dependency* of your project (Nuxt modules)
@@ -91,10 +89,13 @@ export default {
 
 ## Thank you
 
-We want to thank you for participating in this telemetry program to help us better understand how you use Nuxt.js to keep improving it 💚
+We want to thank you for participating in this telemetry program to help us better understand how you use Nuxt to keep improving it 💚
+
+## Development
+
+- Run `yarn dev:prepare` to generate type stubs.
+- Use `yarn dev` to start [playground](./playground) in development mode.
 
 ## License
 
 [MIT License](./LICENSE)
-
-Copyright (c) NuxtJS Team

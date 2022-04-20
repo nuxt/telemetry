@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import { fetch } from 'ohmyfetch'
 import { version } from '../meta'
 import { Event } from '../types'
 
@@ -15,8 +15,7 @@ export async function postEvent (endpoint: string, body: EventBody): Promise<voi
     headers: {
       'content-type': 'application/json',
       'user-agent': 'Nuxt Telemetry ' + version
-    },
-    timeout: 4000 // Important: should be less than 5 seconds for prod
+    }
   })
 
   if (!res.ok) {

@@ -1,9 +1,8 @@
 <template>
   <div>
-    Works!
+    Nuxt module playground!
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
 </script>

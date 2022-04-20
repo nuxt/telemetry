@@ -12,6 +12,7 @@ export interface ExportEvent {
 export const generate = <EventFactory<ExportEvent>> function generate ({ nuxt }, payload) {
   return {
     name: 'generate',
+    // @ts-ignore
     isExport: !!nuxt.options._export,
     routesCount: payload.routesCount,
     duration: {

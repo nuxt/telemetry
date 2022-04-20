@@ -1,15 +1,6 @@
 {
+  "extends": "./playground/.nuxt/tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "Node",
-    "types": [
-      "node",
-      "inquirer"
-    ]
-  },
-  "include": [
-    "src"
-  ]
+    "esModuleInterop": true
+  }
 }

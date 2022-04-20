@@ -1,14 +1,14 @@
 import { resolve } from 'path'
 import { existsSync, readFileSync } from 'fs'
-import os from 'os'
-import arg from 'arg'
+import { homedir } from 'os'
 import destr from 'destr'
+import mri from 'mri'
 import * as rc from 'rc9'
 import c from 'chalk'
 import consola from 'consola'
 import jiti from 'jiti'
 import { isTest } from 'std-env'
-import dotenv from 'dotenv'
+import { parse as praseDotenv } from 'dotenv'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
 
@@ -16,9 +16,14 @@ export const usage = 'nuxt telemetry `status`|`enable`|`disable`|`consent` [`-g`
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
-  const args = arg({
-    '--global': Boolean,
-    '-g': '--global'
+  const _argv = process.argv.slice(2)
+  const args = mri(_argv, {
+    boolean: [
+      '--global'
+    ],
+    alias: {
+      '-g': '--global'
+    }
   })
   const [command, _dir = '.'] = args._
   const dir = resolve(process.cwd(), _dir)
@@ -75,7 +80,7 @@ function _run () {
     // dotenv
     const dotenvFile = resolve(dir, '.env')
     if (existsSync(dotenvFile)) {
-      const _env = dotenv.parse(readFileSync(dotenvFile))
+      const _env = praseDotenv(readFileSync(dotenvFile))
       if (destr(_env.NUXT_TELEMETRY_DISABLED)) {
         return 'by `NUXT_TELEMETRY_DISABLED` from ' + dotenvFile
       }
@@ -99,7 +104,7 @@ function _run () {
 
     // Global .nuxtrc
     if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
-      return 'by ' + resolve(os.homedir(), RC_FILENAME)
+      return 'by ' + resolve(homedir(), RC_FILENAME)
     }
   }
 

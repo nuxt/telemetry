@@ -3,66 +3,60 @@
   "version": "1.3.6",
   "repository": "nuxt/telemetry",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
   "bin": {
     "nuxt-telemetry": "bin/nuxt-telemetry.js"
   },
   "files": [
     "dist",
-    "types",
     "bin"
   ],
   "scripts": {
-    "build": "siroc build",
-    "dev": "yarn fixture:dev",
-    "fixture:build": "nuxt-ts build test/fixture",
-    "fixture:dev": "nuxt-ts test/fixture",
-    "fixture:generate": "nuxt-ts generate test/fixture",
-    "fixture:start": "nuxt-ts start test/fixture",
+    "build": "nuxt-module-build",
+    "dev": "NUXT_TELEMETRY_DEBUG=1 nuxi dev playground",
+    "dev:build": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
+    "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "nuxt-telemetry": "ts-node src/cli.ts",
-    "release": "yarn test && standard-version && yarn build && git push --follow-tags && npm publish",
+    "nuxt-telemetry": "jiti ./src/cli.ts",
+    "prepack": "nuxt-module-build",
+    "release": "yarn test && yarn build && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint"
   },
   "dependencies": {
-    "arg": "^5.0.1",
-    "chalk": "^4.1.2",
+    "@nuxt/kit": "3.0.0-rc.0",
+    "chalk": "^5.0.1",
     "ci-info": "^3.3.0",
     "consola": "^2.15.3",
     "create-require": "^1.1.1",
-    "defu": "^5.0.1",
+    "defu": "^6.0.0",
     "destr": "^1.1.1",
-    "dotenv": "^9.0.2",
-    "fs-extra": "^8.1.0",
+    "dotenv": "^16.0.0",
+    "fs-extra": "^10.1.0",
     "git-url-parse": "^11.6.0",
-    "inquirer": "^7.3.3",
-    "is-docker": "^2.2.1",
+    "inquirer": "^8.2.2",
+    "is-docker": "^3.0.0",
     "jiti": "^1.13.0",
+    "mri": "^1.2.0",
     "nanoid": "^3.3.3",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.2.3",
+    "ohmyfetch": "^0.4.15",
     "parse-git-config": "^3.0.0",
     "rc9": "^1.2.2",
     "std-env": "^3.1.1"
   },
   "devDependencies": {
-    "@nuxt/types": "latest",
-    "@nuxt/typescript-build": "latest",
-    "@nuxt/typescript-runtime": "latest",
+    "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
-    "@nuxtjs/proxy": "latest",
-    "@types/ci-info": "latest",
-    "@types/inquirer": "latest",
-    "babel-eslint": "latest",
-    "bili": "latest",
     "eslint": "latest",
-    "nuxt-edge": "latest",
-    "rollup-plugin-typescript2": "latest",
-    "siroc": "latest",
-    "standard-version": "latest",
-    "typescript": "latest"
-  },
-  "publishConfig": {
-    "access": "public"
+    "nuxt": "^3.0.0-rc.0"
   }
 }

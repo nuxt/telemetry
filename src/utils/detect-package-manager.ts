@@ -4,7 +4,8 @@ import fs from 'fs-extra'
 const FILE2PM = {
   'yarn.lock': 'yarn',
   'package-lock.json': 'npm',
-  'shrinkwrap.json': 'npm'
+  'shrinkwrap.json': 'npm',
+  'pnpm-lock.yaml': 'pnpm'
 }
 
 export async function detectPackageManager (rootDir: string): Promise<string> {

@@ -1,4 +1,4 @@
-import { NuxtOptions } from '@nuxt/types'
+import type { Nuxt } from '@nuxt/schema'
 
 export interface TelemetryOptions {
   debug: boolean
@@ -6,11 +6,6 @@ export interface TelemetryOptions {
   seed: string
   consent?: number
   enabled: boolean
-}
-
-export interface Nuxt {
-  options: NuxtOptions
-  hook: (name: string, func: Function) => void
 }
 
 export interface Context {
@@ -52,16 +47,4 @@ export interface GitData {
   source: string
   owner: string
   name: string
-}
-
-declare module '@nuxt/types/config/index' {
-  interface NuxtOptions {
-    telemetry: boolean | Partial<{
-      debug: boolean
-      endpoint: string
-      seed: string
-      consent: 1
-      enabled: boolean
-    }>
-  }
 }

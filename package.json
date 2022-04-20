@@ -13,7 +13,7 @@
   "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
   "bin": {
-    "nuxt-telemetry": "bin/nuxt-telemetry.js"
+    "nuxt-telemetry": "./bin/nuxt-telemetry.mjs"
   },
   "files": [
     "dist",

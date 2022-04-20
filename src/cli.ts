@@ -12,7 +12,7 @@ import { parse as praseDotenv } from 'dotenv'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
 
-export const usage = 'nuxt telemetry `status`|`enable`|`disable`|`consent` [`-g`,`--global`] [`dir`]'
+export const usage = 'npx nuxt-telemetry `status`|`enable`|`disable`|`consent` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
 
 function _run () {
@@ -132,15 +132,11 @@ function _run () {
   }
 }
 
-export function run () {
+export function main () {
   try {
     _run()
   } catch (err) {
     consola.fatal(err)
     process.exit(1)
   }
-}
-
-if (!module.parent) {
-  run()
 }

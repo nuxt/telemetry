@@ -54,12 +54,7 @@ function getEnv (): Context['environment'] {
 }
 
 function getCLI () {
-  let entry
-  if (typeof require !== 'undefined' && require.main && require.main.filename) {
-    entry = require.main.filename
-  } else {
-    entry = process.argv[1]
-  }
+  const entry = process.argv[1]
 
   const knownCLIs = {
     'nuxt-ts.js': 'nuxt-ts',

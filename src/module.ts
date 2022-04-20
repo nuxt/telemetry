@@ -10,6 +10,8 @@ import { ensureUserconsent } from './consent'
 import log from './utils/log'
 import { hash } from './utils/hash'
 
+export type ModuleOptions = boolean | TelemetryOptions
+
 export default defineNuxtModule<TelemetryOptions>({
   meta: {
     name: '@nuxt/telemetry',

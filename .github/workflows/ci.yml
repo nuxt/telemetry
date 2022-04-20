@@ -10,39 +10,16 @@ on:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [12]
-
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: cache node_modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn
-
-      - name: Lint
-        run: yarn lint
-
-      - name: Build
-        run: yarn build
-
-      # - name: Test
-      #   run: yarn test
-
-      # - name: Coverage
-      #   uses: codecov/codecov-action@v1
+          node-version: 16
+          cache: "yarn"
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn build
+      - run: pnpm yarn
+      - uses: codecov/codecov-action@v3

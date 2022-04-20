@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/nuxt/telemetry/compare/v2.1.0...v2.1.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* export `ModuleOptions` ([73301f4](https://github.com/nuxt/telemetry/commit/73301f48b363db6971d0c4736d451be80dccdf7f))
+
 ## [2.1.0](https://github.com/nuxt/telemetry/compare/v2.0.0...v2.1.0) (2022-04-20)
 
 

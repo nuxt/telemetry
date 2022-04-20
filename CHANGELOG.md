@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/nuxt/telemetry/compare/v2.0.0...v2.1.0) (2022-04-20)
+
+
+### Features
+
+* add `nuxtMajorVersion` to the context ([47a7ea6](https://github.com/nuxt/telemetry/commit/47a7ea6effb93f14478d4e9d0ace1e8cc362bea8))
+
 ## [2.0.0](https://github.com/nuxt/telemetry/compare/v1.3.6...v2.0.0) (2022-04-20)
 
 

@@ -23,7 +23,7 @@ export default defineNuxtModule<TelemetryOptions>({
   },
   async setup (toptions, nuxt) {
     if (!toptions.debug) {
-      log.level = -Infinity
+      log.level = 0
     }
 
     const _topLevelTelemetry = (nuxt.options as any).telemetry
@@ -52,7 +52,7 @@ export default defineNuxtModule<TelemetryOptions>({
       t.createEvent('project')
       t.createEvent('session')
       t.createEvent('command')
-      t.sendEvents()
+      t.sendEvents(toptions.debug)
     })
   }
 })

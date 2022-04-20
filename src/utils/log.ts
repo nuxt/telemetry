@@ -1,3 +1,3 @@
-import consola from 'consola'
+import { useLogger } from '@nuxt/kit'
 
-export default consola.withScope('@nuxt/telemetry')
+export default useLogger('@nuxt/telemetry')

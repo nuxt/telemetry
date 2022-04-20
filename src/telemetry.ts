@@ -64,7 +64,7 @@ export class Telemetry {
     return eventContext
   }
 
-  async sendEvents () {
+  async sendEvents (debug?: boolean) {
     const events: EventFactoryResult<any>[] = [].concat(...(await Promise.all(this.events)).filter(Boolean))
     this.events = []
     const context = await this.getPublicContext()
@@ -78,11 +78,17 @@ export class Telemetry {
     if (this.options.endpoint) {
       const start = Date.now()
       try {
-        log.info('Sending events:', JSON.stringify(body, null, 2))
+        if (debug) {
+          log.info('Sending events:', JSON.stringify(body, null, 2))
+        }
         await postEvent(this.options.endpoint, body)
-        log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+        if (debug) {
+          log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+        }
       } catch (err) {
-        log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
+        if (debug) {
+          log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
+        }
       }
     }
   }

@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/nuxt/telemetry/compare/v1.3.6...v2.0.0) (2022-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* initial refactor for nuxt 3 support
+
+### Features
+
+* initial refactor for nuxt 3 support ([584b7fe](https://github.com/nuxt/telemetry/commit/584b7fede5e7456222be729ebc66ca5d2a36e87e))
+
+
+### Bug Fixes
+
+* workaround to hide debug logs ([19a545d](https://github.com/nuxt/telemetry/commit/19a545da339278aed9c8708dbcb447cfd8d3e8c3))
+
 ### [1.3.6](https://github.com/nuxt/telemetry/compare/v1.3.5...v1.3.6) (2021-05-21)
 
 ### [1.3.5](https://github.com/nuxt/telemetry/compare/v1.3.4...v1.3.5) (2021-05-17)

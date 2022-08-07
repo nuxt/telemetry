@@ -32,23 +32,23 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@nuxt/kit": "3.0.0-rc.1",
+    "@nuxt/kit": "3.0.0-rc.6",
     "chalk": "^5.0.1",
-    "ci-info": "^3.3.0",
+    "ci-info": "^3.3.2",
     "consola": "^2.15.3",
     "create-require": "^1.1.1",
     "defu": "^6.0.0",
     "destr": "^1.1.1",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "fs-extra": "^10.1.0",
     "git-url-parse": "^12.0.0",
-    "inquirer": "^9.0.0",
+    "inquirer": "^9.1.0",
     "is-docker": "^3.0.0",
-    "jiti": "^1.13.0",
+    "jiti": "^1.14.0",
     "mri": "^1.2.0",
     "nanoid": "^4.0.0",
-    "node-fetch": "^3.2.3",
-    "ohmyfetch": "^0.4.15",
+    "node-fetch": "^3.2.10",
+    "ohmyfetch": "^0.4.18",
     "parse-git-config": "^3.0.0",
     "rc9": "^1.2.2",
     "std-env": "^3.1.1"
@@ -57,7 +57,7 @@
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "latest",
-    "nuxt": "^3.0.0-rc.1",
+    "nuxt": "^3.0.0-rc.6",
     "standard-version": "^9.3.2"
   }
 }

@@ -32,7 +32,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@nuxt/kit": "3.0.0-rc.6",
+    "@nuxt/kit": "^3.0.0-rc.6",
     "chalk": "^5.0.1",
     "ci-info": "^3.3.2",
     "consola": "^2.15.3",

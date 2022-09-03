@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.5](https://github.com/nuxt/telemetry/compare/v2.1.4...v2.1.5) (2022-09-03)
+
+
+### Bug Fixes
+
+* do not pin kit version ([#78](https://github.com/nuxt/telemetry/issues/78)) ([d46d4ad](https://github.com/nuxt/telemetry/commit/d46d4ad6aa97614e4709b3f815a0c15073bc3844))
+
 ### [2.1.4](https://github.com/nuxt/telemetry/compare/v2.1.3...v2.1.4) (2022-08-07)
 
 ### [2.1.3](https://github.com/nuxt/telemetry/compare/v2.1.2...v2.1.3) (2022-04-26)

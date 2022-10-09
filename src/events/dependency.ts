@@ -85,7 +85,7 @@ export function getDependencies (rootDir: string) {
   }
 
   if (pkg.devDependencies) {
-    deps.push(...mapDeps(pkg.dependencies, true))
+    deps.push(...mapDeps(pkg.devDependencies, true))
   }
 
   return deps

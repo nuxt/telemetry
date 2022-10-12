@@ -35,7 +35,7 @@
     "destr": "^1.1.0",
     "dotenv": "^9.0.2",
     "fs-extra": "^8.1.0",
-    "git-url-parse": "^11.4.4",
+    "git-url-parse": "^13.1.0",
     "inquirer": "^7.3.3",
     "is-docker": "^2.2.1",
     "jiti": "^1.9.2",
@@ -61,6 +61,9 @@
     "siroc": "latest",
     "standard-version": "latest",
     "typescript": "latest"
+  },
+  "resolutions": {
+    "@nuxt/telemetry": "link:./"
   },
   "publishConfig": {
     "access": "public"

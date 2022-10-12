@@ -62,6 +62,9 @@
     "standard-version": "latest",
     "typescript": "latest"
   },
+  "resolutions": {
+    "@nuxt/telemetry": "link:./"
+  },
   "publishConfig": {
     "access": "public"
   }

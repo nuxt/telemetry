@@ -50,7 +50,7 @@
     "node-fetch": "^3.2.10",
     "ohmyfetch": "^0.4.19",
     "parse-git-config": "^3.0.0",
-    "rc9": "^1.2.2",
+    "rc9": "^2.0.0",
     "std-env": "^3.2.1"
   },
   "devDependencies": {

@@ -54,9 +54,9 @@
     "std-env": "^3.3.1"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "latest",
-    "@nuxtjs/eslint-config-typescript": "latest",
-    "eslint": "latest",
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "eslint": "^8.27.0",
     "nuxt": "^3.0.0-rc.13",
     "standard-version": "^9.3.2"
   }

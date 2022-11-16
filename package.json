@@ -29,9 +29,9 @@
     "@nuxt/telemetry": "link:./"
   },
   "dependencies": {
-    "arg": "^5.0.0",
+    "arg": "^5.0.2",
     "chalk": "^4.1.1",
-    "ci-info": "^3.1.1",
+    "ci-info": "^3.6.1",
     "consola": "^2.15.3",
     "create-require": "^1.1.1",
     "defu": "^5.0.0",
@@ -40,7 +40,6 @@
     "fs-extra": "^8.1.0",
     "git-url-parse": "^13.1.0",
     "inquirer": "^7.3.3",
-    "is-docker": "^2.2.1",
     "jiti": "^1.9.2",
     "nanoid": "^3.1.23",
     "node-fetch": "^2.6.1",

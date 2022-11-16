@@ -32,7 +32,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.13",
+    "@nuxt/kit": "^3.0.0-rc.14",
     "chalk": "^5.1.2",
     "ci-info": "^3.6.1",
     "consola": "^2.15.3",
@@ -57,7 +57,7 @@
     "@nuxt/module-builder": "^0.2.1",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "eslint": "^8.27.0",
-    "nuxt": "^3.0.0-rc.13",
+    "nuxt": "^3.0.0-rc.14",
     "standard-version": "^9.3.2"
   }
 }

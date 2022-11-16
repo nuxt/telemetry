@@ -20,8 +20,8 @@ export default defineNuxtModule<TelemetryOptions>({
   defaults: {
     endpoint: process.env.NUXT_TELEMETRY_ENDPOINT || 'https://telemetry.nuxtjs.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
-    enabled: undefined,
-    seed: undefined
+    enabled: undefined as any,
+    seed: undefined as any
   },
   async setup (toptions, nuxt) {
     if (!toptions.debug) {

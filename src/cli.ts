@@ -66,7 +66,7 @@ function _run () {
     showStatus()
   }
 
-  function _checkDisabled (): string | false {
+  function _checkDisabled (): string | false | undefined {
     // test
     if (isTest) {
       return 'Because running in test environment'
@@ -86,7 +86,7 @@ function _run () {
       }
     }
 
-    const disabledByConf = conf => conf.telemetry === false ||
+    const disabledByConf = (conf: any) => conf.telemetry === false ||
       (conf.telemetry && conf.telemetry.enabled === false)
 
     // nuxt.config
@@ -122,7 +122,7 @@ function _run () {
     process.exit(0)
   }
 
-  function setRC (key, val) {
+  function setRC (key: any, val: any) {
     const update = { [key]: val }
     if (global) {
       rc.updateUser(update, RC_FILENAME)

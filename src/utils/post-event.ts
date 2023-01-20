@@ -1,4 +1,4 @@
-import { fetch } from 'ohmyfetch'
+import { fetch } from 'ofetch'
 import { version } from '../meta'
 import { Event } from '../types'
 

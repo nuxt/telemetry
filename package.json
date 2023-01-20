@@ -48,7 +48,7 @@
     "mri": "^1.2.0",
     "nanoid": "^4.0.0",
     "node-fetch": "^3.3.0",
-    "ohmyfetch": "^0.4.21",
+    "ofetch": "^1.0.0",
     "parse-git-config": "^3.0.0",
     "rc9": "^2.0.0",
     "std-env": "^3.3.1"

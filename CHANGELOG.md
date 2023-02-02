@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/nuxt/telemetry/compare/v1.4.0...v1.4.1) (2023-02-02)
+
+
+### Bug Fixes
+
+* use named imports from `std-env` and `ci-info` ([e88cae1](https://github.com/nuxt/telemetry/commit/e88cae14136a750df36232c2bd6c93e2f9537d93))
+
 ## [1.4.0](https://github.com/nuxt/telemetry/compare/v1.3.9...v1.4.0) (2023-02-02)
 
 ### [1.3.9](https://github.com/nuxt/telemetry/compare/v1.3.8...v1.3.9) (2022-11-16)

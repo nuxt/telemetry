@@ -25,6 +25,7 @@ export class Telemetry {
 
   createEvent (name: string, payload?: object): void | Promise<any> {
     // @ts-ignore
+    // eslint-disable-next-line import/namespace
     const eventFactory: EventFactory<any> = events[name]
     if (typeof eventFactory !== 'function') {
       log.warn('Unknown event:', name)

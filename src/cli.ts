@@ -7,7 +7,7 @@ import * as rc from 'rc9'
 import c from 'chalk'
 import consola from 'consola'
 import jiti from 'jiti'
-import env from 'std-env'
+import { isTest } from 'std-env'
 import dotenv from 'dotenv'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
@@ -63,7 +63,7 @@ function _run () {
 
   function _checkDisabled (): string | false {
     // test
-    if (env.test) {
+    if (isTest) {
       return 'Because running in test environment'
     }
 

@@ -1,7 +1,7 @@
 import os from 'os'
 import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
-import ci from 'ci-info'
+import { isCI, name as ciName } from 'ci-info'
 import { isDocker } from './utils/docker'
 import { Context, Nuxt, GitData, TelemetryOptions } from './types'
 import { detectPackageManager } from './utils/detect-package-manager'
@@ -42,8 +42,8 @@ function getEnv (): Context['environment'] {
     return 'CSB'
   }
 
-  if (ci.isCI) {
-    return ci.name
+  if (isCI) {
+    return ciName
   }
 
   if (isDocker()) {

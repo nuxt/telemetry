@@ -1,7 +1,7 @@
 import c from 'chalk'
 import inquirer from 'inquirer'
 import consola from 'consola'
-import stdEnv from 'std-env'
+import { isMinimal } from 'std-env'
 import { isDocker } from './utils/docker'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { TelemetryOptions } from './types'
@@ -12,7 +12,7 @@ export async function ensureUserconsent (options: TelemetryOptions): Promise<boo
     return true
   }
 
-  if (stdEnv.minimal || process.env.CODESANDBOX_SSE || process.env.NEXT_TELEMETRY_DISABLED /* stackblitz */ || isDocker()) {
+  if (isMinimal || process.env.CODESANDBOX_SSE || process.env.NEXT_TELEMETRY_DISABLED /* stackblitz */ || isDocker()) {
     return false
   }
 

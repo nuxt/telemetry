@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/nuxt/telemetry/compare/v1.3.9...v1.4.0) (2023-02-02)
+
 ### [1.3.9](https://github.com/nuxt/telemetry/compare/v1.3.8...v1.3.9) (2022-11-16)
 
 ### [1.3.8](https://github.com/nuxt/telemetry/compare/v1.3.7...v1.3.8) (2022-11-16)

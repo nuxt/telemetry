@@ -29,7 +29,7 @@
     "nuxt-telemetry": "jiti ./src/cli.ts",
     "prepack": "nuxt-module-build",
     "release": "yarn test && yarn build && standard-version && git push --follow-tags && npm publish",
-    "test": "yarn lint"
+    "test": "yarn vitest run --coverage"
   },
   "dependencies": {
     "@nuxt/kit": "^3.2.0",

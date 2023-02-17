@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url'
 import { getRandomPort } from 'get-port-please'
 import { createApp, readBody, toNodeListener, defineEventHandler } from 'h3'
 import { afterAll, describe, expect, it } from 'vitest'
-import { setup, fetch, $fetch, startServer, isDev, createPage, url } from '@nuxt/test-utils'
+import { setup, $fetch } from '@nuxt/test-utils'
+import { isCI } from 'std-env'
 
 const logs: Array<{ url?: string, body: any }> = []
 
@@ -20,6 +21,8 @@ const app = createApp().use(defineEventHandler(async (event) => {
   expect(body.context.projectSession).toBeDefined()
   delete body.context.projectHash
   delete body.context.projectSession
+  expect(body.context.environment).toEqual(isCI ? 'github_actions' : 'unknown')
+  delete body.context.environment
   expect(body.timestamp).toBeGreaterThan(0)
   delete body.timestamp
   for (const event of body.events) {
@@ -57,7 +60,6 @@ describe('@nuxt/telemetry', () => {
           "body": {
             "context": {
               "cli": "programmatic",
-              "environment": "unknown",
               "isEdge": false,
               "nuxtMajorVersion": 3,
             },

@@ -48,7 +48,7 @@ await setup({
     }
   }
 })
-describe('@nuxt/telemetry', async () => {
+describe('@nuxt/telemetry', () => {
   it('should build project', async () => {
     await $fetch('/')
     expect(logs).toMatchInlineSnapshot(`

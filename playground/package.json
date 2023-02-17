@@ -1,0 +1,10 @@
+{
+  "name": "playground",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build"
+  },
+  "dependencies": {
+    "nuxt": "^3.2.0"
+  }
+}

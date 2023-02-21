@@ -18,7 +18,7 @@ export default defineNuxtModule<TelemetryOptions>({
     configKey: 'telemetry'
   },
   defaults: {
-    endpoint: process.env.NUXT_TELEMETRY_ENDPOINT || 'https://telemetry.nuxtjs.com',
+    endpoint: process.env.NUXT_TELEMETRY_ENDPOINT || 'https://telemetry.nuxt.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     enabled: undefined as any,
     seed: undefined as any

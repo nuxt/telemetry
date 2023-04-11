@@ -62,10 +62,5 @@
     "nuxt": "^3.2.0",
     "standard-version": "^9.3.2",
     "vitest": "^0.28.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "consola": "^3.0.1"
-    }
   }
 }

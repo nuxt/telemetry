@@ -1,13 +1,12 @@
 import destr from 'destr'
 import { nanoid } from 'nanoid'
-import type { Nuxt } from '@nuxt/schema'
 import { defineNuxtModule } from '@nuxt/kit'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, TelemetryOptions } from './types'
 import { ensureUserconsent } from './consent'
-import log from './utils/log'
+import { logger } from './utils/log'
 import { hash } from './utils/hash'
 
 export type ModuleOptions = boolean | TelemetryOptions
@@ -25,7 +24,7 @@ export default defineNuxtModule<TelemetryOptions>({
   },
   async setup (toptions, nuxt) {
     if (!toptions.debug) {
-      log.level = 0
+      logger.level = 0
     }
 
     const _topLevelTelemetry = (nuxt.options as any).telemetry
@@ -35,17 +34,17 @@ export default defineNuxtModule<TelemetryOptions>({
         _topLevelTelemetry === false ||
         !await ensureUserconsent(toptions)
       ) {
-        log.info('Telemetry disabled')
+        logger.info('Telemetry disabled')
         return
       }
     }
 
-    log.info('Telemetry enabled')
+    logger.info('Telemetry enabled')
 
     if (!toptions.seed) {
       toptions.seed = hash(nanoid())
       updateUserNuxtRc('telemetry.seed', toptions.seed)
-      log.info('Seed generated:', toptions.seed)
+      logger.info('Seed generated:', toptions.seed)
     }
 
     const t = new Telemetry(nuxt, toptions)

@@ -1,3 +1,4 @@
 import { useLogger } from '@nuxt/kit'
+import { ConsolaInstance } from 'consola'
 
-export default useLogger('@nuxt/telemetry')
+export const logger = useLogger('@nuxt/telemetry') as ConsolaInstance

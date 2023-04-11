@@ -1,6 +1,6 @@
 import c from 'chalk'
 import inquirer from 'inquirer'
-import consola from 'consola'
+import { consola } from 'consola'
 import { isMinimal } from 'std-env'
 import isDocker from 'is-docker'
 import { updateUserNuxtRc } from './utils/nuxtrc'

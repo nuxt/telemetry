@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/nuxt/telemetry/compare/v2.2.0...v2.3.0) (2023-07-05)
+
+
+### Features
+
+* better consent prompt, module event and fix logged command ([#103](https://github.com/nuxt/telemetry/issues/103)) ([5e34507](https://github.com/nuxt/telemetry/commit/5e345071168630ec1a48302908e8cef4ebb2cca4))
+
 ## [2.2.0](https://github.com/nuxt/telemetry/compare/v2.1.10...v2.2.0) (2023-04-11)
 
 ### [2.1.10](https://github.com/nuxt/telemetry/compare/v2.1.9...v2.1.10) (2023-02-17)

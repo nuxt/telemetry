@@ -42,7 +42,6 @@
     "dotenv": "^16.3.1",
     "fs-extra": "^11.1.1",
     "git-url-parse": "^13.1.0",
-    "inquirer": "^9.2.7",
     "is-docker": "^3.0.0",
     "jiti": "^1.19.1",
     "mri": "^1.2.0",

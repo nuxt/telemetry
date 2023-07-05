@@ -72,10 +72,6 @@ describe('@nuxt/telemetry', () => {
                 "type": "git",
               },
               {
-                "id": "eventid",
-                "name": "session",
-              },
-              {
                 "command": "unknown",
                 "name": "command",
               },

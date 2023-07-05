@@ -51,8 +51,12 @@ export default defineNuxtModule<TelemetryOptions>({
 
     nuxt.hook('modules:done', () => {
       t.createEvent('project')
-      t.createEvent('session')
+      // Only send the session in development
+      if (nuxt.options.dev) {
+        t.createEvent('session')
+      }
       t.createEvent('command')
+      t.createEvent('module')
       t.sendEvents(toptions.debug)
     })
   }

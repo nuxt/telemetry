@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { existsSync, readFileSync } from 'fs'
 import { homedir } from 'os'
-import destr from 'destr'
+import { destr } from 'destr'
 import mri from 'mri'
 import * as rc from 'rc9'
 import c from 'chalk'
@@ -41,13 +41,13 @@ function _run () {
       setRC('telemetry.enabled', true)
       setRC('telemetry.consent', consentVersion)
       showStatus()
-      consola.info('You can disable telemetry with `npx nuxt telemetry disable ' + (global ? '-g' : _dir))
+      consola.info('You can disable telemetry with `npx nuxt-telemetry disable ' + (global ? '-g' : _dir))
       return
     case 'disable':
       setRC('telemetry.enabled', false)
       setRC('telemetry.consent', 0)
       showStatus()
-      consola.info('You can enable telemetry with `npx nuxt telemetry enable ' + (global ? '-g' : _dir) + '`')
+      consola.info('You can enable telemetry with `npx nuxt-telemetry enable ' + (global ? '-g' : _dir) + '`')
       return
     case 'status':
       return showStatus()

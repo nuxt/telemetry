@@ -1,4 +1,4 @@
-import destr from 'destr'
+import { destr } from 'destr'
 import { nanoid } from 'nanoid'
 import { defineNuxtModule } from '@nuxt/kit'
 import { updateUserNuxtRc } from './utils/nuxtrc'

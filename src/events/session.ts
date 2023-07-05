@@ -2,7 +2,7 @@ import { EventFactory } from '../types'
 
 export interface SessionEvent {
   name: 'session'
-    id: string
+  id: string
 }
 
 export const session = <EventFactory<SessionEvent>> function ({ seed }) {

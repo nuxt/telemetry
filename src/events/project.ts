@@ -13,7 +13,7 @@ export const project = <EventFactory<ProjectEvent>> function (context) {
   return {
     name: 'project',
     type: (context.git && context.git.url) ? 'git' : 'local',
-    isSSR: options.mode === 'universal' || options.ssr === true,
+    isSSR: options.ssr !== false,
     target: options._generate ? 'static' : 'server',
     packageManager: context.packageManager
   }

@@ -14,7 +14,7 @@ export const module = <EventFactory<ModuleEvent>> function ({ nuxt: { options } 
   const modules = (options._installedModules || []).filter(m => m.meta?.version).map(m => ({
     name: m.meta.name,
     version: m.meta.version,
-    timing: m.meta.timings?.setup || 0
+    timing: m.timings?.setup || 0
   }))
 
   for (const m of modules) {

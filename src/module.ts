@@ -54,10 +54,10 @@ export default defineNuxtModule<TelemetryOptions>({
       // Only send the session in development
       if (nuxt.options.dev) {
         t.createEvent('session')
+        t.createEvent('files')
       }
       t.createEvent('command')
       t.createEvent('module')
-      t.createEvent('files')
       t.sendEvents(toptions.debug)
     })
   }

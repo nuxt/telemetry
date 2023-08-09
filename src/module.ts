@@ -57,6 +57,7 @@ export default defineNuxtModule<TelemetryOptions>({
       }
       t.createEvent('command')
       t.createEvent('module')
+      t.createEvent('files')
       t.sendEvents(toptions.debug)
     })
   }

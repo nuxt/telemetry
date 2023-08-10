@@ -1,5 +1,5 @@
 import { resolve } from 'pathe'
-import fs from 'fs-extra'
+import { pathExists } from 'fs-extra'
 
 const FILE2PM = {
   'yarn.lock': 'yarn',
@@ -10,7 +10,7 @@ const FILE2PM = {
 
 export async function detectPackageManager (rootDir: string): Promise<string> {
   for (const file in FILE2PM) {
-    if (await fs.pathExists(resolve(rootDir, file))) {
+    if (await pathExists(resolve(rootDir, file))) {
       // @ts-ignore
       return FILE2PM[file]
     }

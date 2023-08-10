@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.1](https://github.com/nuxt/telemetry/compare/v2.4.0...v2.4.1) (2023-08-10)
+
+
+### Bug Fixes
+
+* resolve `app.config` path from srcDir (w/ exts) ([aa8749f](https://github.com/nuxt/telemetry/commit/aa8749fa6ce7cc9eeb4da08d70293df3caad76a9))
+
 ## [2.4.0](https://github.com/nuxt/telemetry/compare/v2.3.2...v2.4.0) (2023-08-10)
 
 

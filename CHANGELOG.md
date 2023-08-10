@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/nuxt/telemetry/compare/v2.3.2...v2.4.0) (2023-08-10)
+
+
+### Features
+
+* add files event ([#107](https://github.com/nuxt/telemetry/issues/107)) ([1fd7f87](https://github.com/nuxt/telemetry/commit/1fd7f87db34a71354876be1ee7a820874803d4c1))
+
 ### [2.3.3](https://github.com/nuxt/telemetry/compare/v2.3.2...v2.3.3) (2023-08-10)
 
 ### [2.3.2](https://github.com/nuxt/telemetry/compare/v2.3.1...v2.3.2) (2023-07-22)

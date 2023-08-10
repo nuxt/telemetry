@@ -59,6 +59,9 @@ importers:
       parse-git-config:
         specifier: ^3.0.0
         version: 3.0.0
+      pathe:
+        specifier: ^1.1.1
+        version: 1.1.1
       rc9:
         specifier: ^2.1.1
         version: 2.1.1
@@ -68,7 +71,7 @@ importers:
     devDependencies:
       '@nuxt/module-builder':
         specifier: ^0.4.0
-        version: 0.4.0(@nuxt/kit@3.6.5)(nuxi@3.6.1)
+        version: 0.4.0(@nuxt/kit@3.6.5)(nuxi@3.6.5)
       '@nuxt/test-utils':
         specifier: ^3.6.5
         version: 3.6.5(rollup@3.26.0)(vitest@0.33.0)(vue@3.3.4)
@@ -910,7 +913,7 @@ packages:
       - rollup
       - supports-color
 
-  /@nuxt/module-builder@0.4.0(@nuxt/kit@3.6.5)(nuxi@3.6.1):
+  /@nuxt/module-builder@0.4.0(@nuxt/kit@3.6.5)(nuxi@3.6.5):
     resolution: {integrity: sha512-B+UAYgFV1Hkc2ZcD7GaiKZ3SNHhyxFlXzZoBWTc9ulE0Z/+rq6RTa9fNm13BZyGhVhDCl5FN/wF/yYa1O/D2iw==}
     hasBin: true
     peerDependencies:
@@ -921,7 +924,7 @@ packages:
       consola: 3.2.3
       mlly: 1.4.0
       mri: 1.2.0
-      nuxi: 3.6.1
+      nuxi: 3.6.5
       pathe: 1.1.1
       unbuild: 1.2.1
     transitivePeerDependencies:
@@ -4719,14 +4722,6 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
-
-  /nuxi@3.6.1:
-    resolution: {integrity: sha512-8kyDHfyiq0oLywon8UlucQWyYj3toE5AU96COjbuQy8ZzyRT6KJlAmMXmFkO/VuIhaMC8qdlcZPYg/NnHTVjaQ==}
-    engines: {node: ^14.18.0 || >=16.10.0}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
 
   /nuxi@3.6.5:
     resolution: {integrity: sha512-4XEXYz71UiWWiKC1/cJCzqRSUEImYRmjcvKpSsBKMU58ALYVSx5KIoas5SwLO8tEKO5BS4DAe4u7MYix7hfuHQ==}

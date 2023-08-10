@@ -1,4 +1,4 @@
-import path from 'path'
+import { resolve } from 'pathe'
 import fs from 'fs-extra'
 
 const FILE2PM = {
@@ -10,7 +10,7 @@ const FILE2PM = {
 
 export async function detectPackageManager (rootDir: string): Promise<string> {
   for (const file in FILE2PM) {
-    if (await fs.pathExists(path.resolve(rootDir, file))) {
+    if (await fs.pathExists(resolve(rootDir, file))) {
       // @ts-ignore
       return FILE2PM[file]
     }

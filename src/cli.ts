@@ -1,6 +1,6 @@
-import { resolve } from 'path'
 import { existsSync, readFileSync } from 'fs'
 import { homedir } from 'os'
+import { resolve } from 'pathe'
 import { destr } from 'destr'
 import mri from 'mri'
 import * as rc from 'rc9'

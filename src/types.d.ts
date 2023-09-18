@@ -1,4 +1,5 @@
 import type { Nuxt } from '@nuxt/schema'
+import { Telemetry } from './telemetry'
 
 export interface TelemetryOptions {
   debug: boolean
@@ -48,4 +49,10 @@ export interface GitData {
   source: string
   owner: string
   name: string
+}
+
+declare module '@nuxt/schema' {
+  interface NuxtHooks {
+    'telemetry:setup': (telemetry: Telemetry) => void
+  }
 }

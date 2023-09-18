@@ -48,7 +48,7 @@ export class Telemetry {
 
   async getPublicContext () {
     const context = await this.getContext()
-    const eventContext = {}
+    const eventContext: Record<string, any> = {}
     for (const key of [
       'nuxtVersion',
       'nuxtMajorVersion',
@@ -59,7 +59,7 @@ export class Telemetry {
       'environment',
       'projectHash',
       'projectSession'
-    ]) {
+    ] as const) {
       eventContext[key] = context[key]
     }
     return eventContext

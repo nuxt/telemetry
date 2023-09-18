@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.5.0
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.4.1...v2.5.0)
+
+### 🚀 Enhancements
+
+- Expose hooks for extensibility ([#111](https://github.com/nuxt/telemetry/pull/111))
+
+### 🏡 Chore
+
+- Migrate to `changelogen` ([f38eec4](https://github.com/nuxt/telemetry/commit/f38eec4))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Anthony Fu <anthonyfu117@hotmail.com>
+
 ### [2.4.1](https://github.com/nuxt/telemetry/compare/v2.4.0...v2.4.1) (2023-08-10)
 
 

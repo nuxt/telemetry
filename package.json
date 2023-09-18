@@ -30,7 +30,7 @@
     "lint": "eslint --ext .ts,.js,.vue .",
     "nuxt-telemetry": "jiti ./src/cli.ts",
     "prepack": "nuxt-module-build",
-    "release": "pnpm test && pnpm build && standard-version && git push --follow-tags && pnpm publish",
+    "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
     "test": "pnpm vitest run --coverage"
   },
   "dependencies": {
@@ -61,9 +61,9 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/fs-extra": "^11.0.2",
     "@vitest/coverage-v8": "^0.34.4",
+    "changelogen": "^0.5.5",
     "eslint": "^8.49.0",
     "nuxt": "^3.7.3",
-    "standard-version": "^9.5.0",
     "vitest": "^0.34.4"
   }
 }

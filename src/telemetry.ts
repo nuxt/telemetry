@@ -1,6 +1,6 @@
 import type { Nuxt } from '@nuxt/schema'
 import { postEvent } from './utils/post-event'
-import * as events from './events/index'
+import * as eventFactories from './events/index'
 import { createContext } from './context'
 import { EventFactory, TelemetryOptions, Context, EventFactoryResult } from './types'
 import { logger } from './utils/log'
@@ -11,6 +11,7 @@ export class Telemetry {
   storage: any // TODO
   _contextPromise?: Promise<Context>
   events: Promise<EventFactoryResult<any>>[] = []
+  eventFactories: Record<string, EventFactory<any>> = { ...eventFactories }
 
   constructor (nuxt: Nuxt, options: TelemetryOptions) {
     this.nuxt = nuxt
@@ -25,8 +26,7 @@ export class Telemetry {
   }
 
   createEvent (name: string, payload?: object): void | Promise<any> {
-    // @ts-ignore
-    const eventFactory: EventFactory<any> = (events as any)[name]
+    const eventFactory = this.eventFactories[name]
     if (typeof eventFactory !== 'function') {
       logger.warn('Unknown event:', name)
       return

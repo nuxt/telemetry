@@ -1,5 +1,5 @@
+import fs from 'fs'
 import { resolve } from 'pathe'
-import { pathExists } from 'fs-extra'
 
 const FILE2PM = {
   'yarn.lock': 'yarn',
@@ -8,9 +8,10 @@ const FILE2PM = {
   'pnpm-lock.yaml': 'pnpm'
 }
 
+// eslint-disable-next-line require-await
 export async function detectPackageManager (rootDir: string): Promise<string> {
   for (const file in FILE2PM) {
-    if (await pathExists(resolve(rootDir, file))) {
+    if (fs.existsSync(resolve(rootDir, file))) {
       // @ts-ignore
       return FILE2PM[file]
     }

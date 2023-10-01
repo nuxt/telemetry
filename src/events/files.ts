@@ -1,5 +1,5 @@
+import fs from 'fs'
 import { resolve } from 'pathe'
-import { pathExists } from 'fs-extra'
 import { resolvePath } from '@nuxt/kit'
 import { EventFactory } from '../types'
 
@@ -13,9 +13,9 @@ export interface FilesEvent {
 export const files = <EventFactory<FilesEvent>> async function (context) {
   const { options } = context.nuxt
 
-  const nuxtIgnore = await pathExists(resolve(options.rootDir, '.nuxtignore'))
-  const nuxtRc = await pathExists(resolve(options.rootDir, '.nuxtrc'))
-  const appConfig = await pathExists(await resolvePath('~/app.config'))
+  const nuxtIgnore = fs.existsSync(resolve(options.rootDir, '.nuxtignore'))
+  const nuxtRc = fs.existsSync(resolve(options.rootDir, '.nuxtrc'))
+  const appConfig = fs.existsSync(await resolvePath('~/app.config'))
 
   return {
     name: 'files',

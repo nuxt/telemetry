@@ -1,4 +1,4 @@
-import c from 'chalk'
+import { colors as c } from 'consola/utils'
 import { consola } from 'consola'
 import { isMinimal } from 'std-env'
 import isDocker from 'is-docker'

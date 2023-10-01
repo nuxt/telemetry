@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.5.2
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.5.1...v2.5.2)
+
+### 🩹 Fixes
+
+- Do not chain consola colors ([#116](https://github.com/nuxt/telemetry/pull/116))
+
+### ✅ Tests
+
+- Add type test and improve type-safety ([#117](https://github.com/nuxt/telemetry/pull/117))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Collins Lagat
+
 ## v2.5.1
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.5.0...v2.5.1)

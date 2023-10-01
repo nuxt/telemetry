@@ -32,7 +32,7 @@ export default defineNuxtModule<TelemetryOptions>({
       if (
         toptions.enabled === false ||
         _topLevelTelemetry === false ||
-        !await ensureUserconsent(toptions)
+        !(await ensureUserconsent(toptions))
       ) {
         logger.info('Telemetry disabled')
         return
@@ -47,7 +47,7 @@ export default defineNuxtModule<TelemetryOptions>({
       logger.info('Seed generated:', toptions.seed)
     }
 
-    const t = new Telemetry(nuxt, toptions)
+    const t = new Telemetry(nuxt, toptions as typeof toptions & { consent: number })
 
     nuxt.hook('modules:done', async () => {
       t.createEvent('project')

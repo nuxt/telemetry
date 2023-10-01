@@ -42,7 +42,6 @@ await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
   server: true,
   nuxtConfig: {
-    // @ts-expect-error TODO: ensure correct types
     telemetry: {
       enabled: true,
       debug: true,

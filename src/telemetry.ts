@@ -7,13 +7,13 @@ import { logger } from './utils/log'
 
 export class Telemetry {
   nuxt: Nuxt
-  options: TelemetryOptions
+  options: Required<TelemetryOptions>
   storage: any // TODO
   _contextPromise?: Promise<Context>
   events: Promise<EventFactoryResult<any>>[] = []
   eventFactories: Record<string, EventFactory<any>> = { ...eventFactories }
 
-  constructor (nuxt: Nuxt, options: TelemetryOptions) {
+  constructor (nuxt: Nuxt, options: Required<TelemetryOptions>) {
     this.nuxt = nuxt
     this.options = options
   }

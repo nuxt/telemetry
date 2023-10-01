@@ -7,7 +7,7 @@ import { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
-  if (options.consent >= consentVersion) {
+  if (options.consent && options.consent >= consentVersion) {
     return true
   }
 

@@ -31,7 +31,8 @@
     "nuxt-telemetry": "jiti ./src/cli.ts",
     "prepack": "nuxt-module-build build",
     "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
-    "test": "pnpm vitest run --coverage"
+    "test": "pnpm vitest run --coverage",
+    "test:types": "nuxt-module-build prepare && nuxi prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^3.7.4",
@@ -56,10 +57,14 @@
     "@nuxt/module-builder": "^0.5.2",
     "@nuxt/test-utils": "^3.7.4",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/git-url-parse": "^9.0.1",
+    "@types/parse-git-config": "^3.0.2",
     "@vitest/coverage-v8": "^0.34.6",
     "changelogen": "^0.5.5",
     "eslint": "^8.50.0",
     "nuxt": "^3.7.4",
-    "vitest": "^0.34.6"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "vue-tsc": "^1.8.15"
   }
 }

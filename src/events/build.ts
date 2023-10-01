@@ -14,6 +14,7 @@ export const build = <EventFactory<BuildEvent>> function ({ nuxt }, payload) {
   let isSuccess = true
 
   for (const [name, stat] of Object.entries<any>(payload.stats)) {
+    // @ts-expect-error TODO: add types for payload
     duration[name] = stat.duration
     // size[name] = stat.size
     if (!stat.success) {

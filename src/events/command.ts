@@ -15,9 +15,11 @@ export const command = <EventFactory<CommandEvent>> function ({ nuxt }) {
     _build: 'build',
     _serve: 'serve',
     _start: 'start'
-  }
+  } as const
 
-  for (const flag in flagMap) {
+  for (const _flag in flagMap) {
+    // TODO: remove legacy nuxt 2 flags _export and _serve
+    const flag = _flag as Exclude<keyof typeof flagMap, '_export' | '_serve'>
     if (nuxt.options[flag]) {
       command = flagMap[flag]
       break

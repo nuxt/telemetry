@@ -9,7 +9,7 @@ import { Context, GitData, TelemetryOptions } from './types'
 import { detectPackageManager } from './utils/detect-package-manager'
 import { hash } from './utils/hash'
 
-export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Promise<Context> {
+export async function createContext (nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
@@ -63,7 +63,8 @@ function getCLI () {
     nuxi: 'nuxi'
   }
 
-  for (const key in knownCLIs) {
+  for (const _key in knownCLIs) {
+    const key = _key as keyof typeof knownCLIs
     if (entry.includes(key)) {
       const edge = entry.includes('-edge') ? '-edge' : ''
       return knownCLIs[key] + edge

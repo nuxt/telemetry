@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.5.1
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.5.0...v2.5.1)
+
+### 🔥 Performance
+
+- Remove unnecessary dependencies ([#114](https://github.com/nuxt/telemetry/pull/114))
+
+### 🏡 Chore
+
+- Adopt new module-builder prepare mode ([#115](https://github.com/nuxt/telemetry/pull/115))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Anthony Fu <anthonyfu117@hotmail.com>
+
 ## v2.5.0
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.4.1...v2.5.0)

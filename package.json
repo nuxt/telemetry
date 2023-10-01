@@ -22,14 +22,14 @@
     "bin"
   ],
   "scripts": {
-    "build": "nuxt-module-build",
+    "build": "nuxt-module-build build",
     "dev": "NUXT_TELEMETRY_DEBUG=1 nuxi dev playground",
     "dev:build": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
     "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "lint": "eslint --ext .ts,.js,.vue .",
     "nuxt-telemetry": "jiti ./src/cli.ts",
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build build",
     "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
     "test": "pnpm vitest run --coverage"
   },

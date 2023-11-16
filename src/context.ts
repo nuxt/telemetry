@@ -13,7 +13,7 @@ export async function createContext (nuxt: Nuxt, options: TelemetryOptions): Pro
   const packageManager = await detectPackageManager(rootDir)
 
   const { seed } = options
-  const projectHash = await getProjectHash(rootDir, git, seed)
+  const projectHash = getProjectHash(rootDir, git, seed)
   const projectSession = getProjectSession(projectHash, seed)
 
   const nuxtVersion = ((nuxt.constructor as any).version || '').replace('v', '')

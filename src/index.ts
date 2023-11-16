@@ -7,7 +7,7 @@ import { Telemetry } from './telemetry'
 import { getStats } from './utils/build-stats'
 import { Stats, Nuxt, TelemetryOptions } from './types'
 import { ensureUserconsent } from './consent'
-import log from './utils/log'
+import { logger } from './utils/log'
 import { hash } from './utils/hash'
 
 async function _telemetryModule (nuxt) {
@@ -18,7 +18,7 @@ async function _telemetryModule (nuxt) {
   }
 
   if (!toptions.debug) {
-    log.level = -Infinity
+    logger.level = -Infinity
   }
 
   if (nuxt.options.telemetry !== true) {
@@ -27,17 +27,17 @@ async function _telemetryModule (nuxt) {
       nuxt.options.telemetry === false ||
       !await ensureUserconsent(toptions)
     ) {
-      log.info('Telemetry disabled')
+      logger.info('Telemetry disabled')
       return
     }
   }
 
-  log.info('Telemetry enabled')
+  logger.info('Telemetry enabled')
 
   if (!toptions.seed) {
     toptions.seed = hash(nanoid())
     updateUserNuxtRc('telemetry.seed', toptions.seed)
-    log.info('Seed generated:', toptions.seed)
+    logger.info('Seed generated:', toptions.seed)
   }
 
   const t = new Telemetry(nuxt, toptions)
@@ -66,7 +66,7 @@ const telemetryModule: Module<TelemetryOptions> = async function () {
   try {
     await _telemetryModule(this.nuxt)
   } catch (err) {
-    log.error(err)
+    logger.error(err)
   }
 }
 

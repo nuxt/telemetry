@@ -2,7 +2,7 @@ import { postEvent } from './utils/post-event'
 import * as events from './events/index'
 import { createContext } from './context'
 import { EventFactory, TelemetryOptions, Context, Nuxt, EventFactoryResult } from './types'
-import log from './utils/log'
+import { logger } from './utils/log'
 
 export class Telemetry {
   nuxt: Nuxt
@@ -28,7 +28,7 @@ export class Telemetry {
     // eslint-disable-next-line import/namespace
     const eventFactory: EventFactory<any> = events[name]
     if (typeof eventFactory !== 'function') {
-      log.warn('Unknown event:', name)
+      logger.warn('Unknown event:', name)
       return
     }
     const eventPromise = this._invokeEvent(name, eventFactory, payload)
@@ -42,7 +42,7 @@ export class Telemetry {
       event.name = name
       return event
     } catch (err) {
-      log.error('Error while running event:', err)
+      logger.error('Error while running event:', err)
     }
   }
 
@@ -78,11 +78,11 @@ export class Telemetry {
     if (this.options.endpoint) {
       const start = Date.now()
       try {
-        log.info('Sending events:', JSON.stringify(body, null, 2))
+        logger.info('Sending events:', JSON.stringify(body, null, 2))
         await postEvent(this.options.endpoint, body)
-        log.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
+        logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
       } catch (err) {
-        log.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
+        logger.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
       }
     }
   }

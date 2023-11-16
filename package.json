@@ -25,7 +25,7 @@
     "build": "nuxt-module-build build",
     "dev": "NUXT_TELEMETRY_DEBUG=1 nuxi dev playground",
     "dev:build": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
-    "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
+    "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi generate playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "lint": "eslint --ext .ts,.js,.vue .",
     "nuxt-telemetry": "jiti ./src/cli.ts",

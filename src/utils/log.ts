@@ -1,3 +1,3 @@
-import consola from 'consola'
+import { ConsolaInstance, consola } from 'consola'
 
-export default consola.withScope('@nuxt/telemetry')
+export const logger = consola.withTag('@nuxt/telemetry') as ConsolaInstance

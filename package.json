@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.7.4",
-    "ci-info": "^3.8.0",
+    "ci-info": "^4.0.0",
     "consola": "^3.2.3",
     "create-require": "^1.1.1",
     "defu": "^6.1.2",

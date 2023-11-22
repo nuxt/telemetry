@@ -1,6 +1,6 @@
 import { fetch } from 'ofetch'
 import { version } from '../meta'
-import { Event } from '../types'
+import type { Event } from '../types'
 
 interface EventBody {
   timestamp: number

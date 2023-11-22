@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { resolve } from 'pathe'
 import { resolvePath } from '@nuxt/kit'
-import { EventFactory } from '../types'
+import type { EventFactory } from '../types'
 
 export interface FilesEvent {
   name: 'files',

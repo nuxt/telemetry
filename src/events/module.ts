@@ -1,4 +1,4 @@
-import { EventFactory } from '../types'
+import type { EventFactory } from '../types'
 
 export interface ModuleEvent {
   name: 'module'

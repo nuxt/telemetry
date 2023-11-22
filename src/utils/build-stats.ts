@@ -1,4 +1,4 @@
-import { Stats } from '../types'
+import type { Stats } from '../types'
 
 export function getStats (stats: Stats) {
   const duration = stats.endTime - stats.startTime

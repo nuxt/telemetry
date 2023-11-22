@@ -53,6 +53,13 @@ await setup({
 describe('@nuxt/telemetry', () => {
   it('should build project', async () => {
     await $fetch('/')
+    for (const log of logs) {
+      const devtoolLog = log.body.events.find((event: any) => event.moduleName === '@nuxt/devtools')
+      expect(devtoolLog.timing).toBeDefined()
+      expect(devtoolLog.version).toBeDefined()
+      delete devtoolLog.timing
+      delete devtoolLog.version
+    }
     expect(logs).toMatchInlineSnapshot(`
       [
         {
@@ -73,6 +80,10 @@ describe('@nuxt/telemetry', () => {
               {
                 "command": "unknown",
                 "name": "command",
+              },
+              {
+                "moduleName": "@nuxt/devtools",
+                "name": "module",
               },
             ],
           },

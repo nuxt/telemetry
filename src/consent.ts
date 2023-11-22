@@ -3,7 +3,7 @@ import { consola } from 'consola'
 import { isMinimal } from 'std-env'
 import isDocker from 'is-docker'
 import { updateUserNuxtRc } from './utils/nuxtrc'
-import { TelemetryOptions } from './types'
+import type { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
 export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {

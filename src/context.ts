@@ -5,7 +5,7 @@ import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
-import { Context, GitData, TelemetryOptions } from './types'
+import type { Context, GitData, TelemetryOptions } from './types'
 import { detectPackageManager } from './utils/detect-package-manager'
 import { hash } from './utils/hash'
 

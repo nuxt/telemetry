@@ -2,7 +2,7 @@ import type { Nuxt } from '@nuxt/schema'
 import { postEvent } from './utils/post-event'
 import * as eventFactories from './events/index'
 import { createContext } from './context'
-import { EventFactory, TelemetryOptions, Context, EventFactoryResult } from './types'
+import type { EventFactory, TelemetryOptions, Context, EventFactoryResult } from './types'
 import { logger } from './utils/log'
 
 export class Telemetry {

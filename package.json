@@ -1,7 +1,7 @@
 {
   "name": "@nuxt/telemetry",
   "packageManager": "pnpm@8.10.5",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "repository": "nuxt/telemetry",
   "license": "MIT",
   "type": "module",

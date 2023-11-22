@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.5.3
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.5.2...v2.5.3)
+
+### 🏡 Chore
+
+- Fix generate command ([e2cbc66](https://github.com/nuxt/telemetry/commit/e2cbc66))
+
+### ❤️ Contributors
+
+- Sébastien Chopin ([@Atinux](http://github.com/Atinux))
+
 ## v2.5.2
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.5.1...v2.5.2)

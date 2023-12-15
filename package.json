@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.12.1",
   "version": "2.5.3",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -51,7 +51,7 @@
     "parse-git-config": "^3.0.0",
     "pathe": "^1.1.1",
     "rc9": "^2.1.1",
-    "std-env": "^3.5.0"
+    "std-env": "^3.6.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.4",
@@ -61,10 +61,10 @@
     "@types/parse-git-config": "^3.0.4",
     "@vitest/coverage-v8": "^1.0.4",
     "changelogen": "^0.5.5",
-    "eslint": "^8.54.0",
+    "eslint": "^8.55.0",
     "nuxt": "^3.8.2",
-    "typescript": "^5.3.2",
+    "typescript": "^5.3.3",
     "vitest": "^1.0.4",
-    "vue-tsc": "^1.8.22"
+    "vue-tsc": "^1.8.25"
   }
 }

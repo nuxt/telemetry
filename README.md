@@ -20,7 +20,7 @@ We collect multiple events:
 - Versions of Nuxt and Node.js
 - General machine information (MacOS/Linux/Windows and if the command is run within CI, ci name)
 - Duration of the Webpack build and average size of the application, as well as the generation stats (when using `nuxt generate` or `nuxt export`)
-- What are the *public dependencies* of your project (Nuxt modules)
+- Your project's *public dependencies* (Nuxt modules)
 
 You can see the list of events in [lib/events](./src/events).
 

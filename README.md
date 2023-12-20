@@ -6,9 +6,9 @@ This program is optional. You will be asked on first time to get permission and 
 
 ## Why collecting Telemetry?
 
-Nuxt has grown a lot from its [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we are keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
+Nuxt has grown a lot from its [initial release](https://github.com/nuxt/nuxt.js/releases/tag/v0.2.0) (7 Nov 2016) and we keep listening to [community feedback](https://github.com/nuxt/nuxt.js/issues) to improve it.
 
-However, this manual process only collects feedback from a subset of users that takes the time to fill the issue template and it may have different needs or use-case than you.
+However, this manual process only collects feedback from a subset of users that take the time to fill the issue template and it may have different needs or use-case than you.
 
 Nuxt Telemetry collects anonymous telemetry data about general usage. This helps us to accurately gauge feature usage and customization across all our users. This data will let us better understand how Nuxt is used globally, measuring improvements made (DX and performances) and their relevance.
 
@@ -18,9 +18,9 @@ We collect multiple events:
 
 - Command invoked (`nuxt dev`, `nuxt build`, etc)
 - Versions of Nuxt and Node.js
-- General machine informations (MacOS/Linux/Windows and if command is run within CI, ci name)
+- General machine information (MacOS/Linux/Windows and if the command is run within CI, ci name)
 - Duration of the Webpack build and average size of the application, as well as the generation stats (when using `nuxt generate` or `nuxt export`)
-- What are the *public dependency* of your project (Nuxt modules)
+- Your project's *public dependencies* (Nuxt modules)
 
 You can see the list of events in [lib/events](./src/events).
 
@@ -55,7 +55,7 @@ The data we collect is completely anonymous, not traceable to the source (using 
 
 ## Opting-out
 
-You can disable Nuxt Telemetry for your project with several ways:
+You can disable Nuxt Telemetry for your project in several ways:
 
 1. Setting `telemetry: false` in your `nuxt.config`:
 
@@ -79,7 +79,7 @@ npx nuxt telemetry [status|enable|disable] [-g,--global] [dir]
 
 ## Skip Prompt
 
-If you encounter problems with consent prompt, and want to participate without asking this question, you can set `telemetry: true` from `nuxt.config`:
+If you encounter problems with the consent prompt and want to participate without being asked this question, you can set `telemetry: true` from `nuxt.config`:
 
 ```js
 export default {

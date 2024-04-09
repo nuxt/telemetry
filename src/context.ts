@@ -66,7 +66,7 @@ function getCLI () {
   for (const _key in knownCLIs) {
     const key = _key as keyof typeof knownCLIs
     if (entry.includes(key)) {
-      const edge = entry.includes('-edge') ? '-edge' : ''
+      const edge = entry.includes('-edge') ? '-edge' : (entry.includes('-nightly') ? '-nightly' : '')
       return knownCLIs[key] + edge
     }
   }

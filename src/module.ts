@@ -40,7 +40,7 @@ export default defineNuxtModule<TelemetryOptions>({
 
     logger.info('Telemetry enabled')
 
-    if (!toptions.seed) {
+    if (!toptions.seed || typeof toptions.seed !== 'string') {
       toptions.seed = hash(nanoid())
       updateUserNuxtRc('telemetry.seed', toptions.seed)
       logger.info('Seed generated:', toptions.seed)

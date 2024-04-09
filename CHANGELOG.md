@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.5.4
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.5.3...v2.5.4)
+
+### 🩹 Fixes
+
+- Respect `nightly` suffix ([de51475](https://github.com/nuxt/telemetry/commit/de51475))
+- Regenerate seed if it has been cast to a number ([2a2a650](https://github.com/nuxt/telemetry/commit/2a2a650))
+
+### 📖 Documentation
+
+- Update grammar ([#126](https://github.com/nuxt/telemetry/pull/126))
+
+### 🏡 Chore
+
+- Bump `rc9` dependency ([f9debb1](https://github.com/nuxt/telemetry/commit/f9debb1))
+
+### 🤖 CI
+
+- Run in node 18 ([da0ead0](https://github.com/nuxt/telemetry/commit/da0ead0))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+- Michael Brevard <yonshi29@gmail.com>
+
 ## v2.5.3
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.5.2...v2.5.3)

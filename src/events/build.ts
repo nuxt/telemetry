@@ -26,7 +26,7 @@ export const build = <EventFactory<BuildEvent>> function ({ nuxt }, payload) {
     name: 'build',
     isSuccess,
     isDev: nuxt.options.dev || false,
-    duration
+    duration,
     // size
   }
 }

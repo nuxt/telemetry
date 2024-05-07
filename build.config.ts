@@ -2,9 +2,9 @@ import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   rollup: {
-    cjsBridge: false
+    cjsBridge: false,
   },
   entries: [
-    'src/cli'
-  ]
+    'src/cli',
+  ],
 })

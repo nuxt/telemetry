@@ -13,15 +13,15 @@ export type ModuleOptions = boolean | TelemetryOptions
 export default defineNuxtModule<TelemetryOptions>({
   meta: {
     name: '@nuxt/telemetry',
-    configKey: 'telemetry'
+    configKey: 'telemetry',
   },
   defaults: {
     endpoint: process.env.NUXT_TELEMETRY_ENDPOINT || 'https://telemetry.nuxt.com',
     debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
     enabled: undefined as any,
-    seed: undefined as any
+    seed: undefined as any,
   },
-  async setup (toptions, nuxt) {
+  async setup(toptions, nuxt) {
     if (!toptions.debug) {
       logger.level = 0
     }
@@ -29,9 +29,9 @@ export default defineNuxtModule<TelemetryOptions>({
     const _topLevelTelemetry = (nuxt.options as any).telemetry
     if (_topLevelTelemetry !== true) {
       if (
-        toptions.enabled === false ||
-        _topLevelTelemetry === false ||
-        !(await ensureUserconsent(toptions))
+        toptions.enabled === false
+        || _topLevelTelemetry === false
+        || !(await ensureUserconsent(toptions))
       ) {
         logger.info('Telemetry disabled')
         return
@@ -60,7 +60,7 @@ export default defineNuxtModule<TelemetryOptions>({
       await nuxt.callHook('telemetry:setup', t)
       t.sendEvents(toptions.debug)
     })
-  }
+  },
 })
 
 // TODO

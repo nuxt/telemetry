@@ -6,7 +6,7 @@ import { updateUserNuxtRc } from './utils/nuxtrc'
 import type { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
 
-export async function ensureUserconsent (options: TelemetryOptions): Promise<boolean> {
+export async function ensureUserconsent(options: TelemetryOptions): Promise<boolean> {
   if (options.consent && options.consent >= consentVersion) {
     return true
   }
@@ -22,7 +22,7 @@ export async function ensureUserconsent (options: TelemetryOptions): Promise<boo
   Read more on ${c.underline(c.cyan('https://github.com/nuxt/telemetry'))}\n`)
 
   const accepted = await consola.prompt('Are you interested in participating?', {
-    type: 'confirm'
+    type: 'confirm',
   })
   process.stdout.write('\n')
   consola.wrapAll()

@@ -1,13 +1,13 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import { resolve } from 'pathe'
 import { resolvePath } from '@nuxt/kit'
 import type { EventFactory } from '../types'
 
 export interface FilesEvent {
-  name: 'files',
-  nuxtIgnore: boolean,
-  nuxtRc: boolean,
-  appConfig: boolean,
+  name: 'files'
+  nuxtIgnore: boolean
+  nuxtRc: boolean
+  appConfig: boolean
 }
 
 export const files = <EventFactory<FilesEvent>> async function (context) {
@@ -21,6 +21,6 @@ export const files = <EventFactory<FilesEvent>> async function (context) {
     name: 'files',
     nuxtIgnore,
     nuxtRc,
-    appConfig
+    appConfig,
   }
 }

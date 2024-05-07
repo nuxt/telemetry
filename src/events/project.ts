@@ -1,7 +1,7 @@
 import type { EventFactory } from '../types'
 
 export interface ProjectEvent {
-  name: 'project',
+  name: 'project'
   type: 'git' | 'local'
   isSSR: boolean
   target: string
@@ -15,6 +15,6 @@ export const project = <EventFactory<ProjectEvent>> function (context) {
     type: (context.git && context.git.url) ? 'git' : 'local',
     isSSR: options.ssr !== false,
     target: options._generate ? 'static' : 'server',
-    packageManager: context.packageManager
+    packageManager: context.packageManager,
   }
 }

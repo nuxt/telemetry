@@ -96,7 +96,9 @@ function _run() {
         return 'by ' + _require.resolve('./nuxt.config')
       }
     }
-    catch (_) {}
+    catch (_) {
+      // Ignore if we do not have `nuxt.config`
+    }
 
     // Projct .nuxtrc
     if (disabledByConf(rc.read({ name: RC_FILENAME, dir }))) {

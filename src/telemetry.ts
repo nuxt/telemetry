@@ -25,7 +25,7 @@ export class Telemetry {
     return this._contextPromise
   }
 
-  createEvent(name: string, payload?: object): void | Promise<any> {
+  createEvent(name: string, payload?: object): undefined | Promise<any> {
     const eventFactory = this.eventFactories[name]
     if (typeof eventFactory !== 'function') {
       logger.warn('Unknown event:', name)

@@ -11,4 +11,9 @@ export default createConfigForNuxt({
       './playground',
     ],
   },
+}).append({
+  rules: {
+    // TODO: improve type safety
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
 })

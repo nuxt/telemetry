@@ -11,8 +11,7 @@ const FILE2PM = {
 export async function detectPackageManager(rootDir: string): Promise<string> {
   for (const file in FILE2PM) {
     if (fs.existsSync(resolve(rootDir, file))) {
-      // @ts-expect-error
-      return FILE2PM[file]
+      return FILE2PM[file as keyof typeof FILE2PM]
     }
   }
   return 'unknown'

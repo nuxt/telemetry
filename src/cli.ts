@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from 'fs'
-import { homedir } from 'os'
+import { existsSync, readFileSync } from 'node:fs'
+import { homedir } from 'node:os'
 import { resolve } from 'pathe'
 import { destr } from 'destr'
 import mri from 'mri'
@@ -15,22 +15,22 @@ import { ensureUserconsent } from './consent'
 export const usage = 'npx nuxt-telemetry `status`|`enable`|`disable`|`consent` [`-g`,`--global`] [`dir`]'
 const RC_FILENAME = '.nuxtrc'
 
-function _run () {
+function _run() {
   const _argv = process.argv.slice(2)
   const args = mri(_argv, {
     boolean: [
-      '--global'
+      '--global',
     ],
     alias: {
-      '-g': '--global'
-    }
+      '-g': '--global',
+    },
   })
   const [command, _dir = '.'] = args._
   const dir = resolve(process.cwd(), _dir)
   const global = args['--global']
 
-  if (!global && !existsSync(resolve(dir, 'nuxt.config.js')) &&
-    !existsSync(resolve(dir, 'nuxt.config.ts'))) {
+  if (!global && !existsSync(resolve(dir, 'nuxt.config.js'))
+    && !existsSync(resolve(dir, 'nuxt.config.ts'))) {
     consola.error('It seems you are not in a nuxt project!')
     consola.info('You can try with providing dir or using `-g`')
     showUsage()
@@ -57,7 +57,7 @@ function _run () {
       showUsage()
   }
 
-  async function _prompt () {
+  async function _prompt() {
     const accepted = await ensureUserconsent({} as any) // <-- always sets global
     if (accepted && !global) {
       setRC('telemetry.enabled', true)
@@ -66,7 +66,7 @@ function _run () {
     showStatus()
   }
 
-  function _checkDisabled (): string | false | undefined {
+  function _checkDisabled(): string | false | undefined {
     // test
     if (isTest) {
       return 'Because running in test environment'
@@ -86,8 +86,8 @@ function _run () {
       }
     }
 
-    const disabledByConf = (conf: any) => conf.telemetry === false ||
-      (conf.telemetry && conf.telemetry.enabled === false)
+    const disabledByConf = (conf: any) => conf.telemetry === false
+      || (conf.telemetry && conf.telemetry.enabled === false)
 
     // nuxt.config
     try {
@@ -95,7 +95,8 @@ function _run () {
       if (disabledByConf(_require('./nuxt.config'))) {
         return 'by ' + _require.resolve('./nuxt.config')
       }
-    } catch (_) {}
+    }
+    catch (_) {}
 
     // Projct .nuxtrc
     if (disabledByConf(rc.read({ name: RC_FILENAME, dir }))) {
@@ -108,34 +109,37 @@ function _run () {
     }
   }
 
-  function showStatus () {
+  function showStatus() {
     const disabled = _checkDisabled()
     if (disabled) {
       consola.info(`Nuxt telemetry is ${c.yellow('disabled')} ${disabled}`)
-    } else {
+    }
+    else {
       consola.info(`Nuxt telemetry is ${c.green('enabled')}`, global ? 'on machine' : 'on current project')
     }
   }
 
-  function showUsage () {
+  function showUsage() {
     consola.info(`Usage: ${usage}`)
     process.exit(0)
   }
 
-  function setRC (key: any, val: any) {
+  function setRC(key: any, val: any) {
     const update = { [key]: val }
     if (global) {
       rc.updateUser(update, RC_FILENAME)
-    } else {
+    }
+    else {
       rc.update(update, { name: RC_FILENAME, dir })
     }
   }
 }
 
-export function main () {
+export function main() {
   try {
     _run()
-  } catch (err) {
+  }
+  catch (err) {
     consola.fatal(err)
     process.exit(1)
   }

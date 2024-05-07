@@ -1,5 +1,5 @@
 import type { Nuxt } from '@nuxt/schema'
-import { Telemetry } from './telemetry'
+import type { Telemetry } from './telemetry'
 
 export interface TelemetryOptions {
   debug: boolean
@@ -22,7 +22,7 @@ export interface Context {
   os: string
   git?: { url: string }
   environment: string | null
-  packageManager: string,
+  packageManager: string
   concent: number
 }
 

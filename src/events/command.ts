@@ -14,7 +14,7 @@ export const command = <EventFactory<CommandEvent>> function ({ nuxt }) {
     _export: 'export',
     _build: 'build',
     _serve: 'serve',
-    _start: 'start'
+    _start: 'start',
   } as const
 
   for (const _flag in flagMap) {
@@ -28,6 +28,6 @@ export const command = <EventFactory<CommandEvent>> function ({ nuxt }) {
 
   return {
     name: 'command',
-    command
+    command,
   }
 }

@@ -46,9 +46,9 @@ await setup({
       enabled: true,
       debug: true,
       consent: 1,
-      endpoint: `http://localhost:${port}/`
-    }
-  }
+      endpoint: `http://localhost:${port}/`,
+    },
+  },
 })
 describe('@nuxt/telemetry', () => {
   it('should build project', async () => {

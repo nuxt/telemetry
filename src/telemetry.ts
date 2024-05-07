@@ -13,19 +13,19 @@ export class Telemetry {
   events: Promise<EventFactoryResult<any>>[] = []
   eventFactories: Record<string, EventFactory<any>> = { ...eventFactories }
 
-  constructor (nuxt: Nuxt, options: Required<TelemetryOptions>) {
+  constructor(nuxt: Nuxt, options: Required<TelemetryOptions>) {
     this.nuxt = nuxt
     this.options = options
   }
 
-  getContext (): Promise<Context> {
+  getContext(): Promise<Context> {
     if (!this._contextPromise) {
       this._contextPromise = createContext(this.nuxt, this.options)
     }
     return this._contextPromise
   }
 
-  createEvent (name: string, payload?: object): void | Promise<any> {
+  createEvent(name: string, payload?: object): void | Promise<any> {
     const eventFactory = this.eventFactories[name]
     if (typeof eventFactory !== 'function') {
       logger.warn('Unknown event:', name)
@@ -35,18 +35,19 @@ export class Telemetry {
     this.events.push(eventPromise)
   }
 
-  async _invokeEvent (name: string, eventFactory: EventFactory<any>, payload?: object): Promise<any> {
+  async _invokeEvent(name: string, eventFactory: EventFactory<any>, payload?: object): Promise<any> {
     try {
       const context = await this.getContext()
       const event = await eventFactory(context, payload)
       event.name = name
       return event
-    } catch (err) {
+    }
+    catch (err) {
       logger.error('Error while running event:', err)
     }
   }
 
-  async getPublicContext () {
+  async getPublicContext() {
     const context = await this.getContext()
     const eventContext: Record<string, any> = {}
     for (const key of [
@@ -58,14 +59,14 @@ export class Telemetry {
       'os',
       'environment',
       'projectHash',
-      'projectSession'
+      'projectSession',
     ] as const) {
       eventContext[key] = context[key]
     }
     return eventContext
   }
 
-  async sendEvents (debug?: boolean) {
+  async sendEvents(debug?: boolean) {
     const events: EventFactoryResult<any>[] = [].concat(...(await Promise.all(this.events)).filter(Boolean))
     this.events = []
     const context = await this.getPublicContext()
@@ -73,7 +74,7 @@ export class Telemetry {
     const body = {
       timestamp: Date.now(),
       context,
-      events
+      events,
     }
 
     if (this.options.endpoint) {
@@ -86,7 +87,8 @@ export class Telemetry {
         if (debug) {
           logger.success(`Events sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)`)
         }
-      } catch (err) {
+      }
+      catch (err) {
         if (debug) {
           logger.error(`Error sending sent to \`${this.options.endpoint}\` (${Date.now() - start} ms)\n`, err)
         }

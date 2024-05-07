@@ -1,4 +1,4 @@
-import os from 'os'
+import os from 'node:os'
 import gitUrlParse from 'git-url-parse'
 import parseGitConfig from 'parse-git-config'
 import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
@@ -9,7 +9,7 @@ import type { Context, GitData, TelemetryOptions } from './types'
 import { detectPackageManager } from './utils/detect-package-manager'
 import { hash } from './utils/hash'
 
-export async function createContext (nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
+export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = await detectPackageManager(rootDir)
@@ -37,11 +37,11 @@ export async function createContext (nuxt: Nuxt, options: Required<TelemetryOpti
     os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
     packageManager,
-    concent: options.consent
+    concent: options.consent,
   }
 }
 
-function getEnv (): Context['environment'] {
+function getEnv(): Context['environment'] {
   if (provider) {
     return provider
   }
@@ -53,14 +53,14 @@ function getEnv (): Context['environment'] {
   return 'unknown'
 }
 
-function getCLI () {
+function getCLI() {
   const entry = process.argv[1]
 
   const knownCLIs = {
     'nuxt-ts.js': 'nuxt-ts',
     'nuxt-start.js': 'nuxt-start',
     'nuxt.js': 'nuxt',
-    nuxi: 'nuxi'
+    'nuxi': 'nuxi',
   }
 
   for (const _key in knownCLIs) {
@@ -73,23 +73,24 @@ function getCLI () {
   return 'programmatic'
 }
 
-function getProjectSession (projectHash: string, sessionId: string) {
+function getProjectSession(projectHash: string, sessionId: string) {
   return hash(`${projectHash}#${sessionId}`)
 }
 
-function getProjectHash (rootDir: string, git?: GitData, seed?: string) {
+function getProjectHash(rootDir: string, git?: GitData, seed?: string) {
   let id
 
   if (git && git.url) {
     id = `${git.source}#${git.owner}#${git.name}`
-  } else {
+  }
+  else {
     id = `${rootDir}#${seed}`
   }
 
   return hash(id)
 }
 
-async function getGitRemote (rootDir: string): Promise<string | null> {
+async function getGitRemote(rootDir: string): Promise<string | null> {
   try {
     const parsed = await parseGitConfig({ cwd: rootDir })
     if (parsed) {
@@ -97,12 +98,13 @@ async function getGitRemote (rootDir: string): Promise<string | null> {
       return gitRemote
     }
     return null
-  } catch (err) {
+  }
+  catch (err) {
     return null
   }
 }
 
-async function getGit (rootDir: string): Promise<GitData | undefined> {
+async function getGit(rootDir: string): Promise<GitData | undefined> {
   const gitRemote = await getGitRemote(rootDir)
 
   if (!gitRemote) {
@@ -117,6 +119,6 @@ async function getGit (rootDir: string): Promise<GitData | undefined> {
     gitRemote,
     source: meta.source,
     owner: meta.owner,
-    name: meta.name
+    name: meta.name,
   }
 }

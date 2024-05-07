@@ -8,6 +8,6 @@ export interface SessionEvent {
 export const session = <EventFactory<SessionEvent>> function ({ seed }) {
   return {
     name: 'session',
-    id: seed
+    id: seed,
   }
 }

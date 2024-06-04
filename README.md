@@ -73,8 +73,10 @@ NUXT_TELEMETRY_DISABLED=1
 
 3. Using `npx nuxt telemetry disable`
 
+<!-- TODO: npx nuxt telemetry  -->
+
 ```bash
-npx nuxt telemetry [status|enable|disable] [-g,--global] [dir]
+npx @nuxt/telemetry [status|enable|disable] [-g,--global] [dir]
 ```
 
 ## Skip Prompt

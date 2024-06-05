@@ -71,7 +71,7 @@ export default {
 NUXT_TELEMETRY_DISABLED=1
 ```
 
-3. Using `npx nuxt telemetry disable`
+3. Using `npx @nuxt/telemetry disable`
 
 <!-- TODO: npx nuxt telemetry  -->
 

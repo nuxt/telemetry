@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.0
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.5.4...v2.6.0)
+
+### 🚀 Enhancements
+
+- Use `package-manager-detector` ([a6b67a3](https://github.com/nuxt/telemetry/commit/a6b67a3))
+
+### 📖 Documentation
+
+- Update command for disabling telemetry ([5f79cad](https://github.com/nuxt/telemetry/commit/5f79cad))
+- Update telemetry disable command ([#142](https://github.com/nuxt/telemetry/pull/142))
+
+### 🏡 Chore
+
+- Update renovate config ([#135](https://github.com/nuxt/telemetry/pull/135))
+- Migrate to eslint v9 ([#137](https://github.com/nuxt/telemetry/pull/137))
+- Sort ([fa6307d](https://github.com/nuxt/telemetry/commit/fa6307d))
+- Add CODEOWNERS ([2aa57c9](https://github.com/nuxt/telemetry/commit/2aa57c9))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+- Flowern <fwerndl@gmail.com>
+- Gangan ([@shinGangan](http://github.com/shinGangan))
+
 ## v2.5.4
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.5.3...v2.5.4)

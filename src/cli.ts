@@ -96,7 +96,7 @@ function _run() {
         return 'by ' + _require.resolve('./nuxt.config')
       }
     }
-    catch (_) {
+    catch {
       // Ignore if we do not have `nuxt.config`
     }
 

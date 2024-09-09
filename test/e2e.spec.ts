@@ -73,7 +73,7 @@ describe('@nuxt/telemetry', () => {
               {
                 "isSSR": true,
                 "name": "project",
-                "packageManager": "unknown",
+                "packageManager": "pnpm",
                 "target": "server",
                 "type": "git",
               },

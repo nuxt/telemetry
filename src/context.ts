@@ -5,14 +5,14 @@ import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
+import { detect } from 'package-manager-detector'
 import type { Context, GitData, TelemetryOptions } from './types'
-import { detectPackageManager } from './utils/detect-package-manager'
 import { hash } from './utils/hash'
 
 export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
-  const packageManager = await detectPackageManager(rootDir)
+  const packageManager = await detect({ cwd: rootDir })
 
   const { seed } = options
   const projectHash = await getProjectHash(rootDir, git, seed)
@@ -36,7 +36,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
     nodeVersion,
     os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
-    packageManager,
+    packageManager: packageManager?.name || 'unknown',
     concent: options.consent,
   }
 }

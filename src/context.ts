@@ -99,7 +99,7 @@ async function getGitRemote(rootDir: string): Promise<string | null> {
     }
     return null
   }
-  catch (err) {
+  catch {
     return null
   }
 }

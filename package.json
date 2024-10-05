@@ -48,7 +48,7 @@
     "mri": "^1.2.0",
     "nanoid": "^5.0.7",
     "ofetch": "^1.4.0",
-    "package-manager-detector": "^0.2.0",
+    "package-manager-detector": "^0.2.1",
     "parse-git-config": "^3.0.0",
     "pathe": "^1.1.2",
     "rc9": "^2.1.2",

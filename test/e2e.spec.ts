@@ -16,7 +16,7 @@ const app = createApp().use(defineEventHandler(async (event) => {
   delete body.context.nodeVersion
   expect(body.context.nuxtVersion).toBeDefined()
   delete body.context.nuxtVersion
-  expect(body.context.os).toEqual(os.type())
+  expect(body.context.os).toEqual(os.type().toLocaleLowerCase())
   delete body.context.os
   expect(body.context.projectHash).toBeDefined()
   expect(body.context.projectSession).toBeDefined()

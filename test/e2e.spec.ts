@@ -1,5 +1,6 @@
 import { createServer } from 'node:http'
 import { fileURLToPath } from 'node:url'
+import os from 'node:os'
 
 import { getRandomPort } from 'get-port-please'
 import { createApp, readBody, toNodeListener, defineEventHandler } from 'h3'
@@ -15,7 +16,7 @@ const app = createApp().use(defineEventHandler(async (event) => {
   delete body.context.nodeVersion
   expect(body.context.nuxtVersion).toBeDefined()
   delete body.context.nuxtVersion
-  expect(body.context.os).toEqual(process.platform)
+  expect(body.context.os).toEqual(os.type())
   delete body.context.os
   expect(body.context.projectHash).toBeDefined()
   expect(body.context.projectSession).toBeDefined()

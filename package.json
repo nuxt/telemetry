@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "version": "2.6.0",
   "repository": "nuxt/telemetry",
   "license": "MIT",

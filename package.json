@@ -42,7 +42,7 @@
     "defu": "^6.1.4",
     "destr": "^2.0.3",
     "dotenv": "^16.4.5",
-    "git-url-parse": "^15.0.0",
+    "git-url-parse": "^16.0.0",
     "is-docker": "^3.0.0",
     "jiti": "^2.4.0",
     "mri": "^1.2.0",

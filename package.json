@@ -35,7 +35,7 @@
     "test:types": "nuxt-module-build prepare && nuxi prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.14.159",
+    "@nuxt/kit": "^3.14.1592",
     "ci-info": "^4.1.0",
     "consola": "^3.2.3",
     "create-require": "^1.1.1",
@@ -63,7 +63,7 @@
     "@vitest/coverage-v8": "^2.1.5",
     "changelogen": "^0.5.7",
     "eslint": "^9.15.0",
-    "nuxt": "^3.14.159",
+    "nuxt": "^3.14.1592",
     "typescript": "^5.6.3",
     "vitest": "^2.1.5",
     "vue-tsc": "^2.1.10"

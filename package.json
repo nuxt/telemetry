@@ -57,7 +57,7 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.1",
     "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/test-utils": "^3.14.4",
+    "@nuxt/test-utils": "^3.15.0",
     "@types/git-url-parse": "^9.0.3",
     "@types/parse-git-config": "^3.0.4",
     "@vitest/coverage-v8": "^2.1.5",

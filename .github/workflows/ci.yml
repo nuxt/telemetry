@@ -19,8 +19,8 @@ jobs:
           node-version: 20
           cache: "pnpm"
       - run: pnpm install
-      - run: pnpm installed-check -d
-      - run: pnpm knip
+      - run: pnpm test:engines
+      - run: pnpm test:knip
   ci:
     strategy:
       matrix:

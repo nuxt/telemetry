@@ -32,6 +32,8 @@
     "prepack": "nuxt-module-build build",
     "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
     "test": "vitest run",
+    "test:engines": "installed-check -d --no-workspaces",
+    "test:knip": "knip",
     "test:types": "nuxt-module-build prepare && nuxi prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface ProjectEvent {
+interface ProjectEvent {
   name: 'project'
   type: 'git' | 'local'
   isSSR: boolean

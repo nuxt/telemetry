@@ -1,12 +1,11 @@
 import { destr } from 'destr'
-import { nanoid } from 'nanoid'
 import { defineNuxtModule } from '@nuxt/kit'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
 import type { TelemetryOptions } from './types'
 import { ensureUserconsent } from './consent'
 import { logger } from './utils/log'
-import { hash } from './utils/hash'
+import { randomSeed } from './utils/hash'
 
 export type ModuleOptions = boolean | TelemetryOptions
 
@@ -41,7 +40,7 @@ export default defineNuxtModule<TelemetryOptions>({
     logger.info('Telemetry enabled')
 
     if (!toptions.seed || typeof toptions.seed !== 'string') {
-      toptions.seed = hash(nanoid())
+      toptions.seed = randomSeed()
       updateUserNuxtRc('telemetry.seed', toptions.seed)
       logger.info('Seed generated:', toptions.seed)
     }

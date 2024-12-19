@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.1
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.6.0...v2.6.1)
+
+### 🔥 Performance
+
+- Remove unused dependencies ([#195](https://github.com/nuxt/telemetry/pull/195))
+
+### 🤖 CI
+
+- Run test suite on windows ([#165](https://github.com/nuxt/telemetry/pull/165))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+
 ## v2.6.0
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.5.4...v2.6.0)

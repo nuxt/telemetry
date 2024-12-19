@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface ExportEvent {
+interface ExportEvent {
   name: 'generate'
   isExport: boolean
   routesCount: number

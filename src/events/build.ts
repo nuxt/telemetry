@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface BuildEvent {
+interface BuildEvent {
   name: 'build'
   isSuccess: boolean
   isDev: boolean

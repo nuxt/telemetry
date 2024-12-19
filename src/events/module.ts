@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface ModuleEvent {
+interface ModuleEvent {
   name: 'module'
   moduleName: string
   version: string

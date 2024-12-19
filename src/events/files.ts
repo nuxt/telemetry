@@ -3,7 +3,7 @@ import { resolve } from 'pathe'
 import { resolvePath } from '@nuxt/kit'
 import type { EventFactory } from '../types'
 
-export interface FilesEvent {
+interface FilesEvent {
   name: 'files'
   nuxtIgnore: boolean
   nuxtRc: boolean

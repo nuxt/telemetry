@@ -31,22 +31,18 @@
     "nuxt-telemetry": "jiti ./src/cli.ts",
     "prepack": "nuxt-module-build build",
     "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
-    "test": "pnpm vitest run --coverage",
+    "test": "vitest run",
     "test:types": "nuxt-module-build prepare && nuxi prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^3.14.1592",
-    "ci-info": "^4.1.0",
     "consola": "^3.2.3",
-    "create-require": "^1.1.1",
-    "defu": "^6.1.4",
     "destr": "^2.0.3",
     "dotenv": "^16.4.7",
     "git-url-parse": "^16.0.0",
     "is-docker": "^3.0.0",
     "jiti": "^2.4.2",
     "mri": "^1.2.0",
-    "nanoid": "^5.0.9",
     "ofetch": "^1.4.1",
     "package-manager-detector": "^0.2.7",
     "parse-git-config": "^3.0.0",
@@ -57,15 +53,24 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.3",
     "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.14.1592",
     "@nuxt/test-utils": "^3.15.1",
     "@types/git-url-parse": "^9.0.3",
     "@types/parse-git-config": "^3.0.4",
     "@vitest/coverage-v8": "^2.1.8",
     "changelogen": "^0.5.7",
     "eslint": "^9.17.0",
+    "get-port-please": "^3.1.2",
+    "h3": "^1.13.0",
+    "installed-check": "^9.3.0",
+    "knip": "^5.41.1",
     "nuxt": "^3.14.1592",
     "typescript": "^5.6.3",
+    "unbuild": "^3.0.1",
     "vitest": "^2.1.8",
     "vue-tsc": "^2.1.10"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.10.0"
   }
 }

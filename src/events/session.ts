@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface SessionEvent {
+interface SessionEvent {
   name: 'session'
   id: string
 }

@@ -1,6 +1,6 @@
 import type { EventFactory } from '../types'
 
-export interface CommandEvent {
+interface CommandEvent {
   name: 'command'
   command: string
 }

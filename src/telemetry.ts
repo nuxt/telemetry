@@ -1,9 +1,17 @@
 import type { Nuxt } from '@nuxt/schema'
+
 import { postEvent } from './utils/post-event'
-import * as eventFactories from './events/index'
 import { createContext } from './context'
 import type { EventFactory, TelemetryOptions, Context, EventFactoryResult } from './types'
 import { logger } from './utils/log'
+
+import { build } from './events/build'
+import { command } from './events/command'
+import { generate } from './events/generate'
+import { module } from './events/module'
+import { project } from './events/project'
+import { session } from './events/session'
+import { files } from './events/files'
 
 export class Telemetry {
   nuxt: Nuxt
@@ -11,7 +19,15 @@ export class Telemetry {
   storage: any // TODO
   _contextPromise?: Promise<Context>
   events: Promise<EventFactoryResult<any>>[] = []
-  eventFactories: Record<string, EventFactory<any>> = { ...eventFactories }
+  eventFactories: Record<string, EventFactory<any>> = {
+    build,
+    command,
+    generate,
+    module,
+    project,
+    session,
+    files,
+  }
 
   constructor(nuxt: Nuxt, options: Required<TelemetryOptions>) {
     this.nuxt = nuxt

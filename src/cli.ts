@@ -174,4 +174,7 @@ function ensureNuxtProject(args: { global: boolean, dir: string }) {
   }
 }
 
-cli()
+cli().catch((error) => {
+  console.error(error)
+  process.exit(1)
+})

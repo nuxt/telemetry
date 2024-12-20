@@ -11,6 +11,7 @@ import { isTest } from 'std-env'
 import { parse as parseDotenv } from 'dotenv'
 import { createMain, defineCommand } from 'citty'
 
+import { version } from '../package.json'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
 
@@ -31,10 +32,13 @@ const sharedArgs = {
 const cli = createMain({
   meta: {
     name: 'nuxt-telemetry',
+    description: 'Manage consent for Nuxt collecting anonymous telemetry data about general usage.',
+    version,
   },
   subCommands: {
     status: defineCommand({
       meta: {
+        name: 'status',
         description: 'Show telemetry status',
       },
       args: sharedArgs,
@@ -46,6 +50,7 @@ const cli = createMain({
     }),
     enable: defineCommand({
       meta: {
+        name: 'enable',
         description: 'Enable telemetry',
       },
       args: sharedArgs,
@@ -60,6 +65,7 @@ const cli = createMain({
     }),
     disable: defineCommand({
       meta: {
+        name: 'disable',
         description: 'Disable telemetry',
       },
       args: sharedArgs,
@@ -74,6 +80,7 @@ const cli = createMain({
     }),
     consent: defineCommand({
       meta: {
+        name: 'consent',
         description: 'Prompt for user consent',
       },
       args: sharedArgs,

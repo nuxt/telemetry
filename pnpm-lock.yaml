@@ -36,8 +36,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       package-manager-detector:
-        specifier: ^0.2.7
-        version: 0.2.7
+        specifier: ^0.2.8
+        version: 0.2.8
       parse-git-config:
         specifier: ^3.0.0
         version: 3.0.0
@@ -3367,8 +3367,8 @@ packages:
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
 
-  package-manager-detector@0.2.7:
-    resolution: {integrity: sha512-g4+387DXDKlZzHkP+9FLt8yKj8+/3tOkPv7DVTJGGRm00RkEWgqbFstX1mXJ4M0VDYhUqsTOiISqNOJnhAu3PQ==}
+  package-manager-detector@0.2.8:
+    resolution: {integrity: sha512-ts9KSdroZisdvKMWVAVCXiKqnqNfXz4+IbrBG8/BWx/TR5le+jfenvoBuIZ6UWM9nz47W7AbD9qYfAwfWMIwzA==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -4626,7 +4626,7 @@ snapshots:
 
   '@antfu/install-pkg@0.5.0':
     dependencies:
-      package-manager-detector: 0.2.7
+      package-manager-detector: 0.2.8
       tinyexec: 0.3.1
 
   '@antfu/utils@0.7.10': {}
@@ -5455,7 +5455,7 @@ snapshots:
       mri: 1.2.0
       nanoid: 5.0.9
       ofetch: 1.4.1
-      package-manager-detector: 0.2.7
+      package-manager-detector: 0.2.8
       parse-git-config: 3.0.0
       pathe: 1.1.2
       rc9: 2.1.2
@@ -8308,7 +8308,7 @@ snapshots:
 
   package-json-from-dist@1.0.0: {}
 
-  package-manager-detector@0.2.7: {}
+  package-manager-detector@0.2.8: {}
 
   parent-module@1.0.1:
     dependencies:

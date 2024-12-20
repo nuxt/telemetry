@@ -11,6 +11,9 @@ importers:
       '@nuxt/kit':
         specifier: ^3.14.1592
         version: 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
+      citty:
+        specifier: ^0.1.6
+        version: 0.1.6
       consola:
         specifier: ^3.2.3
         version: 3.2.3
@@ -29,9 +32,6 @@ importers:
       jiti:
         specifier: ^2.4.2
         version: 2.4.2
-      mri:
-        specifier: ^1.2.0
-        version: 1.2.0
       ofetch:
         specifier: ^1.4.1
         version: 1.4.1

@@ -39,7 +39,7 @@
   "dependencies": {
     "@nuxt/kit": "^3.14.1592",
     "citty": "^0.1.6",
-    "consola": "^3.3.0",
+    "consola": "^3.3.1",
     "destr": "^2.0.3",
     "dotenv": "^16.4.7",
     "git-url-parse": "^16.0.0",

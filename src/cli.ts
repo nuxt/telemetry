@@ -6,7 +6,7 @@ import { destr } from 'destr'
 import * as rc from 'rc9'
 import { colors as c } from 'consola/utils'
 import { consola } from 'consola'
-import { createJiti } from 'jiti'
+import { loadNuxtConfig } from '@nuxt/kit'
 import { isTest } from 'std-env'
 import { parse as parseDotenv } from 'dotenv'
 import { createMain, defineCommand } from 'citty'
@@ -115,13 +115,14 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     }
   }
 
-  const disabledByConf = (conf: any) => conf.telemetry === false
-    || (conf.telemetry && conf.telemetry.enabled === false)
+  const disabledByConf = (conf: any) => conf.telemetry === false || (conf.telemetry && conf.telemetry.enabled === false)
 
   try {
-    const configPath = resolveNuxtConfigPath(dir)
-    if (configPath && disabledByConf(createJiti(dir).import(configPath, { default: true }))) {
-      return 'by ' + configPath
+    const config = await loadNuxtConfig({ cwd: dir })
+    for (const layer of config._layers) {
+      if (disabledByConf(layer.config)) {
+        return 'by ' + config._layers[0].configFile
+      }
     }
   }
   catch {
@@ -157,17 +158,13 @@ function setRC(dir: string, key: any, val: any, global: boolean) {
   }
 }
 
-function resolveNuxtConfigPath(dir: string) {
-  const jiti = createJiti(dir)
-  return jiti.esmResolve('./nuxt.config', { try: true }) || jiti.esmResolve('./.config/nuxt', { try: true })
-}
-
-function ensureNuxtProject(args: { global: boolean, dir: string }) {
+async function ensureNuxtProject(args: { global: boolean, dir: string }) {
   if (args.global) {
     return
   }
   const dir = resolve(args.dir)
-  if (!resolveNuxtConfigPath(dir)) {
+  const nuxtConfig = await loadNuxtConfig({ cwd: dir })
+  if (!nuxtConfig) {
     consola.error('You are not in a Nuxt project.')
     consola.info('You can try specifying a directory or by using the `--global` flag to configure telemetry for your machine.')
     process.exit()

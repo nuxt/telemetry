@@ -32,9 +32,6 @@ importers:
       is-docker:
         specifier: ^3.0.0
         version: 3.0.0
-      jiti:
-        specifier: ^2.4.2
-        version: 2.4.2
       ofetch:
         specifier: ^1.4.1
         version: 1.4.1

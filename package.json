@@ -28,7 +28,7 @@
     "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi generate playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "lint": "eslint .",
-    "nuxt-telemetry": "jiti ./src/cli.ts",
+    "nuxt-telemetry": "node ./bin/nuxt-telemetry.mjs",
     "prepack": "nuxt-module-build build",
     "release": "pnpm test && pnpm build && pnpm changelogen --release --push && pnpm publish",
     "test": "vitest run",
@@ -71,6 +71,9 @@
     "unbuild": "^3.0.1",
     "vitest": "^2.1.8",
     "vue-tsc": "^2.1.10"
+  },
+  "resolutions": {
+    "@nuxt/telemetry": "workspace:*"
   },
   "engines": {
     "node": ">=18.20.5"

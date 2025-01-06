@@ -29,7 +29,7 @@ const sharedArgs = {
   },
 } as const
 
-const cli = createMain({
+export const main = createMain({
   meta: {
     name: 'nuxt-telemetry',
     description: 'Manage consent for Nuxt collecting anonymous telemetry data about general usage.',
@@ -173,8 +173,3 @@ function ensureNuxtProject(args: { global: boolean, dir: string }) {
     process.exit()
   }
 }
-
-cli().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})

@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.4
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.6.3...v2.6.4)
+
+### 🩹 Fixes
+
+- **cli:** Use `@nuxt/kit` to load nuxt config ([#205](https://github.com/nuxt/telemetry/pull/205))
+
+### 🤖 CI
+
+- Do not run coverage on windows ([d34b669](https://github.com/nuxt/telemetry/commit/d34b669))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+
 ## v2.6.3
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.6.2...v2.6.3)

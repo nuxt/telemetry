@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.3
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.6.2...v2.6.3)
+
+### 🩹 Fixes
+
+- **cli:** Expose `main` and run it from bin ([0e80f9e](https://github.com/nuxt/telemetry/commit/0e80f9e))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+
 ## v2.6.2
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.6.1...v2.6.2)

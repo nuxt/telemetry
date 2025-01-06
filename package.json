@@ -44,7 +44,6 @@
     "dotenv": "^16.4.7",
     "git-url-parse": "^16.0.0",
     "is-docker": "^3.0.0",
-    "jiti": "^2.4.2",
     "ofetch": "^1.4.1",
     "package-manager-detector": "^0.2.8",
     "parse-git-config": "^3.0.0",

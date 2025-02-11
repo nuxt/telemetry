@@ -9,9 +9,9 @@ export default defineBuildConfig({
   },
   // remove in next major version
   hooks: {
-    'build:done': async () => {
+    'build:done': async (ctx) => {
       const declaration = await readFile('./dist/types.d.mts', 'utf-8')
-      if (!declaration.includes('export { type ModuleOptions, default } from \'./module.mjs\'')) {
+      if (!ctx.options.stub && !declaration.includes('export { type ModuleOptions, default } from \'./module.mjs\'')) {
         process.exit(1)
       }
       await writeFile('./dist/types.d.cts', `

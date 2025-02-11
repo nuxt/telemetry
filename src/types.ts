@@ -34,15 +34,6 @@ export interface Event {
 export type EventFactoryResult<T> = Promise<T> | T | Promise<T>[] | T[]
 export type EventFactory<T extends Event> = (context: Context, payload: any) => EventFactoryResult<T>
 
-export interface Stats {
-  endTime: number
-  startTime: number
-  compilation: {
-    errors: Error[]
-    fullHash: string
-  }
-}
-
 export interface GitData {
   url: string
   gitRemote: string

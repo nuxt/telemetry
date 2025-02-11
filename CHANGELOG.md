@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.5
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.6.4...v2.6.5)
+
+### 🩹 Fixes
+
+- Expand allowed `engines.node` ([7d0726c](https://github.com/nuxt/telemetry/commit/7d0726c))
+
+### 📦 Build
+
+- Update to latest module-builder ([8565242](https://github.com/nuxt/telemetry/commit/8565242))
+
+### 🏡 Chore
+
+- Update lockfile ([57fbb3e](https://github.com/nuxt/telemetry/commit/57fbb3e))
+- Remove unused type ([aaad538](https://github.com/nuxt/telemetry/commit/aaad538))
+- Don't fail build in stub mode ([f31b499](https://github.com/nuxt/telemetry/commit/f31b499))
+
+### 🤖 CI
+
+- Force latest corepack ([47b2d5d](https://github.com/nuxt/telemetry/commit/47b2d5d))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+
 ## v2.6.4
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.6.3...v2.6.4)

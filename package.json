@@ -7,13 +7,20 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
+      "types": "./dist/types.d.mts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
   },
   "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "types": "./dist/types.d.mts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.cts"
+      ]
+    }
+  },
   "bin": {
     "nuxt-telemetry": "./bin/nuxt-telemetry.mjs"
   },
@@ -53,7 +60,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^1.0.0",
-    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/module-builder": "^1.0.0-alpha.1",
     "@nuxt/schema": "^3.15.4",
     "@nuxt/test-utils": "^3.15.1",
     "@types/git-url-parse": "^9.0.3",

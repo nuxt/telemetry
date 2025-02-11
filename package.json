@@ -75,6 +75,6 @@
     "@nuxt/telemetry": "workspace:*"
   },
   "engines": {
-    "node": ">=18.20.5"
+    "node": ">=18.12.0"
   }
 }

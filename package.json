@@ -54,7 +54,7 @@
     "ofetch": "^1.4.1",
     "package-manager-detector": "^0.2.9",
     "parse-git-config": "^3.0.0",
-    "pathe": "^2.0.2",
+    "pathe": "^2.0.3",
     "rc9": "^2.1.2",
     "std-env": "^3.8.0"
   },

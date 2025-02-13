@@ -27,8 +27,8 @@ importers:
         specifier: ^16.4.7
         version: 16.4.7
       git-url-parse:
-        specifier: ^16.0.0
-        version: 16.0.0
+        specifier: ^16.0.1
+        version: 16.0.1
       is-docker:
         specifier: ^3.0.0
         version: 3.0.0
@@ -88,8 +88,8 @@ importers:
         specifier: ^9.3.0
         version: 9.3.0
       knip:
-        specifier: ^5.44.0
-        version: 5.44.0(@types/node@18.13.0)(typescript@5.7.3)
+        specifier: ^5.44.1
+        version: 5.44.1(@types/node@18.13.0)(typescript@5.7.3)
       nuxt:
         specifier: ^3.15.4
         version: 3.15.4(@parcel/watcher@2.4.1)(@types/node@18.13.0)(db0@0.2.1)(encoding@0.1.13)(eslint@9.20.1(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.3)(rollup@4.34.6)(terser@5.18.2)(typescript@5.7.3)(vite@6.0.11(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(vue-tsc@2.2.0(typescript@5.7.3))(yaml@2.7.0)
@@ -1996,10 +1996,6 @@ packages:
   encoding@0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
 
-  enhanced-resolve@5.17.1:
-    resolution: {integrity: sha512-LMHl3dXhTcfv8gM4kEzIUeTQ+7fpdA0l2tUf34BddXPkz2A5xJ5L/Pchd5BL6rdccM9QGvu0sWZzK1Z1t4wwyg==}
-    engines: {node: '>=10.13.0'}
-
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
     engines: {node: '>=10.13.0'}
@@ -2315,8 +2311,8 @@ packages:
   git-up@8.0.0:
     resolution: {integrity: sha512-uBI8Zdt1OZlrYfGcSVroLJKgyNNXlgusYFzHk614lTasz35yg2PVpL1RMy0LOO2dcvF9msYW3pRfUSmafZNrjg==}
 
-  git-url-parse@16.0.0:
-    resolution: {integrity: sha512-Y8iAF0AmCaqXc6a5GYgPQW9ESbncNLOL+CeQAJRhmWUOmnPkKpBYeWYp4mFd3LA5j53CdGDdslzX12yEBVHQQg==}
+  git-url-parse@16.0.1:
+    resolution: {integrity: sha512-mcD36GrhAzX5JVOsIO52qNpgRyFzYWRbU1VSRFCvJt1IJvqfvH427wWw/CFqkWvjVPtdG5VTx4MKUeC5GeFPDQ==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -2687,8 +2683,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.44.0:
-    resolution: {integrity: sha512-j39v3LYCmU6P6HN/TG14bc0Dlthl12g6NogdEZHQdhlVS6BqfnGGS3ospYYwLill6Sdc68eptwGtThunqq7lxA==}
+  knip@5.44.1:
+    resolution: {integrity: sha512-YJrz7K6AA3SwXJ5LL9ZlzQX9wcihMNwKoGBAaY5kUn4rLNOZ5ehsjFV+xm8gQuIJdjsFIKcFsy0K3U3yM/mabw==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -6701,11 +6697,6 @@ snapshots:
       iconv-lite: 0.6.3
     optional: true
 
-  enhanced-resolve@5.17.1:
-    dependencies:
-      graceful-fs: 4.2.10
-      tapable: 2.2.1
-
   enhanced-resolve@5.18.1:
     dependencies:
       graceful-fs: 4.2.10
@@ -6789,7 +6780,7 @@ snapshots:
       '@typescript-eslint/utils': 8.22.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       debug: 4.4.0(supports-color@9.4.0)
       doctrine: 3.0.0
-      enhanced-resolve: 5.17.1
+      enhanced-resolve: 5.18.1
       eslint: 9.20.1(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
       get-tsconfig: 4.7.4
@@ -6988,7 +6979,7 @@ snapshots:
 
   externality@1.0.2:
     dependencies:
-      enhanced-resolve: 5.17.1
+      enhanced-resolve: 5.18.1
       mlly: 1.7.4
       pathe: 1.1.2
       ufo: 1.5.4
@@ -7131,7 +7122,7 @@ snapshots:
       is-ssh: 1.4.0
       parse-url: 9.2.0
 
-  git-url-parse@16.0.0:
+  git-url-parse@16.0.1:
     dependencies:
       git-up: 8.0.0
 
@@ -7506,7 +7497,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.44.0(@types/node@18.13.0)(typescript@5.7.3):
+  knip@5.44.1(@types/node@18.13.0)(typescript@5.7.3):
     dependencies:
       '@nodelib/fs.walk': 3.0.1
       '@snyk/github-codeowners': 1.1.0

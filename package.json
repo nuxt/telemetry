@@ -69,7 +69,7 @@
     "changelogen": "^0.5.7",
     "eslint": "^9.21.0",
     "get-port-please": "^3.1.2",
-    "h3": "^1.15.0",
+    "h3": "^1.15.1",
     "installed-check": "^9.3.0",
     "knip": "^5.44.4",
     "nuxt": "^3.15.4",

@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@10.5.1",
+  "packageManager": "pnpm@10.5.2",
   "version": "2.6.5",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -74,7 +74,7 @@
     "knip": "^5.45.0",
     "nuxt": "^3.15.4",
     "typescript": "^5.7.3",
-    "unbuild": "^3.4.2",
+    "unbuild": "^3.5.0",
     "vitest": "^3.0.7",
     "vue-tsc": "^2.2.4"
   },

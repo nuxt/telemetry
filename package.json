@@ -76,7 +76,7 @@
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0",
     "vitest": "^3.0.7",
-    "vue-tsc": "^2.2.4"
+    "vue-tsc": "^2.2.8"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

@@ -52,7 +52,7 @@
     "git-url-parse": "^16.0.1",
     "is-docker": "^3.0.0",
     "ofetch": "^1.4.1",
-    "package-manager-detector": "^0.2.10",
+    "package-manager-detector": "^0.2.11",
     "parse-git-config": "^3.0.0",
     "pathe": "^2.0.3",
     "rc9": "^2.1.2",
@@ -76,7 +76,7 @@
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0",
     "vitest": "^3.0.7",
-    "vue-tsc": "^2.2.4"
+    "vue-tsc": "^2.2.8"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

@@ -48,8 +48,8 @@ importers:
         specifier: ^2.1.2
         version: 2.1.2
       std-env:
-        specifier: ^3.8.0
-        version: 3.8.0
+        specifier: ^3.8.1
+        version: 3.8.1
     devDependencies:
       '@nuxt/eslint-config':
         specifier: ^1.1.0
@@ -4012,6 +4012,9 @@ packages:
   std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
 
+  std-env@3.8.1:
+    resolution: {integrity: sha512-vj5lIj3Mwf9D79hBkltk5qmkFI+biIKWS2IBxEyEU3AX1tUf7AoL8nSazCOiiqQsGKIq01SClsKEzweu34uwvA==}
+
   streamx@2.15.1:
     resolution: {integrity: sha512-fQMzy2O/Q47rgwErk/eGeLu/roaFWV0jVsogDmrszM9uIw8L5OA+t+V93MgYlufNptfjmYR1tOMWhei/Eh7TQA==}
 
@@ -5326,7 +5329,7 @@ snapshots:
       pkg-types: 1.3.1
       scule: 1.3.0
       semver: 7.6.3
-      std-env: 3.8.0
+      std-env: 3.8.1
       tinyexec: 0.3.2
       ufo: 1.5.4
     transitivePeerDependencies:
@@ -5517,7 +5520,7 @@ snapshots:
       pkg-types: 1.3.1
       scule: 1.3.0
       semver: 7.6.3
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       unctx: 2.4.1
       unimport: 4.0.0(rollup@4.28.1)
@@ -5544,7 +5547,7 @@ snapshots:
       pkg-types: 1.3.1
       scule: 1.3.0
       semver: 7.6.3
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       unctx: 2.4.1
       unimport: 4.0.0(rollup@4.34.8)
@@ -5578,7 +5581,7 @@ snapshots:
       consola: 3.4.0
       defu: 6.1.4
       pathe: 2.0.3
-      std-env: 3.8.0
+      std-env: 3.8.1
 
   '@nuxt/test-utils@3.17.1(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(rollup@4.34.8)(terser@5.18.2)(typescript@5.8.2)(vitest@3.0.7(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)':
     dependencies:
@@ -5600,7 +5603,7 @@ snapshots:
       perfect-debounce: 1.0.0
       radix3: 1.1.2
       scule: 1.3.0
-      std-env: 3.8.0
+      std-env: 3.8.1
       tinyexec: 0.3.2
       ufo: 1.5.4
       unenv: 1.10.0
@@ -5652,7 +5655,7 @@ snapshots:
       pkg-types: 1.3.1
       postcss: 8.5.1
       rollup-plugin-visualizer: 5.13.1(rollup@4.28.1)
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       unenv: 1.10.0
       unplugin: 2.1.2
@@ -5711,7 +5714,7 @@ snapshots:
       pkg-types: 1.3.1
       postcss: 8.5.1
       rollup-plugin-visualizer: 5.13.1(rollup@4.34.8)
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       unenv: 1.10.0
       unplugin: 2.1.2
@@ -6367,7 +6370,7 @@ snapshots:
       istanbul-reports: 3.1.7
       magic-string: 0.30.17
       magicast: 0.3.5
-      std-env: 3.8.0
+      std-env: 3.8.1
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
       vitest: 3.0.7(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0)
@@ -6893,7 +6896,7 @@ snapshots:
       pkg-types: 2.0.0
       scule: 1.3.0
       semver: 7.7.1
-      std-env: 3.8.0
+      std-env: 3.8.1
     transitivePeerDependencies:
       - magicast
 
@@ -8169,7 +8172,7 @@ snapshots:
       mlly: 1.7.4
       node-forge: 1.3.1
       pathe: 1.1.2
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       untun: 0.1.3
       uqr: 0.1.2
@@ -8410,7 +8413,7 @@ snapshots:
       semver: 7.6.3
       serve-placeholder: 2.0.2
       serve-static: 1.16.2
-      std-env: 3.8.0
+      std-env: 3.8.1
       ufo: 1.5.4
       uncrypto: 0.1.3
       unctx: 2.4.1
@@ -9666,6 +9669,8 @@ snapshots:
 
   std-env@3.8.0: {}
 
+  std-env@3.8.1: {}
+
   streamx@2.15.1:
     dependencies:
       fast-fifo: 1.3.2
@@ -10382,7 +10387,7 @@ snapshots:
       expect-type: 1.1.0
       magic-string: 0.30.17
       pathe: 2.0.3
-      std-env: 3.8.0
+      std-env: 3.8.1
       tinybench: 2.9.0
       tinyexec: 0.3.2
       tinypool: 1.0.2

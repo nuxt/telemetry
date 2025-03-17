@@ -52,7 +52,7 @@
     "git-url-parse": "^16.0.1",
     "is-docker": "^3.0.0",
     "ofetch": "^1.4.1",
-    "package-manager-detector": "^1.0.0",
+    "package-manager-detector": "^1.1.0",
     "parse-git-config": "^3.0.0",
     "pathe": "^2.0.3",
     "rc9": "^2.1.2",

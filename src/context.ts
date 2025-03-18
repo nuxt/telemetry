@@ -1,6 +1,6 @@
 import os from 'node:os'
+import { execSync } from 'node:child_process'
 import gitUrlParse from 'git-url-parse'
-import parseGitConfig from 'parse-git-config'
 import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
@@ -90,18 +90,17 @@ function getProjectHash(rootDir: string, git?: GitData, seed?: string) {
   return hash(id)
 }
 
-async function getGitRemote(rootDir: string): Promise<string | null> {
+async function getGitRemote(cwd: string): Promise<string | null> {
+  let gitRemoteUrl = null
+
   try {
-    const parsed = await parseGitConfig({ cwd: rootDir })
-    if (parsed) {
-      const gitRemote = parsed['remote "origin"'].url
-      return gitRemote
-    }
-    return null
+    gitRemoteUrl = execSync('git config --get remote.origin.url  ', { encoding: 'utf8', cwd }).trim() || null
   }
   catch {
-    return null
+    /* ignore */
   }
+
+  return gitRemoteUrl
 }
 
 async function getGit(rootDir: string): Promise<GitData | undefined> {

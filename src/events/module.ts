@@ -2,8 +2,8 @@ import type { EventFactory } from '../types'
 
 interface ModuleEvent {
   name: 'module'
-  moduleName: string
-  version: string
+  moduleName?: string
+  version?: string
   timing: number
 }
 

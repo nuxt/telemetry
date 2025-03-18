@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## v2.6.6
+
+[compare changes](https://github.com/nuxt/telemetry/compare/v2.6.5...v2.6.6)
+
+### 🩹 Fixes
+
+- Remove dependency on `parse-git-config` ([#250](https://github.com/nuxt/telemetry/pull/250))
+
+### ❤️ Contributors
+
+- Thomashohn <tho@systime.dk>
+
 ## v2.6.5
 
 [compare changes](https://github.com/nuxt/telemetry/compare/v2.6.4...v2.6.5)

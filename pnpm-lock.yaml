@@ -61,8 +61,8 @@ importers:
         specifier: ^3.17.2
         version: 3.17.2(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.2)(vitest@3.1.1(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)
       '@types/git-url-parse':
-        specifier: ^9.0.3
-        version: 9.0.3
+        specifier: ^16.0.0
+        version: 16.0.0
       '@vitest/coverage-v8':
         specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))
@@ -1512,8 +1512,11 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/git-url-parse@9.0.3':
-    resolution: {integrity: sha512-Wrb8zeghhpKbYuqAOg203g+9YSNlrZWNZYvwxJuDF4dTmerijqpnGbI79yCuPtHSXHPEwv1pAFUB4zsSqn82Og==}
+  '@types/git-up@8.0.0':
+    resolution: {integrity: sha512-z6voMZW1IPMyszW0oao4lRcC120orJZycF3lxhS3YTKrkTEfqR+HB6TCX/j51ZUVsHahnRAhHdmmcsL83r03oA==}
+
+  '@types/git-url-parse@16.0.0':
+    resolution: {integrity: sha512-l1xqqjwYTk0Wz8AwEezpUvns0LhTBV7RV/DOeDfIf1rbrob8Lne4ooYa2K30wJw95s1MJGXAXzx021922rUStg==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -6013,7 +6016,13 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/git-url-parse@9.0.3': {}
+  '@types/git-up@8.0.0':
+    dependencies:
+      parse-url: 9.2.0
+
+  '@types/git-url-parse@16.0.0':
+    dependencies:
+      '@types/git-up': 8.0.0
 
   '@types/json-schema@7.0.15': {}
 

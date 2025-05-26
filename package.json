@@ -69,7 +69,7 @@
     "get-port-please": "^3.1.2",
     "h3": "^1.15.3",
     "installed-check": "^9.3.0",
-    "knip": "^5.58.0",
+    "knip": "^5.58.1",
     "nuxt": "^3.17.4",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0",

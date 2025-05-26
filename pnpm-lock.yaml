@@ -58,8 +58,8 @@ importers:
         specifier: ^3.17.4
         version: 3.17.4
       '@nuxt/test-utils':
-        specifier: ^3.19.0
-        version: 3.19.0(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)
+        specifier: ^3.19.1
+        version: 3.19.1(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)
       '@types/git-url-parse':
         specifier: ^16.0.2
         version: 16.0.2
@@ -82,8 +82,8 @@ importers:
         specifier: ^9.3.0
         version: 9.3.0
       knip:
-        specifier: ^5.57.0
-        version: 5.57.0(@types/node@18.13.0)(typescript@5.8.3)
+        specifier: ^5.58.0
+        version: 5.58.0(@types/node@18.13.0)(typescript@5.8.3)
       nuxt:
         specifier: ^3.17.4
         version: 3.17.4(@netlify/blobs@8.2.0)(@parcel/watcher@2.4.1)(@types/node@18.13.0)(db0@0.3.2)(encoding@0.1.13)(eslint@9.27.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(rollup@4.36.0)(terser@5.18.2)(typescript@5.8.3)(vite@6.3.5(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(vue-tsc@2.2.10(typescript@5.8.3))(yaml@2.7.0)
@@ -1159,8 +1159,8 @@ packages:
     resolution: {integrity: sha512-bsfJdWjKNYLkVQt7Ykr9YsAql1u8Tuo6iecSUOltTIhsvAIYsknRFPHoNKNmaiv/L6FgCQgUgQppPTPUAXiJQQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/test-utils@3.19.0':
-    resolution: {integrity: sha512-rhy01aH1Gioh1uCiiESpeI5m6ZCk4k+0FHwooV01NAGtIY2hJaFxgKf0s+6vjiSvHqoIDMzjaQ9g3SoccDJ4kA==}
+  '@nuxt/test-utils@3.19.1':
+    resolution: {integrity: sha512-qq2ioRgPCM7JwPIeJO2OzzqCWr8NR5eQINoskX2NEXTHzucvb8N9mt2UB2+NUe8OL9yNjGDZA+oA51GUKNhqhg==}
     engines: {node: ^18.20.5 || ^20.9.0 || ^22.0.0 || >=23.0.0}
     peerDependencies:
       '@cucumber/cucumber': ^10.3.1 || ^11.0.0
@@ -3681,8 +3681,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.57.0:
-    resolution: {integrity: sha512-3i2neotCfFWOEGByzz8kzSFePZahelhwZfHXT5SM9FlpMxzN1PE8wV+M65Sl+itd2Z+v7FBXeVd96YLwXnviGg==}
+  knip@5.58.0:
+    resolution: {integrity: sha512-U3+ADL9mylwia7bU85CYeHSdMI7DIpaCzH37NZ8rru/dgq56iyiS0oTELhfNaCYu+TcRyuijU2YQf9o0zUGA5w==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -6830,7 +6830,7 @@ snapshots:
       pathe: 2.0.3
       std-env: 3.9.0
 
-  '@nuxt/test-utils@3.19.0(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)':
+  '@nuxt/test-utils@3.19.1(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)':
     dependencies:
       '@nuxt/kit': 3.17.4(magicast@0.3.5)
       '@nuxt/schema': 3.17.4
@@ -9651,7 +9651,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.57.0(@types/node@18.13.0)(typescript@5.8.3):
+  knip@5.58.0(@types/node@18.13.0)(typescript@5.8.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 18.13.0
@@ -11901,7 +11901,7 @@ snapshots:
 
   vitest-environment-nuxt@1.0.1(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0):
     dependencies:
-      '@nuxt/test-utils': 3.19.0(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)
+      '@nuxt/test-utils': 3.19.1(@types/node@18.13.0)(jiti@2.4.2)(magicast@0.3.5)(terser@5.18.2)(typescript@5.8.3)(vitest@3.1.4(@types/node@18.13.0)(jiti@2.4.2)(terser@5.18.2)(yaml@2.7.0))(yaml@2.7.0)
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'

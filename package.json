@@ -30,10 +30,10 @@
   ],
   "scripts": {
     "build": "nuxt-module-build build",
-    "dev": "NUXT_TELEMETRY_DEBUG=1 nuxi dev playground",
-    "dev:build": "NUXT_TELEMETRY_DEBUG=1 nuxi build playground",
-    "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxi generate playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "dev": "NUXT_TELEMETRY_DEBUG=1 nuxt dev playground",
+    "dev:build": "NUXT_TELEMETRY_DEBUG=1 nuxt build playground",
+    "dev:generate": "NUXT_TELEMETRY_DEBUG=1 nuxt generate playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
     "lint": "eslint .",
     "nuxt-telemetry": "node ./bin/nuxt-telemetry.mjs",
     "prepack": "nuxt-module-build build",
@@ -41,7 +41,7 @@
     "test": "vitest run",
     "test:engines": "installed-check -d --no-workspaces",
     "test:knip": "knip",
-    "test:types": "nuxt-module-build prepare && nuxi prepare playground && vue-tsc --noEmit"
+    "test:types": "nuxt-module-build prepare && nuxt prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^3.17.4",

@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.2",
   "version": "2.6.6",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -63,17 +63,17 @@
     "@nuxt/schema": "^3.17.5",
     "@nuxt/test-utils": "^3.19.1",
     "@types/git-url-parse": "^16.0.2",
-    "@vitest/coverage-v8": "^3.2.3",
+    "@vitest/coverage-v8": "^3.2.4",
     "changelogen": "^0.6.1",
     "eslint": "^9.29.0",
     "get-port-please": "^3.1.2",
     "h3": "^1.15.3",
     "installed-check": "^9.3.0",
-    "knip": "^5.61.0",
+    "knip": "^5.61.2",
     "nuxt": "^3.17.5",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0",
-    "vitest": "^3.2.3",
+    "vitest": "^3.2.4",
     "vue-tsc": "^2.2.10"
   },
   "resolutions": {

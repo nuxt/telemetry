@@ -48,7 +48,7 @@
     "citty": "^0.1.6",
     "consola": "^3.4.2",
     "destr": "^2.0.5",
-    "dotenv": "^16.6.1",
+    "dotenv": "^17.0.0",
     "git-url-parse": "^16.1.0",
     "is-docker": "^3.0.0",
     "ofetch": "^1.4.1",

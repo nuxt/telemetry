@@ -44,7 +44,7 @@
     "test:types": "nuxt-module-build prepare && nuxt prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.17.7",
+    "@nuxt/kit": "^4.0.1",
     "citty": "^0.1.6",
     "consola": "^3.4.2",
     "destr": "^2.0.5",
@@ -60,7 +60,7 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^1.6.0",
     "@nuxt/module-builder": "^1.0.1",
-    "@nuxt/schema": "^3.17.7",
+    "@nuxt/schema": "^4.0.1",
     "@nuxt/test-utils": "^3.19.2",
     "@types/git-url-parse": "^16.0.2",
     "@vitest/coverage-v8": "^3.2.4",
@@ -70,7 +70,7 @@
     "h3": "^1.15.3",
     "installed-check": "^9.3.0",
     "knip": "^5.62.0",
-    "nuxt": "^3.17.7",
+    "nuxt": "^4.0.1",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0",
     "vitest": "^3.2.4",

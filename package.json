@@ -58,7 +58,7 @@
     "std-env": "^3.9.0"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.5.2",
+    "@nuxt/eslint-config": "^1.6.0",
     "@nuxt/module-builder": "^1.0.1",
     "@nuxt/schema": "^3.17.7",
     "@nuxt/test-utils": "^3.19.2",
@@ -69,12 +69,12 @@
     "get-port-please": "^3.2.0",
     "h3": "^1.15.3",
     "installed-check": "^9.3.0",
-    "knip": "^5.61.3",
+    "knip": "^5.62.0",
     "nuxt": "^3.17.7",
     "typescript": "^5.8.3",
     "unbuild": "^3.5.0",
     "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.1"
+    "vue-tsc": "^3.0.3"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

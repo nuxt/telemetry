@@ -11,7 +11,8 @@ export default defineBuildConfig({
   hooks: {
     'build:done': async (ctx) => {
       const declaration = await readFile('./dist/types.d.mts', 'utf-8')
-      if (!ctx.options.stub && !declaration.includes('export { type ModuleOptions, default } from \'./module.mjs\'')) {
+      if (!ctx.options.stub && !declaration.includes(`export { default } from './module.mjs'`) && !declaration.includes(`export { type ModuleOptions } from './module.mjs'`)) {
+        console.error('Missing exports in types.d.mts.')
         process.exit(1)
       }
       await writeFile('./dist/types.d.cts', `

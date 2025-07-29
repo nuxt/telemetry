@@ -48,7 +48,7 @@
     "citty": "^0.1.6",
     "consola": "^3.4.2",
     "destr": "^2.0.5",
-    "dotenv": "^17.2.0",
+    "dotenv": "^17.2.1",
     "git-url-parse": "^16.1.0",
     "is-docker": "^3.0.0",
     "ofetch": "^1.4.1",
@@ -58,23 +58,23 @@
     "std-env": "^3.9.0"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^1.6.0",
-    "@nuxt/module-builder": "^1.0.1",
+    "@nuxt/eslint-config": "^1.7.1",
+    "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^3.18.0",
     "@nuxt/test-utils": "^3.19.2",
     "@types/git-url-parse": "^16.0.2",
     "@vitest/coverage-v8": "^3.2.4",
     "changelogen": "^0.6.2",
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.3",
     "installed-check": "^9.3.0",
     "knip": "^5.62.0",
     "nuxt": "^3.18.0",
     "typescript": "^5.8.3",
-    "unbuild": "^3.5.0",
+    "unbuild": "^3.6.0",
     "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.3"
+    "vue-tsc": "^3.0.4"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

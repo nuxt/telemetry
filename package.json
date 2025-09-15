@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.16.1",
   "version": "2.6.6",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -74,7 +74,7 @@
     "typescript": "^5.9.2",
     "unbuild": "^3.6.1",
     "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.6"
+    "vue-tsc": "^3.0.7"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

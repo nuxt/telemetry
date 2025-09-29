@@ -69,12 +69,12 @@
     "get-port-please": "^3.2.0",
     "h3": "^1.15.4",
     "installed-check": "^9.3.0",
-    "knip": "^5.64.0",
+    "knip": "^5.64.1",
     "nuxt": "^3.19.2",
     "typescript": "^5.9.2",
     "unbuild": "^3.6.1",
     "vitest": "^3.2.4",
-    "vue-tsc": "^3.0.8"
+    "vue-tsc": "^3.1.0"
   },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"

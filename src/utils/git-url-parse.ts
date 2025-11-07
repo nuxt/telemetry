@@ -257,7 +257,7 @@ function gitUp(input: string): GitUpOutput {
   return output
 }
 
-export interface GitUrl extends GitUpOutput {
+interface GitUrl extends GitUpOutput {
   source: string
   owner: string
   name: string

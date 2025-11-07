@@ -1,7 +1,7 @@
 {
   "name": "@nuxt/telemetry",
   "packageManager": "pnpm@10.20.0",
-  "version": "2.6.6",
+  "version": "2.6.7",
   "repository": "nuxt/telemetry",
   "license": "MIT",
   "type": "module",
@@ -49,7 +49,6 @@
     "consola": "^3.4.2",
     "destr": "^2.0.5",
     "dotenv": "^17.2.3",
-    "git-url-parse": "^16.1.0",
     "is-docker": "^3.0.0",
     "ofetch": "^1.5.1",
     "package-manager-detector": "^1.5.0",

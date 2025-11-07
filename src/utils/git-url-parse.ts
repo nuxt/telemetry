@@ -21,7 +21,7 @@ function protocols(input: string | URL, first?: boolean | number): string[] | st
     try {
       prots = new URL(input).protocol
     }
-    catch (e) {
+    catch {
       // ignore
     }
   }
@@ -59,7 +59,7 @@ function isSsh(input: string | string[]): boolean {
   }
 
   // TODO This probably could be improved :)
-  const urlPortPattern = /\.([a-zA-Z\d]+):(\d+)\//
+  const urlPortPattern = /\.([a-z\d]+):(\d+)\//i
   return !input.match(urlPortPattern) && input.indexOf('@') < input.indexOf(':')
 }
 
@@ -119,7 +119,7 @@ function parsePath(url: string): ParsePathOutput {
     output.href = parsed.href
     output.query = Object.fromEntries(parsed.searchParams)
   }
-  catch (e) {
+  catch {
     // TODO Maybe check if it is a valid local file path
     //      In any case, these will be parsed by higher
     //      level parsers such as parse-url, git-url-parse, git-up
@@ -167,7 +167,7 @@ function parseUrl(url: string, normalize: boolean | NormalizeOptions = false): P
    * ([\w\.\-@]+) Match the host/resource
    * (([\~,\.\w,\-,\_,\/,\s]|%[0-9A-Fa-f]{2})+?(?:\.git|\/)?) Match the path, allowing spaces/white
    */
-  const GIT_RE = /^(?:([a-zA-Z_][a-zA-Z0-9_-]{0,31})@|https?:\/\/)([\w.\-@]+)[/:](([~,.\w,\-,_,/,\s]|%[0-9A-Fa-f]{2})+?(?:\.git|\/)?)$/
+  const GIT_RE = /^(?:([a-zA-Z_][\w-]{0,31})@|https?:\/\/)([\w.\-@]+)[/:](([~,.\w\-/\s]|%[0-9A-Fa-f]{2})+?(?:\.git|\/)?)$/
 
   const throwErr = (msg: string) => {
     const err = new TypeError(msg) as TypeError & { subject_url?: string }
@@ -291,7 +291,7 @@ function gitUrlParse(url: string, refs: string[] = []): GitUrl {
     throw new TypeError('The refs should contain only strings')
   }
 
-  const shorthandRe = /^([a-z\d-]{1,39})\/([-.\w]{1,100})$/i
+  const shorthandRe = /^[\w-]{1,39}\/[-.\w]{1,100}$/
   if (shorthandRe.test(url)) {
     url = `https://github.com/${url}`
   }
@@ -468,7 +468,9 @@ function gitUrlParse(url: string, refs: string[] = []): GitUrl {
   if (!urlInfo.full_name) {
     urlInfo.full_name = urlInfo.owner
     if (urlInfo.name) {
-      urlInfo.full_name && (urlInfo.full_name += '/')
+      if (urlInfo.full_name) {
+        urlInfo.full_name += '/'
+      }
       urlInfo.full_name += urlInfo.name
     }
   }
@@ -481,7 +483,7 @@ function gitUrlParse(url: string, refs: string[] = []): GitUrl {
     urlInfo.full_name = `${urlInfo.owner}/${urlInfo.name}`
   }
 
-  const bitbucket = /(projects|users)\/(.*?)\/repos\/(.*?)((\/.*$)|$)/
+  const bitbucket = /(projects|users)\/([^/]+)\/repos\/([^/]+)((\/.*$)|$)/
   const matches = bitbucket.exec(urlInfo.pathname)
   if (matches != null) {
     urlInfo.source = 'bitbucket-server'

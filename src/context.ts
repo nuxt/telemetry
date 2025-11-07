@@ -1,6 +1,5 @@
 import os from 'node:os'
 import { execSync } from 'node:child_process'
-import gitUrlParse from 'git-url-parse'
 import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
@@ -8,6 +7,7 @@ import type { Nuxt } from '@nuxt/schema'
 import { detect } from 'package-manager-detector'
 import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
+import gitUrlParse from './utils/git-url-parse'
 
 export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()

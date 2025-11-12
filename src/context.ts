@@ -1,13 +1,23 @@
 import os from 'node:os'
 import { execSync } from 'node:child_process'
 import gitUrlParse from 'git-url-parse'
-import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
+import { getNuxtVersion, isNuxtMajorVersion } from '@nuxt/kit'
 import isDocker from 'is-docker'
 import { provider } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
 import { detect } from 'package-manager-detector'
 import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
+
+function getNuxtMajorVersion(nuxt: Nuxt) {
+  for (let i = 4; i >= 2; i--) {
+    const j = i as (2 | 3 | 4)
+    if (isNuxtMajorVersion(j, nuxt)) {
+      return j
+    }
+  }
+  return 2
+}
 
 export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.rootDir || process.cwd()
@@ -19,7 +29,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
   const projectSession = getProjectSession(projectHash, seed)
 
   const nuxtVersion = getNuxtVersion(nuxt)
-  const nuxtMajorVersion = isNuxt3(nuxt) ? 3 : 2
+  const nuxtMajorVersion = getNuxtMajorVersion(nuxt)
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
 
@@ -54,7 +64,7 @@ function getEnv(): Context['environment'] {
 }
 
 function getCLI() {
-  const entry = process.argv[1]
+  const entry = process.argv[1] ?? ''
 
   const knownCLIs = {
     'nuxt-ts.js': 'nuxt-ts',

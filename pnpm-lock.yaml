@@ -49,7 +49,7 @@ importers:
         version: 3.10.0
     devDependencies:
       '@nuxt/eslint-config':
-        specifier: ^1.11.0
+        specifier: ^1.12.1
         version: 1.12.1(@typescript-eslint/utils@8.49.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.25)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@nuxt/module-builder':
         specifier: ^1.0.2
@@ -70,7 +70,7 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2(magicast@0.5.1)
       eslint:
-        specifier: ^9.39.1
+        specifier: ^9.39.2
         version: 9.39.2(jiti@2.6.1)
       get-port-please:
         specifier: ^3.2.0
@@ -82,7 +82,7 @@ importers:
         specifier: ^9.3.0
         version: 9.3.0
       knip:
-        specifier: ^5.72.0
+        specifier: ^5.73.4
         version: 5.73.4(@types/node@24.10.1)(typescript@5.9.3)
       nuxt:
         specifier: ^3.20.2
@@ -97,7 +97,7 @@ importers:
         specifier: ^4.0.15
         version: 4.0.15(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2)
       vue-tsc:
-        specifier: ^3.1.7
+        specifier: ^3.1.8
         version: 3.1.8(typescript@5.9.3)
 
   playground:

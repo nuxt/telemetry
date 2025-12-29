@@ -83,7 +83,7 @@ importers:
         version: 9.3.0
       knip:
         specifier: ^5.76.3
-        version: 5.76.3(@types/node@24.10.1)(typescript@5.9.3)
+        version: 5.78.0(@types/node@24.10.1)(typescript@5.9.3)
       nuxt:
         specifier: ^3.20.2
         version: 3.20.2(@parcel/watcher@2.5.1)(@types/node@24.10.1)(@vue/compiler-sfc@3.5.25)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.2(jiti@2.6.1))(ioredis@5.8.2)(magicast@0.5.1)(optionator@0.9.4)(rollup@4.53.3)(terser@5.44.1)(typescript@5.9.3)(vite@7.2.7(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))(vue-tsc@3.2.1(typescript@5.9.3))(yaml@2.8.2)
@@ -3044,8 +3044,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.76.3:
-    resolution: {integrity: sha512-YLCCzOFzkuNgyL9LdrwFBstV9gpmvPCuolRzs9W++of0mtPH1D3ehE3M4okgayksgq7tWkkMAmyjrDrXxX6aAQ==}
+  knip@5.78.0:
+    resolution: {integrity: sha512-nB7i/fgiJl7WVxdv5lX4ZPfDt9/zrw/lOgZtyioy988xtFhKuFJCRdHWT1Zg9Avc0yaojvnmEuAXU8SeMblKww==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -7640,7 +7640,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.76.3(@types/node@24.10.1)(typescript@5.9.3):
+  knip@5.78.0(@types/node@24.10.1)(typescript@5.9.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 24.10.1

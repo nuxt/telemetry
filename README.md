@@ -57,6 +57,7 @@ The data we collect is completely anonymous, not traceable to the source (using 
 
 You can disable Nuxt Telemetry for your project in several ways:
 
+### Nuxt 3
 1. Setting `telemetry: false` in your `nuxt.config`:
 
 ```js
@@ -65,6 +66,18 @@ export default {
 }
 ```
 
+### Nuxt 4
+1. Setting `telemetry: { enabled: false }` in your `nuxt.config`:
+
+```js
+export default {
+  telemetry: {
+    enabled: false,
+  }
+}
+```
+
+### Universal (Both Nuxt 3 & 4)
 2. Using an environment variable:
 
 ```bash
@@ -81,11 +94,21 @@ npx @nuxt/telemetry [status|enable|disable] [-g,--global] [dir]
 
 ## Skip Prompt
 
-If you encounter problems with the consent prompt and want to participate without being asked this question, you can set `telemetry: true` from `nuxt.config`:
+If you encounter problems with the consent prompt and want to participate without being asked this question, you can set the following in your `nuxt.config`:
 
+### Nuxt 3
 ```js
 export default {
   telemetry: true
+}
+```
+
+### Nuxt 4
+```js
+export default {
+  telemetry: {
+    enabled: true,
+  }
 }
 ```
 

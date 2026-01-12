@@ -58,7 +58,7 @@ importers:
         specifier: ^3.20.2
         version: 3.20.2
       '@nuxt/test-utils':
-        specifier: ^3.22.0
+        specifier: ^3.23.0
         version: 3.23.0(magicast@0.5.1)(typescript@5.9.3)(vitest@4.0.16(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)(yaml@2.8.2))
       '@types/git-url-parse':
         specifier: ^16.0.2
@@ -82,7 +82,7 @@ importers:
         specifier: ^9.3.0
         version: 9.3.0
       knip:
-        specifier: ^5.80.0
+        specifier: ^5.80.2
         version: 5.80.2(@types/node@24.10.1)(typescript@5.9.3)
       nuxt:
         specifier: ^3.20.2

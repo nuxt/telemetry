@@ -5,3 +5,8 @@ ignoredBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
   - unrs-resolver
+
+shellEmulator: true
+
+overrides:
+  '@nuxt/telemetry': 'workspace:*'

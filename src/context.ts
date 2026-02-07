@@ -151,10 +151,11 @@ function parseGitUrl(gitUrl: string): { source: string, owner: string, name: str
   // Handle SSH format: git@host:owner/repo.git
   const sshMatch = normalized.match(/^[\w-]+@([^:]+):(.+?)(?:\.git)?$/)
   if (sshMatch) {
-    const [, source, path] = sshMatch
+    const source = sshMatch[1]!
+    const path = sshMatch[2]!
     const parts = path.split('/')
     if (parts.length >= 2) {
-      return { source, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+      return { source, owner: parts.slice(0, -1).join('/'), name: parts.at(-1)! }
     }
   }
 
@@ -164,7 +165,7 @@ function parseGitUrl(gitUrl: string): { source: string, owner: string, name: str
     const pathname = url.pathname.replace(/\.git$/, '').replace(/^\//, '')
     const parts = pathname.split('/')
     if (parts.length >= 2) {
-      return { source: url.hostname, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+      return { source: url.hostname, owner: parts.slice(0, -1).join('/'), name: parts.at(-1)! }
     }
   }
   catch {

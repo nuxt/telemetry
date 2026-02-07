@@ -47,7 +47,7 @@
     "citty": "^0.2.0",
     "consola": "^3.4.2",
     "ofetch": "^1.5.1",
-    "rc9": "^2.1.2",
+    "rc9": "^3.0.0",
     "std-env": "^3.10.0"
   },
   "devDependencies": {

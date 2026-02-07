@@ -58,7 +58,7 @@
     "@nuxt/test-utils": "^3.23.0",
     "@vitest/coverage-v8": "^4.0.18",
     "changelogen": "^0.6.2",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.5",
     "installed-check": "^9.3.0",

@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.20.2",
-    "citty": "^0.1.6",
+    "citty": "^0.2.0",
     "consola": "^3.4.2",
     "ofetch": "^1.5.1",
     "rc9": "^2.1.2",

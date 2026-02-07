@@ -1,19 +1,39 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { homedir } from 'node:os'
+import { resolve } from 'node:path'
 
-import { resolve } from 'pathe'
-import { destr } from 'destr'
 import * as rc from 'rc9'
 import { colors as c } from 'consola/utils'
 import { consola } from 'consola'
 import { loadNuxtConfig } from '@nuxt/kit'
 import { isTest } from 'std-env'
-import { parse as parseDotenv } from 'dotenv'
 import { createMain, defineCommand } from 'citty'
 
 import { version } from '../package.json'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
+
+function isTruthy(val: unknown): boolean {
+  return val === true || val === 'true' || val === '1' || val === 1
+}
+
+function parseDotenv(src: string): Record<string, string> {
+  const result: Record<string, string> = {}
+  for (const line of src.split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+    const eqIndex = trimmed.indexOf('=')
+    if (eqIndex === -1) continue
+    const key = trimmed.slice(0, eqIndex).trim()
+    let value = trimmed.slice(eqIndex + 1).trim()
+    // Remove surrounding quotes
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith('\'') && value.endsWith('\''))) {
+      value = value.slice(1, -1)
+    }
+    result[key] = value
+  }
+  return result
+}
 
 const RC_FILENAME = '.nuxtrc'
 
@@ -21,6 +41,7 @@ const sharedArgs = {
   global: {
     type: 'boolean',
     alias: 'g',
+    default: false,
     description: 'Apply globally',
   },
   dir: {
@@ -103,14 +124,14 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     return 'because you are running in a test environment'
   }
 
-  if (destr(process.env.NUXT_TELEMETRY_DISABLED)) {
+  if (isTruthy(process.env.NUXT_TELEMETRY_DISABLED)) {
     return 'by the `NUXT_TELEMETRY_DISABLED` environment variable'
   }
 
   const dotenvFile = resolve(dir, '.env')
   if (existsSync(dotenvFile)) {
-    const _env = parseDotenv(readFileSync(dotenvFile))
-    if (destr(_env.NUXT_TELEMETRY_DISABLED)) {
+    const _env = parseDotenv(readFileSync(dotenvFile, 'utf8'))
+    if (isTruthy(_env.NUXT_TELEMETRY_DISABLED)) {
       return 'by the `NUXT_TELEMETRY_DISABLED` environment variable set in ' + dotenvFile
     }
   }

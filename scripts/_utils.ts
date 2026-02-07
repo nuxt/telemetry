@@ -120,14 +120,14 @@ export async function getContributors() {
     if (emails.has(commit.author.email) || commit.author.name === 'renovate[bot]') {
       continue
     }
-    const { author } = await fetch(`https://api.github.com/repos/nuxt/fonts/commits/${commit.shortHash}`, {
+    const { author } = await fetch(`https://api.github.com/repos/nuxt/telemetry/commits/${commit.shortHash}`, {
       headers: {
-        'User-Agent': 'nuxt/fonts',
+        'User-Agent': 'nuxt/telemetry',
         'Accept': 'application/vnd.github.v3+json',
         'Authorization': `token ${process.env.GITHUB_TOKEN}`,
       },
     }).then(r => r.json() as Promise<{ author: { login: string, email: string } }>)
-    if (!contributors.some(c => c.username === author.login)) {
+    if (author?.login && !contributors.some(c => c.username === author.login)) {
       contributors.push({ name: commit.author.name, username: author.login })
     }
     emails.add(author.email)

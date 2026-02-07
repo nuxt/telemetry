@@ -1,8 +1,7 @@
 import { promises as fsp } from 'node:fs'
 import process from 'node:process'
 import { execSync } from 'node:child_process'
-import { $fetch } from 'ofetch'
-import { resolve } from 'pathe'
+import { resolve } from 'node:path'
 import { determineSemverChange, getGitDiff, loadChangelogConfig, parseCommits } from 'changelogen'
 
 export interface Dep {
@@ -60,7 +59,7 @@ export async function loadWorkspace(dir: string) {
     find(from).data._name = find(from).data.name
     find(from).data.name = to
     for (const pkg of packages) {
-      pkg.updateDeps((dep) => {
+      pkg.updateDeps((dep): undefined => {
         if (dep.name === from && !dep.range.startsWith('npm:')) {
           dep.range = 'npm:' + to + '@' + dep.range
         }
@@ -75,7 +74,7 @@ export async function loadWorkspace(dir: string) {
     }
 
     for (const pkg of packages) {
-      pkg.updateDeps((dep) => {
+      pkg.updateDeps((dep): undefined => {
         if (dep.name === name) {
           dep.range = newVersion
         }
@@ -121,13 +120,13 @@ export async function getContributors() {
     if (emails.has(commit.author.email) || commit.author.name === 'renovate[bot]') {
       continue
     }
-    const { author } = await $fetch<{ author: { login: string, email: string } }>(`https://api.github.com/repos/nuxt/fonts/commits/${commit.shortHash}`, {
+    const { author } = await fetch(`https://api.github.com/repos/nuxt/fonts/commits/${commit.shortHash}`, {
       headers: {
         'User-Agent': 'nuxt/fonts',
         'Accept': 'application/vnd.github.v3+json',
         'Authorization': `token ${process.env.GITHUB_TOKEN}`,
       },
-    })
+    }).then(r => r.json() as Promise<{ author: { login: string, email: string } }>)
     if (!contributors.some(c => c.username === author.login)) {
       contributors.push({ name: commit.author.name, username: author.login })
     }

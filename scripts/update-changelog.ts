@@ -1,9 +1,7 @@
 import { execSync } from 'node:child_process'
-import { $fetch } from 'ofetch'
 import { inc } from 'semver'
 import { generateMarkDown, getCurrentGitBranch, loadChangelogConfig } from 'changelogen'
-import { consola } from 'consola'
-import { determineBumpType, getContributors, getLatestCommits, loadWorkspace } from './_utils'
+import { determineBumpType, getContributors, getLatestCommits, loadWorkspace } from './_utils.ts'
 
 async function main() {
   const releaseBranch = getCurrentGitBranch()
@@ -35,7 +33,7 @@ async function main() {
   }
 
   // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/nuxt/telemetry/pulls?head=nuxt:v${newVersion}`)
+  const [currentPR] = await fetch(`https://api.github.com/repos/nuxt/telemetry/pulls?head=nuxt:v${newVersion}`).then(r => r.json())
   const contributors = await getContributors()
 
   const releaseNotes = [
@@ -51,34 +49,34 @@ async function main() {
 
   // Create a PR with release notes if none exists
   if (!currentPR) {
-    return await $fetch('https://api.github.com/repos/nuxt/telemetry/pulls', {
+    return await fetch('https://api.github.com/repos/nuxt/telemetry/pulls', {
       method: 'POST',
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
       },
-      body: {
+      body: JSON.stringify({
         title: `v${newVersion}`,
         head: `v${newVersion}`,
         base: releaseBranch,
         body: releaseNotes,
         draft: true,
-      },
+      }),
     })
   }
 
   // Update release notes if the pull request does exist
-  await $fetch(`https://api.github.com/repos/nuxt/telemetry/pulls/${currentPR.number}`, {
+  await fetch(`https://api.github.com/repos/nuxt/telemetry/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
     },
-    body: {
+    body: JSON.stringify({
       body: releaseNotes,
-    },
+    }),
   })
 }
 
 main().catch((err) => {
-  consola.error(err)
+  console.error(err)
   process.exit(1)
 })

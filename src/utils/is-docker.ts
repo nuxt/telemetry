@@ -1,3 +1,4 @@
+// based on is-docker by Sindre Sorhus (https://github.com/sindresorhus/is-docker)
 import { readFileSync, statSync } from 'node:fs'
 
 let isDockerCached: boolean | undefined

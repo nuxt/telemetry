@@ -1,25 +1,24 @@
 import os from 'node:os'
+import { existsSync, readFileSync } from 'node:fs'
 import { execSync } from 'node:child_process'
-import gitUrlParse from 'git-url-parse'
-import { getNuxtVersion, isNuxt3 } from '@nuxt/kit'
-import isDocker from 'is-docker'
+import { getNuxtVersion, isNuxtMajorVersion } from '@nuxt/kit'
 import { provider } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
-import { detect } from 'package-manager-detector'
 import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
+import { isDocker } from './utils/is-docker'
 
 export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
-  const rootDir = nuxt.options.rootDir || process.cwd()
+  const rootDir = nuxt.options.workspaceDir || nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
-  const packageManager = await detect({ cwd: rootDir })
+  const packageManager = detectPackageManager(rootDir)
 
   const { seed } = options
-  const projectHash = await getProjectHash(rootDir, git, seed)
+  const projectHash = getProjectHash(rootDir, git, seed)
   const projectSession = getProjectSession(projectHash, seed)
 
   const nuxtVersion = getNuxtVersion(nuxt)
-  const nuxtMajorVersion = isNuxt3(nuxt) ? 3 : 2
+  const nuxtMajorVersion = isNuxtMajorVersion(2, nuxt) ? 2 : nuxt.options._majorVersion
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
 
@@ -36,7 +35,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
     nodeVersion,
     os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
-    packageManager: packageManager?.name || 'unknown',
+    packageManager: packageManager || 'unknown',
     concent: options.consent,
   }
 }
@@ -103,6 +102,69 @@ async function getGitRemote(cwd: string): Promise<string | null> {
   return gitRemoteUrl
 }
 
+function detectPackageManager(rootDir: string): string {
+  // Check lockfiles first (most reliable signal)
+  const lockFiles: Record<string, string> = {
+    'bun.lockb': 'bun',
+    'bun.lock': 'bun',
+    'deno.lock': 'deno',
+    'pnpm-lock.yaml': 'pnpm',
+    'pnpm-workspace.yaml': 'pnpm',
+    'yarn.lock': 'yarn',
+    'package-lock.json': 'npm',
+    'npm-shrinkwrap.json': 'npm',
+  }
+  for (const [file, manager] of Object.entries(lockFiles)) {
+    if (existsSync(`${rootDir}/${file}`)) {
+      return manager
+    }
+  }
+
+  // Fall back to packageManager field in package.json (Corepack standard)
+  try {
+    const pkgJson = JSON.parse(readFileSync(`${rootDir}/package.json`, 'utf8'))
+    if (typeof pkgJson.packageManager === 'string') {
+      const name = pkgJson.packageManager.split('@')[0]
+      if (name) return name
+    }
+  }
+  catch {
+    // ignore
+  }
+
+  return 'unknown'
+}
+
+function parseGitUrl(gitUrl: string): { source: string, owner: string, name: string } | null {
+  // Normalize SSH URLs: git@github.com:owner/repo.git -> github.com/owner/repo
+  const normalized = gitUrl.trim()
+
+  // Handle SSH format: git@host:owner/repo.git
+  const sshMatch = normalized.match(/^[\w-]+@([^:]+):(.+?)(?:\.git)?$/)
+  if (sshMatch) {
+    const [, source, path] = sshMatch
+    const parts = path.split('/')
+    if (parts.length >= 2) {
+      return { source, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+    }
+  }
+
+  // Handle HTTPS/Git protocol: https://github.com/owner/repo.git or git://...
+  try {
+    const url = new URL(normalized)
+    const pathname = url.pathname.replace(/\.git$/, '').replace(/^\//, '')
+    const parts = pathname.split('/')
+    if (parts.length >= 2) {
+      return { source: url.hostname, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+    }
+  }
+  catch {
+    // Not a valid URL
+  }
+
+  return null
+}
+
 async function getGit(rootDir: string): Promise<GitData | undefined> {
   const gitRemote = await getGitRemote(rootDir)
 
@@ -110,11 +172,13 @@ async function getGit(rootDir: string): Promise<GitData | undefined> {
     return
   }
 
-  const meta = gitUrlParse(gitRemote)
-  const url = meta.toString('https')
+  const meta = parseGitUrl(gitRemote)
+  if (!meta) {
+    return
+  }
 
   return {
-    url,
+    url: `https://${meta.source}/${meta.owner}/${meta.name}`,
     gitRemote,
     source: meta.source,
     owner: meta.owner,

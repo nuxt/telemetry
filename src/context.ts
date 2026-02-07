@@ -8,6 +8,15 @@ import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
 import { isDocker } from './utils/is-docker'
 
+function getNuxtMajorVersion(nuxt: Nuxt) {
+  for (let i = 2; i < 10; i++) {
+    if (isNuxtMajorVersion(i as 2 | 3 | 4, nuxt)) {
+      return i
+    }
+  }
+  return 2
+}
+
 export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.workspaceDir || nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
@@ -18,7 +27,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
   const projectSession = getProjectSession(projectHash, seed)
 
   const nuxtVersion = getNuxtVersion(nuxt)
-  const nuxtMajorVersion = isNuxtMajorVersion(2, nuxt) ? 2 : nuxt.options._majorVersion
+  const nuxtMajorVersion = getNuxtMajorVersion(nuxt)
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
 
@@ -53,7 +62,7 @@ function getEnv(): Context['environment'] {
 }
 
 function getCLI() {
-  const entry = process.argv[1]
+  const entry = process.argv[1] ?? ''
 
   const knownCLIs = {
     'nuxt-ts.js': 'nuxt-ts',
@@ -142,10 +151,11 @@ function parseGitUrl(gitUrl: string): { source: string, owner: string, name: str
   // Handle SSH format: git@host:owner/repo.git
   const sshMatch = normalized.match(/^[\w-]+@([^:]+):(.+?)(?:\.git)?$/)
   if (sshMatch) {
-    const [, source, path] = sshMatch
+    const source = sshMatch[1]!
+    const path = sshMatch[2]!
     const parts = path.split('/')
     if (parts.length >= 2) {
-      return { source, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+      return { source, owner: parts.slice(0, -1).join('/'), name: parts.at(-1)! }
     }
   }
 
@@ -155,7 +165,7 @@ function parseGitUrl(gitUrl: string): { source: string, owner: string, name: str
     const pathname = url.pathname.replace(/\.git$/, '').replace(/^\//, '')
     const parts = pathname.split('/')
     if (parts.length >= 2) {
-      return { source: url.hostname, owner: parts.slice(0, -1).join('/'), name: parts[parts.length - 1] }
+      return { source: url.hostname, owner: parts.slice(0, -1).join('/'), name: parts.at(-1)! }
     }
   }
   catch {

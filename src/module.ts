@@ -5,8 +5,13 @@ import type { TelemetryOptions } from './types'
 import { ensureUserconsent } from './consent'
 import { logger } from './utils/log'
 import { randomSeed } from './utils/hash'
+import type { NuxtOptions } from 'nuxt/schema'
 
-export type ModuleOptions = boolean | TelemetryOptions
+export type ModuleOptions = TelemetryOptions
+
+export interface ModuleHooks {
+  'telemetry:setup': (telemetry: Telemetry) => void
+}
 
 export default defineNuxtModule<TelemetryOptions>({
   meta: {
@@ -24,7 +29,7 @@ export default defineNuxtModule<TelemetryOptions>({
       logger.level = 0
     }
 
-    const _topLevelTelemetry = (nuxt.options as any).telemetry
+    const _topLevelTelemetry = nuxt.options.telemetry as NuxtOptions['telemetry'] | true
     if (_topLevelTelemetry !== true) {
       if (
         toptions.enabled === false
@@ -55,6 +60,7 @@ export default defineNuxtModule<TelemetryOptions>({
       }
       t.createEvent('command')
       t.createEvent('module')
+      // @ts-expect-error hook types aren't working for some reason
       await nuxt.callHook('telemetry:setup', t)
       t.sendEvents(toptions.debug)
     })

@@ -74,7 +74,7 @@ describe('@nuxt/telemetry', () => {
             "context": {
               "cli": "programmatic",
               "isEdge": false,
-              "nuxtMajorVersion": 3,
+              "nuxtMajorVersion": 4,
             },
             "events": [
               {

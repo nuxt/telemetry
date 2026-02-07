@@ -1,5 +1,4 @@
 import type { Nuxt } from '@nuxt/schema'
-import type { Telemetry } from './telemetry'
 
 export interface TelemetryOptions {
   debug: boolean

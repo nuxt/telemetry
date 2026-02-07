@@ -72,11 +72,6 @@
   "peerDependencies": {
     "@nuxt/kit": ">=3.0.0"
   },
-  "peerDependenciesMeta": {
-    "@nuxt/kit": {
-      "optional": true
-    }
-  },
   "resolutions": {
     "@nuxt/telemetry": "workspace:*"
   },

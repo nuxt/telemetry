@@ -1,4 +1,3 @@
-import { destr } from 'destr'
 import { defineNuxtModule } from '@nuxt/kit'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import { Telemetry } from './telemetry'
@@ -16,7 +15,7 @@ export default defineNuxtModule<TelemetryOptions>({
   },
   defaults: {
     endpoint: process.env.NUXT_TELEMETRY_ENDPOINT || 'https://telemetry.nuxt.com',
-    debug: destr(process.env.NUXT_TELEMETRY_DEBUG),
+    debug: process.env.NUXT_TELEMETRY_DEBUG === '1' || process.env.NUXT_TELEMETRY_DEBUG === 'true',
     enabled: undefined as any,
     seed: undefined as any,
   },

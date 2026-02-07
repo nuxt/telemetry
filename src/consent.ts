@@ -1,10 +1,10 @@
 import { colors as c } from 'consola/utils'
 import { consola } from 'consola'
 import { isMinimal } from 'std-env'
-import isDocker from 'is-docker'
 import { updateUserNuxtRc } from './utils/nuxtrc'
 import type { TelemetryOptions } from './types'
 import { consentVersion } from './meta'
+import { isDocker } from './utils/is-docker'
 
 export async function ensureUserconsent(options: TelemetryOptions): Promise<boolean> {
   if (options.consent && options.consent >= consentVersion) {

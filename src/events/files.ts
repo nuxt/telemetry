@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { resolve } from 'pathe'
+import { resolve } from 'node:path'
 import { resolvePath } from '@nuxt/kit'
 import type { EventFactory } from '../types'
 

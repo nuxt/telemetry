@@ -41,9 +41,3 @@ export interface GitData {
   owner: string
   name: string
 }
-
-declare module '@nuxt/schema' {
-  interface NuxtHooks {
-    'telemetry:setup': (telemetry: Telemetry) => void
-  }
-}

@@ -41,6 +41,7 @@ const sharedArgs = {
   global: {
     type: 'boolean',
     alias: 'g',
+    default: false,
     description: 'Apply globally',
   },
   dir: {

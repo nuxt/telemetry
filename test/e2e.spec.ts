@@ -60,6 +60,12 @@ describe('@nuxt/telemetry', () => {
       expect(devtoolLog.version).toBeDefined()
       delete devtoolLog.timing
       delete devtoolLog.version
+
+      const telemetryLog = log.body.events.find((event: any) => event.moduleName === '@nuxt/telemetry')
+      expect(telemetryLog.timing).toBeDefined()
+      expect(telemetryLog.version).toBeDefined()
+      delete telemetryLog.timing
+      delete telemetryLog.version
     }
     expect(logs).toMatchInlineSnapshot(`
       [
@@ -84,6 +90,10 @@ describe('@nuxt/telemetry', () => {
               },
               {
                 "moduleName": "@nuxt/devtools",
+                "name": "module",
+              },
+              {
+                "moduleName": "@nuxt/telemetry",
                 "name": "module",
               },
             ],

@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 import { getNuxtVersion, isNuxtMajorVersion } from '@nuxt/kit'
 import { provider } from 'std-env'
+import { determineAgent } from '@vercel/detect-agent'
 import type { Nuxt } from '@nuxt/schema'
 import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
@@ -31,6 +32,8 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
 
+  const agent = await determineAgent()
+
   return {
     nuxt,
     seed,
@@ -45,6 +48,8 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
     os: os.type().toLocaleLowerCase(),
     environment: getEnv(),
     packageManager: packageManager || 'unknown',
+    isAgent: agent.isAgent,
+    agentName: agent.isAgent ? agent.agent.name : null,
     concent: options.consent,
   }
 }

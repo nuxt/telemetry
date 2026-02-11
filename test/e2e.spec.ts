@@ -24,6 +24,10 @@ const app = createApp().use(defineEventHandler(async (event) => {
   delete body.context.projectSession
   expect(body.context.environment).toEqual(isCI ? 'github_actions' : 'unknown')
   delete body.context.environment
+  expect(body.context.isAgent).toEqual(expect.any(Boolean))
+  delete body.context.isAgent
+  expect([null, expect.any(String)]).toContainEqual(body.context.agentName)
+  delete body.context.agentName
   expect(body.timestamp).toBeGreaterThan(0)
   delete body.timestamp
   for (const event of body.events) {

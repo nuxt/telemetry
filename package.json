@@ -43,6 +43,7 @@
     "test:types": "nuxt-module-build prepare && nuxt prepare playground && vue-tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/detect-agent": "^1.1.0",
     "citty": "^0.2.0",
     "consola": "^3.4.2",
     "ofetch": "^2.0.0-alpha.3",

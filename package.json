@@ -61,7 +61,7 @@
     "eslint": "^10.0.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.5",
-    "installed-check": "^9.3.0",
+    "installed-check": "^10.0.0",
     "knip": "^5.83.1",
     "nuxt": "^4.3.1",
     "semver": "^7.7.4",

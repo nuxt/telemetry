@@ -7,6 +7,11 @@
         "src/module.ts",
         "scripts/**"
       ]
+    },
+    "playground": {
+      "ignore": [
+        "**"
+      ]
     }
   }
 }

@@ -22,6 +22,8 @@ export interface Context {
   git?: { url: string }
   environment: string | null
   packageManager: string
+  isAgent: boolean
+  agentName: string | null
   concent: number
 }
 

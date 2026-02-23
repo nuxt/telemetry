@@ -47,7 +47,7 @@
     "consola": "^3.4.2",
     "ofetch": "^2.0.0-alpha.3",
     "rc9": "^3.0.0",
-    "std-env": "^3.10.0"
+    "std-env": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^1.15.1",

@@ -76,6 +76,8 @@ export class Telemetry {
       'environment',
       'projectHash',
       'projectSession',
+      'isAgent',
+      'agentName',
     ] as const) {
       eventContext[key] = context[key]
     }

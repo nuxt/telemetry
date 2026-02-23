@@ -61,7 +61,7 @@ importers:
         specifier: ^1.15.5
         version: 1.15.5
       installed-check:
-        specifier: ^10.0.0
+        specifier: ^10.0.1
         version: 10.0.1
       knip:
         specifier: ^5.85.0

@@ -31,6 +31,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
   const agent = detectAgent()
+  const nitroPreset = nuxt.options.nitro!.preset
 
   return {
     nuxt,
@@ -49,6 +50,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
     isAgent: isAgent,
     agentName: agent.name || null,
     concent: options.consent,
+    nitroPreset,
   }
 }
 

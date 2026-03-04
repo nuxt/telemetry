@@ -78,6 +78,7 @@ export class Telemetry {
       'projectSession',
       'isAgent',
       'agentName',
+      'nitroPreset',
     ] as const) {
       eventContext[key] = context[key]
     }

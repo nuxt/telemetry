@@ -4,6 +4,7 @@ import { execSync } from 'node:child_process'
 import { getNuxtVersion, isNuxtMajorVersion } from '@nuxt/kit'
 import { provider, detectAgent, isAgent } from 'std-env'
 import type { Nuxt } from '@nuxt/schema'
+import type { Nitro } from 'nitropack'
 import type { Context, GitData, TelemetryOptions } from './types'
 import { hash } from './utils/hash'
 import { isDocker } from './utils/is-docker'
@@ -17,7 +18,7 @@ function getNuxtMajorVersion(nuxt: Nuxt) {
   return 2
 }
 
-export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptions>): Promise<Context> {
+export async function createContext(nuxt: Nuxt, nitro: Nitro, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.workspaceDir || nuxt.options.rootDir || process.cwd()
   const git = await getGit(rootDir)
   const packageManager = detectPackageManager(rootDir)
@@ -31,7 +32,7 @@ export async function createContext(nuxt: Nuxt, options: Required<TelemetryOptio
   const nodeVersion = process.version.replace('v', '')
   const isEdge = nuxtVersion.includes('edge')
   const agent = detectAgent()
-  const nitroPreset = nuxt.options.nitro!.preset
+  const nitroPreset = nitro.options.preset || null
 
   return {
     nuxt,

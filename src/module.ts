@@ -50,8 +50,7 @@ export default defineNuxtModule<TelemetryOptions>({
     }
 
     nuxt.hook('nitro:init', async (nitro) => {
-      nuxt.options.nitro!.preset = nitro.options.preset
-      const t = new Telemetry(nuxt, toptions as typeof toptions & { consent: number })
+      const t = new Telemetry(nuxt, nitro, toptions as typeof toptions & { consent: number })
       t.createEvent('project')
       // Only send the session in development
       if (nuxt.options.dev) {

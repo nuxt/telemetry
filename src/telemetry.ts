@@ -1,4 +1,5 @@
 import type { Nuxt } from '@nuxt/schema'
+import type { Nitro } from 'nitropack'
 
 import { postEvent } from './utils/post-event'
 import { createContext } from './context'
@@ -15,6 +16,7 @@ import { files } from './events/files'
 
 export class Telemetry {
   nuxt: Nuxt
+  nitro: Nitro
   options: Required<TelemetryOptions>
   storage: any // TODO
   _contextPromise?: Promise<Context>
@@ -29,14 +31,15 @@ export class Telemetry {
     files,
   }
 
-  constructor(nuxt: Nuxt, options: Required<TelemetryOptions>) {
+  constructor(nuxt: Nuxt, nitro: Nitro, options: Required<TelemetryOptions>) {
     this.nuxt = nuxt
+    this.nitro = nitro
     this.options = options
   }
 
   getContext(): Promise<Context> {
     if (!this._contextPromise) {
-      this._contextPromise = createContext(this.nuxt, this.options)
+      this._contextPromise = createContext(this.nuxt, this.nitro, this.options)
     }
     return this._contextPromise
   }

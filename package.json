@@ -63,6 +63,7 @@
     "h3": "^1.15.5",
     "installed-check": "^10.0.1",
     "knip": "^5.85.0",
+    "nitropack": "^2.13.1",
     "nuxt": "^4.3.1",
     "semver": "^7.7.4",
     "typescript": "^5.9.3",

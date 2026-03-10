@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@10.31.0",
+  "packageManager": "pnpm@10.32.0",
   "version": "2.7.0",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -47,7 +47,7 @@
     "consola": "^3.4.2",
     "ofetch": "^2.0.0-alpha.3",
     "rc9": "^3.0.0",
-    "std-env": "^4.0.0-rc.1"
+    "std-env": "^4.0.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^1.15.2",

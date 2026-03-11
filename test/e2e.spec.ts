@@ -78,6 +78,7 @@ describe('@nuxt/telemetry', () => {
             "context": {
               "cli": "programmatic",
               "isEdge": false,
+              "nitroPreset": "node-server",
               "nuxtMajorVersion": 4,
             },
             "events": [

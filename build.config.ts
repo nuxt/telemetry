@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
+  externals: ['nitropack'],
   rollup: {
     // remove in next major version
     emitCJS: true,

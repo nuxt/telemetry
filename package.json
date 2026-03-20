@@ -60,7 +60,7 @@
     "changelogen": "^0.6.2",
     "eslint": "^10.0.3",
     "get-port-please": "^3.2.0",
-    "h3": "^1.15.6",
+    "h3": "^1.15.9",
     "installed-check": "^10.0.1",
     "knip": "^5.87.0",
     "nuxt": "^4.4.2",

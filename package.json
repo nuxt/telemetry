@@ -58,17 +58,17 @@
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.1.0",
     "changelogen": "^0.6.2",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.9",
     "installed-check": "^10.0.1",
-    "knip": "^5.87.0",
+    "knip": "^5.88.1",
     "nuxt": "^4.4.2",
     "semver": "^7.7.4",
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.0",
-    "vue-tsc": "^3.2.5"
+    "vue-tsc": "^3.2.6"
   },
   "peerDependencies": {
     "@nuxt/kit": ">=3.0.0"

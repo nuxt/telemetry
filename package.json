@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "version": "2.7.0",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -62,7 +62,7 @@
     "get-port-please": "^3.2.0",
     "h3": "^1.15.9",
     "installed-check": "^10.0.1",
-    "knip": "^6.0.3",
+    "knip": "^6.0.5",
     "nuxt": "^4.4.2",
     "semver": "^7.7.4",
     "typescript": "^5.9.3",

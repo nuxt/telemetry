@@ -65,7 +65,7 @@
     "knip": "^6.0.3",
     "nuxt": "^4.4.2",
     "semver": "^7.7.4",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.1",
     "vue-tsc": "^3.2.6"

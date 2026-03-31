@@ -25,6 +25,7 @@ export interface Context {
   isAgent: boolean
   agentName: string | null
   concent: number
+  nitroPreset: string | null
 }
 
 export interface Event {

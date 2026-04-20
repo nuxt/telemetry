@@ -47,7 +47,7 @@
     "consola": "^3.4.2",
     "ofetch": "^2.0.0-alpha.3",
     "rc9": "^3.0.1",
-    "std-env": "^4.0.0"
+    "std-env": "^4.1.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^1.15.2",
@@ -58,7 +58,7 @@
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.1.4",
     "changelogen": "^0.6.2",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.11",
     "installed-check": "^10.0.1",
@@ -66,10 +66,10 @@
     "nitropack": "^2.13.3",
     "nuxt": "^4.4.2",
     "semver": "^7.7.4",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
     "vitest": "^4.1.4",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.2.7"
   },
   "peerDependencies": {
     "@nuxt/kit": ">=3.0.0"

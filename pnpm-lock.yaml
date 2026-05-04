@@ -52,7 +52,7 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2(magicast@0.5.2)
       eslint:
-        specifier: ^10.2.1
+        specifier: ^10.3.0
         version: 10.3.0(jiti@2.6.1)
       get-port-please:
         specifier: ^3.2.0
@@ -64,10 +64,10 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1
       knip:
-        specifier: ^6.7.0
+        specifier: ^6.11.0
         version: 6.11.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       nitropack:
-        specifier: ^2.13.3
+        specifier: ^2.13.4
         version: 2.13.4(oxc-parser@0.117.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0))
       nuxt:
         specifier: ^4.4.2

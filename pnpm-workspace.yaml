@@ -1,12 +1,12 @@
 packages:
   - playground
 
-ignoredBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-  - unrs-resolver
-
 shellEmulator: true
 
 overrides:
   '@nuxt/telemetry': 'workspace:*'
+
+allowBuilds:
+  "@parcel/watcher": false
+  esbuild: false
+  unrs-resolver: false

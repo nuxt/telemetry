@@ -59,7 +59,6 @@ export default defineNuxtModule<TelemetryOptions>({
       }
       t.createEvent('command')
       t.createEvent('module')
-      // @ts-expect-error hook types aren't working for some reason
       await nuxt.callHook('telemetry:setup', t)
       t.sendEvents(toptions.debug)
     })

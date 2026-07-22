@@ -154,8 +154,12 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     return 'by ' + resolve(dir, RC_FILENAME)
   }
 
-  if (disabledByConf(rc.readUserConfig({ name: RC_FILENAME }))) {
+  if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
     return 'by ' + resolve(homedir(), RC_FILENAME)
+  }
+
+  if (disabledByConf(rc.readUserConfig({ name: RC_FILENAME }))) {
+    return 'by ' + resolve(homedir(), '.config', RC_FILENAME)
   }
 }
 

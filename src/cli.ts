@@ -154,7 +154,7 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     return 'by ' + resolve(dir, RC_FILENAME)
   }
 
-  if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
+  if (disabledByConf(rc.readUserConfig({ name: RC_FILENAME }))) {
     return 'by ' + resolve(homedir(), RC_FILENAME)
   }
 }
@@ -172,7 +172,7 @@ async function showStatus(dir: string, global: boolean) {
 function setRC(dir: string, key: any, val: any, global: boolean) {
   const update = { [key]: val }
   if (global) {
-    rc.updateUser(update, RC_FILENAME)
+    rc.updateUserConfig(update, RC_FILENAME)
   }
   else {
     rc.update(update, { name: RC_FILENAME, dir })

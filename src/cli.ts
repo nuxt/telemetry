@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, mkdirSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { resolve } from 'node:path'
 
@@ -179,6 +179,10 @@ async function showStatus(dir: string, global: boolean) {
 function setRC(dir: string, key: any, val: any, global: boolean) {
   const update = { [key]: val }
   if (global) {
+    // Uses the same resolving logic as rc9
+    const rc9Base = process.env.XDG_CONFIG_HOME || resolve(homedir(), '.config')
+    // Make sure the directory exists before rc9 attempt to write there
+    mkdirSync(rc9Base, { recursive: true })
     rc.updateUserConfig(update, RC_FILENAME)
   }
   else {

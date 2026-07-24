@@ -154,12 +154,15 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     return 'by ' + resolve(dir, RC_FILENAME)
   }
 
+  // This is maintained for backward compatibility
   if (disabledByConf(rc.readUser({ name: RC_FILENAME }))) {
     return 'by ' + resolve(homedir(), RC_FILENAME)
   }
 
   if (disabledByConf(rc.readUserConfig({ name: RC_FILENAME }))) {
-    return 'by ' + resolve(homedir(), '.config', RC_FILENAME)
+    // Uses the same resolving logic as rc9
+    const rc9Base = process.env.XDG_CONFIG_HOME || resolve(homedir(), '.config')
+    return 'by ' + resolve(rc9Base, RC_FILENAME)
   }
 }
 

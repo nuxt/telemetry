@@ -24,6 +24,7 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm test:engines
+      - run: pnpm dev:prepare
       - run: pnpm test:knip
   ci:
     strategy:

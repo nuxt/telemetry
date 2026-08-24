@@ -57,9 +57,9 @@
     "@nuxt/test-utils": "^4.1.0",
     "@types/node": "24.13.3",
     "@types/semver": "^7.8.0",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.11",
     "changelogen": "^0.6.2",
-    "eslint": "^10.8.1",
+    "eslint": "^10.9.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.11",
     "installed-check": "^11.0.0",
@@ -69,8 +69,8 @@
     "semver": "^7.8.5",
     "typescript": "^6.0.3",
     "unbuild": "^3.6.1",
-    "vitest": "^4.1.10",
-    "vue-tsc": "^3.3.10"
+    "vitest": "^4.1.11",
+    "vue-tsc": "^3.3.11"
   },
   "peerDependencies": {
     "@nuxt/kit": ">=3.0.0"

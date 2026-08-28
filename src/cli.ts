@@ -12,10 +12,7 @@ import { createMain, defineCommand } from 'citty'
 import { version } from '../package.json'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
-
-function isTruthy(val: unknown): boolean {
-  return val === true || val === 'true' || val === '1' || val === 1
-}
+import { isDoNotTrack, isTruthy } from './utils/env'
 
 function parseDotenv(src: string): Record<string, string> {
   const result: Record<string, string> = {}
@@ -128,11 +125,18 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     return 'by the `NUXT_TELEMETRY_DISABLED` environment variable'
   }
 
+  if (isDoNotTrack()) {
+    return 'by the `DO_NOT_TRACK` environment variable'
+  }
+
   const dotenvFile = resolve(dir, '.env')
   if (existsSync(dotenvFile)) {
     const _env = parseDotenv(readFileSync(dotenvFile, 'utf8'))
     if (isTruthy(_env.NUXT_TELEMETRY_DISABLED)) {
       return 'by the `NUXT_TELEMETRY_DISABLED` environment variable set in ' + dotenvFile
+    }
+    if (isDoNotTrack(_env)) {
+      return 'by the `DO_NOT_TRACK` environment variable set in ' + dotenvFile
     }
   }
 

@@ -18,9 +18,8 @@ export class Telemetry {
   nuxt: Nuxt
   nitro: Nitro
   options: Required<TelemetryOptions>
-  storage: any // TODO
   _contextPromise?: Promise<Context>
-  events: Promise<EventFactoryResult<any>>[] = []
+  events: Promise<EventFactoryResult<any> | undefined>[] = []
   eventFactories: Record<string, EventFactory<any>> = {
     build,
     command,
@@ -44,14 +43,13 @@ export class Telemetry {
     return this._contextPromise
   }
 
-  createEvent(name: string, payload?: object): undefined | Promise<any> {
+  createEvent(name: string, payload?: object): void {
     const eventFactory = this.eventFactories[name]
     if (typeof eventFactory !== 'function') {
       logger.warn('Unknown event:', name)
       return
     }
-    const eventPromise = this._invokeEvent(name, eventFactory, payload)
-    this.events.push(eventPromise)
+    this.events.push(this._invokeEvent(name, eventFactory, payload))
   }
 
   async _invokeEvent(name: string, eventFactory: EventFactory<any>, payload?: object): Promise<any> {

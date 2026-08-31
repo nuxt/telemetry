@@ -36,7 +36,7 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
     "lint": "eslint .",
     "nuxt-telemetry": "node ./bin/nuxt-telemetry.mjs",
-    "prepack": "nuxt-module-build build",
+    "prepack": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt-module-build build",
     "test": "vitest run",
     "test:engines": "installed-check -d --no-workspaces",
     "test:knip": "knip",

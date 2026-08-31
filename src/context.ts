@@ -20,7 +20,7 @@ function getNuxtMajorVersion(nuxt: Nuxt) {
 
 export async function createContext(nuxt: Nuxt, nitro: Nitro, options: Required<TelemetryOptions>): Promise<Context> {
   const rootDir = nuxt.options.workspaceDir || nuxt.options.rootDir || process.cwd()
-  const git = await getGit(rootDir)
+  const git = getGit(rootDir)
   const packageManager = detectPackageManager(rootDir)
 
   const { seed } = options
@@ -104,17 +104,13 @@ function getProjectHash(rootDir: string, git?: GitData, seed?: string) {
   return hash(id)
 }
 
-async function getGitRemote(cwd: string): Promise<string | null> {
-  let gitRemoteUrl = null
-
+function getGitRemote(cwd: string): string | null {
   try {
-    gitRemoteUrl = execSync('git config --get remote.origin.url  ', { encoding: 'utf8', cwd }).trim() || null
+    return execSync('git config --get remote.origin.url', { encoding: 'utf8', cwd, stdio: ['ignore', 'pipe', 'ignore'] }).trim() || null
   }
   catch {
-    /* ignore */
+    return null
   }
-
-  return gitRemoteUrl
 }
 
 function detectPackageManager(rootDir: string): string {
@@ -181,8 +177,8 @@ function parseGitUrl(gitUrl: string): { source: string, owner: string, name: str
   return null
 }
 
-async function getGit(rootDir: string): Promise<GitData | undefined> {
-  const gitRemote = await getGitRemote(rootDir)
+function getGit(rootDir: string): GitData | undefined {
+  const gitRemote = getGitRemote(rootDir)
 
   if (!gitRemote) {
     return

@@ -192,6 +192,6 @@ async function ensureNuxtProject(args: { global: boolean, dir: string }) {
   if (!nuxtConfig || !nuxtConfig._layers[0]?.configFile) {
     consola.error('You are not in a Nuxt project.')
     consola.info('You can try specifying a directory or by using the `--global` flag to configure telemetry for your machine.')
-    process.exit()
+    process.exit(1)
   }
 }

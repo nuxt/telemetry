@@ -61,7 +61,7 @@ export const main = createMain({
       },
       args: sharedArgs,
       async run({ args }) {
-        ensureNuxtProject(args)
+        await ensureNuxtProject(args)
         const dir = resolve(args.dir)
         await showStatus(dir, args.global)
       },
@@ -73,7 +73,7 @@ export const main = createMain({
       },
       args: sharedArgs,
       async run({ args }) {
-        ensureNuxtProject(args)
+        await ensureNuxtProject(args)
         const dir = resolve(args.dir)
         setRC(dir, 'telemetry.enabled', true, args.global)
         setRC(dir, 'telemetry.consent', consentVersion, args.global)
@@ -88,7 +88,7 @@ export const main = createMain({
       },
       args: sharedArgs,
       async run({ args }) {
-        ensureNuxtProject(args)
+        await ensureNuxtProject(args)
         const dir = resolve(args.dir)
         setRC(dir, 'telemetry.enabled', false, args.global)
         setRC(dir, 'telemetry.consent', 0, args.global)
@@ -103,7 +103,7 @@ export const main = createMain({
       },
       args: sharedArgs,
       async run({ args }) {
-        ensureNuxtProject(args)
+        await ensureNuxtProject(args)
         const dir = resolve(args.dir)
         const accepted = await ensureUserconsent({} as any)
         if (accepted && !args.global) {

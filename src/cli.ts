@@ -13,6 +13,7 @@ import { version } from '../package.json'
 import { consentVersion } from './meta'
 import { ensureUserconsent } from './consent'
 import { isDoNotTrack, isTruthy } from './utils/env'
+import { RC_FILENAME } from './utils/nuxtrc'
 
 function parseDotenv(src: string): Record<string, string> {
   const result: Record<string, string> = {}
@@ -31,8 +32,6 @@ function parseDotenv(src: string): Record<string, string> {
   }
   return result
 }
-
-const RC_FILENAME = '.nuxtrc'
 
 const sharedArgs = {
   global: {

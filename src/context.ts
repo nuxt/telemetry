@@ -45,7 +45,7 @@ export async function createContext(nuxt: Nuxt, nitro: Nitro, options: Required<
     isEdge,
     cli: getCLI(),
     nodeVersion,
-    os: os.type().toLocaleLowerCase(),
+    os: os.type().toLowerCase(),
     environment: getEnv(),
     packageManager: packageManager || 'unknown',
     isAgent: isAgent,

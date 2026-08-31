@@ -47,10 +47,9 @@ export async function createContext(nuxt: Nuxt, nitro: Nitro, options: Required<
     nodeVersion,
     os: os.type().toLowerCase(),
     environment: getEnv(),
-    packageManager: packageManager || 'unknown',
-    isAgent: isAgent,
+    packageManager,
+    isAgent,
     agentName: agent.name || null,
-    concent: options.consent,
     nitroPreset,
   }
 }

@@ -19,12 +19,11 @@ export interface Context {
   isEdge: boolean
   nodeVersion: string
   os: string
-  git?: { url: string }
+  git?: GitData
   environment: string | null
   packageManager: string
   isAgent: boolean
   agentName: string | null
-  concent: number
   nitroPreset: string | null
 }
 

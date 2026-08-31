@@ -89,8 +89,9 @@ export class Telemetry {
   }
 
   async sendEvents(debug?: boolean) {
-    const events: EventFactoryResult<any>[] = [].concat(...(await Promise.all(this.events)).filter(Boolean))
+    const pending = this.events
     this.events = []
+    const events = (await Promise.all(pending)).filter(Boolean).flat()
     const context = await this.getPublicContext()
 
     const body = {

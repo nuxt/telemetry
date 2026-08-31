@@ -45,7 +45,6 @@
   "dependencies": {
     "citty": "^0.2.2",
     "consola": "^3.4.2",
-    "ofetch": "^2.0.0-alpha.3",
     "rc9": "^3.0.1",
     "std-env": "^4.2.0"
   },

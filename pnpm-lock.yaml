@@ -17,9 +17,6 @@ importers:
       consola:
         specifier: ^3.4.2
         version: 3.4.2
-      ofetch:
-        specifier: ^2.0.0-alpha.3
-        version: 2.0.0-alpha.3
       rc9:
         specifier: ^3.0.1
         version: 3.0.1
@@ -3546,9 +3543,6 @@ packages:
 
   ofetch@1.5.1:
     resolution: {integrity: sha512-2W4oUZlVaqAPAil6FUg/difl6YhqhUR7x2eZY4bQCko22UXg3hptq9KLQdqFClV+Wu85UX7hNtdGTngi/1BxcA==}
-
-  ofetch@2.0.0-alpha.3:
-    resolution: {integrity: sha512-zpYTCs2byOuft65vI3z43Dd6iSdFbOZZLb9/d21aCpx2rGastVU9dOCv0lu4ykc1Ur1anAYjDi3SUvR0vq50JA==}
 
   ohash@2.0.12:
     resolution: {integrity: sha512-65S/5gk9YSsaRjcyf7Nfa6h/d3E8/1gslpXfI4W7Dxn/oap8IKRuNT5VXkLQ1YFKIEg4apRY4Pj6aiwFzrDdmw==}
@@ -8929,8 +8923,6 @@ snapshots:
       destr: 2.0.5
       node-fetch-native: 1.6.7
       ufo: 1.6.4
-
-  ofetch@2.0.0-alpha.3: {}
 
   ohash@2.0.12: {}
 

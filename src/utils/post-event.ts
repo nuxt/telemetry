@@ -1,4 +1,3 @@
-import { fetch } from 'ofetch'
 import { version } from '../meta'
 import type { Event } from '../types'
 

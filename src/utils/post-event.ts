@@ -22,6 +22,6 @@ export async function postEvent(endpoint: string, body: EventBody): Promise<void
   })
 
   if (!res.ok) {
-    throw new Error(res.statusText)
+    throw new Error(`${res.status} ${res.statusText}`)
   }
 }

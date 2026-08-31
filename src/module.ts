@@ -5,7 +5,7 @@ import type { TelemetryOptions } from './types'
 import { ensureUserconsent } from './consent'
 import { logger } from './utils/log'
 import { randomSeed } from './utils/hash'
-import { isDoNotTrack } from './utils/env'
+import { isDoNotTrack, isTruthy } from './utils/env'
 import type { NuxtOptions } from 'nuxt/schema'
 
 export type ModuleOptions = TelemetryOptions
@@ -32,6 +32,11 @@ export default defineNuxtModule<TelemetryOptions>({
 
     if (isDoNotTrack()) {
       logger.info('Telemetry disabled by `DO_NOT_TRACK` environment variable')
+      return
+    }
+
+    if (isTruthy(process.env.NUXT_TELEMETRY_DISABLED)) {
+      logger.info('Telemetry disabled by `NUXT_TELEMETRY_DISABLED` environment variable')
       return
     }
 

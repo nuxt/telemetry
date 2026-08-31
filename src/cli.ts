@@ -146,7 +146,7 @@ async function _checkDisabled(dir: string): Promise<string | false | undefined> 
     const config = await loadNuxtConfig({ cwd: dir })
     for (const layer of config._layers) {
       if (disabledByConf(layer.config)) {
-        return 'by ' + config._layers[0]!.configFile
+        return 'by ' + (layer.configFile ?? config._layers[0]!.configFile)
       }
     }
   }

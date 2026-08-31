@@ -4,8 +4,7 @@
     ".": {
       "entry": [
         "src/cli.ts",
-        "src/module.ts",
-        "scripts/**"
+        "src/module.ts"
       ]
     },
     "playground": {

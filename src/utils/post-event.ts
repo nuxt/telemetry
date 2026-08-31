@@ -7,6 +7,9 @@ interface EventBody {
   events: Array<Event>
 }
 
+/** Telemetry runs inside the build, so never let a slow endpoint hold the process open. */
+const TIMEOUT_MS = 5000
+
 export async function postEvent(endpoint: string, body: EventBody): Promise<void> {
   const res = await fetch(endpoint, {
     method: 'POST',
@@ -15,6 +18,7 @@ export async function postEvent(endpoint: string, body: EventBody): Promise<void
       'content-type': 'application/json',
       'user-agent': 'Nuxt Telemetry ' + version,
     },
+    signal: AbortSignal.timeout(TIMEOUT_MS),
   })
 
   if (!res.ok) {

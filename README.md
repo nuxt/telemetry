@@ -68,10 +68,16 @@ export default {
 2. Using an environment variable:
 
 ```bash
-NUXT_TELEMETRY_DISABLED=1
+export NUXT_TELEMETRY_DISABLED=1
 ```
 
-3. Using `npx @nuxt/telemetry disable`
+3. Setting the [`DO_NOT_TRACK`](https://donottrack.sh/) environment variable:
+
+```bash
+export DO_NOT_TRACK=1
+```
+
+4. Using `npx @nuxt/telemetry disable`
 
 <!-- TODO: npx nuxt telemetry  -->
 

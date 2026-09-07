@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/telemetry",
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@11.25.0",
   "version": "2.9.1",
   "repository": "nuxt/telemetry",
   "license": "MIT",
@@ -45,7 +45,7 @@
   "dependencies": {
     "citty": "^0.2.2",
     "consola": "^3.4.2",
-    "rc9": "^3.0.1",
+    "rc9": "^3.1.0",
     "std-env": "^4.2.0"
   },
   "devDependencies": {
@@ -56,11 +56,11 @@
     "@nuxt/test-utils": "^4.2.0",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "^4.1.11",
-    "eslint": "^10.9.1",
+    "eslint": "^10.10.0",
     "get-port-please": "^3.2.0",
     "h3": "^1.15.11",
     "installed-check": "^11.0.0",
-    "knip": "^6.33.0",
+    "knip": "^6.34.0",
     "nitropack": "^2.13.4",
     "nuxt": "^4.5.2",
     "typescript": "^6.0.3",

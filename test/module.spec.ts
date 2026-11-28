@@ -4,7 +4,7 @@ import type { TelemetryOptions } from '../src/types'
 
 vi.mock('../src/utils/nuxtrc', () => ({ updateUserNuxtRc: vi.fn() }))
 
-async function setupModule(telemetry: unknown) {
+async function setupModule(telemetry: unknown, inlineOptions: Partial<TelemetryOptions> = {}) {
   const { default: telemetryModule } = await import('../src/module')
   const hook = vi.fn()
   const nuxt = {
@@ -12,7 +12,7 @@ async function setupModule(telemetry: unknown) {
     hooks: { addHooks: vi.fn() },
     hook,
   } as unknown as Nuxt
-  await telemetryModule({} as TelemetryOptions, nuxt)
+  await telemetryModule(inlineOptions as TelemetryOptions, nuxt)
   return hook.mock.calls.some(([name]) => name === 'nitro:init')
 }
 
@@ -67,5 +67,13 @@ describe('telemetry opt-in in a non-interactive environment', () => {
     expect(await setupModule({ enabled: true, consent: 1 })).toBe(false)
     expect(await setupModule({ enabled: true, consent: 2 })).toBe(true)
     expect(await setupModule(true)).toBe(true)
+  })
+
+  it.each([
+    ['false', false],
+    ['{ enabled: false }', { enabled: false }],
+  ])('should keep a top-level opt-out of telemetry: %s', async (_, telemetry) => {
+    expect(await setupModule(telemetry, { enabled: true })).toBe(false)
+    expect(await setupModule(telemetry, { enabled: true, consent: 1 })).toBe(false)
   })
 })

@@ -40,11 +40,13 @@ export default defineNuxtModule<TelemetryOptions>({
       return
     }
 
-    const _topLevelTelemetry = nuxt.options.telemetry as NuxtOptions['telemetry'] | true
-    if (_topLevelTelemetry !== true) {
+    const _topLevelTelemetry = nuxt.options.telemetry as NuxtOptions['telemetry'] | boolean
+    const _topLevelOptOut = _topLevelTelemetry === false || (typeof _topLevelTelemetry === 'object' && _topLevelTelemetry.enabled === false)
+    const _optedIn = !_topLevelOptOut && (_topLevelTelemetry === true || (toptions.enabled === true && toptions.consent === undefined))
+    if (!_optedIn) {
       if (
         toptions.enabled === false
-        || _topLevelTelemetry === false
+        || _topLevelOptOut
         || !(await ensureUserconsent(toptions))
       ) {
         logger.info('Telemetry disabled')
